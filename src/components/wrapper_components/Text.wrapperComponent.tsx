@@ -21,6 +21,7 @@ interface TextProps {
     | "overline"
     | "subtitle1"
     | "subtitle2";
+  color: string;
 }
 const Text: React.FC<TextProps> = (props) => {
   return (
@@ -29,6 +30,7 @@ const Text: React.FC<TextProps> = (props) => {
       noWrap={props.noWrap}
       paragraph={props.paragraph}
       variant={props.variant}
+      color={props.color}
     >
       {props.children}
     </Typography>
