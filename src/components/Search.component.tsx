@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "./wrapper_components/Input.wrapper.component";
-import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
+import { SvgIconProps } from "@mui/material/SvgIcon";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Search = (props: SvgIconProps) => {
