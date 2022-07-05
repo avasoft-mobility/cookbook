@@ -2,34 +2,26 @@ import React from "react";
 import Input from "./Input.component";
 import { SvgIconProps } from "@mui/material/SvgIcon";
 import SearchIcon from "@mui/icons-material/Search";
+import Paper from "@mui/material/Paper";
+import IconButton from "@mui/material/IconButton";
 
 const Search = (props: SvgIconProps) => {
   return (
-    <div
-      style={{
-        width: "100%",
+    <Paper
+      component="form"
+      sx={{
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
         alignItems: "center",
-        alignSelf: "center",
-        borderRadius: "16px",
         boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
+        borderRadius: "16px",
       }}
     >
-      <div style={styles.searchIconContainer}>
-        <SearchIcon />
-      </div>
+      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+        <SearchIcon color="primary" />
+      </IconButton>
       <Input />
-    </div>
+    </Paper>
   );
-};
-const styles = {
-  searchIconContainer: {
-    height: "40px",
-    display: "flex",
-    alignItems: "center",
-  },
 };
 
 export default Search;

@@ -1,15 +1,24 @@
 import React from "react";
+import { InputBase } from "@mui/material";
 
 const Input = () => {
   return (
-    <div style={{ width: "97%" }}>
-      <input
-        style={styles.inputContainer}
-        type="text"
-        id="inputID"
-        placeholder="Explore the topics..."
-      />
-    </div>
+    <InputBase
+      sx={{ width: "100%" }}
+      placeholder="Explore the topics..."
+      inputProps={{
+        sx: {
+          "&::placeholder": {
+            color: "#D3DFF8",
+            fontFamily: "Roboto",
+            fontStyle: "normal",
+            fontWeight: "400",
+            fontSize: "25px",
+            lineHeight: "47px",
+          },
+        },
+      }}
+    />
   );
 };
 const styles = {
