@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "./Input.component";
+import Input from "./wrapper_components/Input.WrapperComponent";
 import { SvgIconProps } from "@mui/material/SvgIcon";
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
