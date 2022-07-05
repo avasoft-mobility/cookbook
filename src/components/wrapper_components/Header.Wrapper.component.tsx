@@ -6,7 +6,7 @@ import KebabMenu from "./KebabMenu.WrapperComponent";
 
 interface HeaderProps {
   headerText: string;
-  headerHeight?: string
+  headerHeight?: string;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -18,10 +18,10 @@ const Header: React.FC<HeaderProps> = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const onClickMenuItem =(event: React.MouseEvent<HTMLElement>)=>{
-    console.log(event.currentTarget)
+  const onClickMenuItem = (event: React.MouseEvent<HTMLElement>) => {
+    console.log(event.currentTarget);
     setAnchorEl(null);
-  }
+  };
   return (
     <Box
       sx={{
@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#6133BD",
-        height: props.headerHeight
+        height: props.headerHeight,
       }}
     >
       <div style={styles.headerText}>
@@ -42,10 +42,10 @@ const Header: React.FC<HeaderProps> = (props) => {
       <div>
         <KebabMenu
           iconButtonColor={"default"}
-          iconButtonStyle = {{color:"#FFFFFF"}}
+          iconButtonStyle={{ color: "#FFFFFF" }}
           onMenuItemClicked={onClickMenuItem}
           onIconButtonClicked={handleClick}
-          menuItems={["Download Code","See Topic Flow","See Technical Flow"]}
+          menuItems={["Download Code", "See Topic Flow", "See Technical Flow"]}
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
