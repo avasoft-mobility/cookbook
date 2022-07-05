@@ -3,7 +3,11 @@ import { Box, IconButton } from "@mui/material";
 import Text from "./Text.wrapperComponent";
 import MoreIcon from "@mui/icons-material/MoreVert";
 
-const Header = () => {
+interface HeaderProps {
+  headerText: string;
+}
+
+const Header: React.FC<HeaderProps> = (props) => {
   return (
     <Box
       sx={{
@@ -17,7 +21,7 @@ const Header = () => {
     >
       <div style={styles.headerText}>
         <Text variant="h6" color="#FFFFFF">
-          Push Notification Implementation
+          {props.headerText}
         </Text>
       </div>
       <div>
