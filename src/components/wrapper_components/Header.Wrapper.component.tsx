@@ -1,13 +1,12 @@
 import React from "react";
 import { Box, IconButton } from "@mui/material";
 import Text from "./Text.wrapperComponent";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import KebabMenu from "./KebabMenu.WrapperComponent";
 
 interface HeaderProps {
   headerText: string;
   headerHeight?: string;
-  onClickMenuItem:Function
+  onClickMenuItem: Function;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -19,8 +18,9 @@ const Header: React.FC<HeaderProps> = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const onClickMenuItem = () => {
+  const onClickMenuItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
+    props.onClickMenuItem(event.currentTarget.innerText);
   };
   return (
     <Box
