@@ -19,9 +19,8 @@ const Header: React.FC<HeaderProps> = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const onClickMenuItem = (menu:string) => {
+  const onClickMenuItem = () => {
     setAnchorEl(null);
-    props.onClickMenuItem(menu)
   };
   return (
     <Box
