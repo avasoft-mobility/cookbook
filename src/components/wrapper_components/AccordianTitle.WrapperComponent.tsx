@@ -30,7 +30,7 @@ const AccordianTitle: React.FC<AccordianTitleProps> = (props) => {
             variant={"subtitle1"}
             color={props.idColor !== undefined ? props.idColor : "#000000"}
           >
-            #{props.id}
+            #{props.id}&nbsp;
           </Text>
           <Text
             variant={"subtitle1"}

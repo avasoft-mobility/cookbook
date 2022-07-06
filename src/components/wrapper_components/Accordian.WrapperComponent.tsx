@@ -2,7 +2,7 @@ import React from "react";
 import AccordianTitle from "./AccordianTitle.WrapperComponent";
 import AccordianContent from "./AccordianContent.Wrapper";
 import { Accordion } from "@mui/material";
-import StackDetail from "../../models/TopicDatas.model";
+import StackDetail from "../../models/StackDetails.model";
 
 interface AccordianProps {
   stackDetails: StackDetail[];
@@ -11,7 +11,7 @@ interface AccordianProps {
 const Accordian: React.FC<AccordianProps> = (props) => {
   return (
     <div>
-      {props.stackDetails.map((singleData: StackDetail) => (
+      {props.stackDetails.map((stackDetail: StackDetail) => (
         <Accordion
           sx={{
             marginTop: 3,
@@ -19,12 +19,17 @@ const Accordian: React.FC<AccordianProps> = (props) => {
           }}
         >
           <AccordianTitle
-            title={singleData.topic}
-            id={singleData.id}
+            title={stackDetail.topic}
+            id={stackDetail.id}
             iconColor="#648DE5"
             idColor="#6133BD"
           />
-          <AccordianContent content={singleData.content} />
+          <AccordianContent
+            content={stackDetail.content}
+            code={stackDetail.code}
+            contentColor="#424242"
+            image={stackDetail.image}
+          />
         </Accordion>
       ))}
     </div>
