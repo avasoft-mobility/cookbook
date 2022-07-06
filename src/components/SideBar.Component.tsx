@@ -14,38 +14,38 @@ interface SideBarProps {
 }
 
 const SideBar: React.FC<SideBarProps> = (props) => {
-  const getIcon = (stack: string) => {
-    if (stack === "React Native") {
+  const getIcon = (stackName: string) => {
+    if (stackName === "React Native") {
       return <Icon type="reactNative" style={{ width: 30, height: 30 }} />;
     }
 
-    if (stack === "Native Android") {
+    if (stackName === "Native Android") {
       return <Icon type="androidStudio" style={{ width: 30, height: 30 }} />;
     }
 
-    if (stack === "Native Ios") {
+    if (stackName === "Native Ios") {
       return <Icon type="swift" style={{ width: 30, height: 30 }} />;
     }
 
-    if (stack === "Flutter") {
+    if (stackName === "Flutter") {
       return <Icon type="flutter" style={{ width: 30, height: 30 }} />;
     }
 
-    if (stack === "Xamarin Forms") {
+    if (stackName === "Xamarin Forms") {
       return <Icon type="xamarin" style={{ width: 30, height: 30 }} />;
     }
   };
 
   return (
     <List>
-      {props.Topics.map((text) => (
-        <ListItem key={text} disablePadding>
+      {props.Topics.map((stackName) => (
+        <ListItem key={stackName} disablePadding>
           <ListItemButton
-            selected={text === props.selectedTopic ? true : false}
-            onClick={() => props.onSelect(text)}
+            selected={stackName === props.selectedTopic ? true : false}
+            onClick={() => props.onSelect(stackName)}
           >
-            <ListItemIcon>{getIcon(text)}</ListItemIcon>
-            <ListItemText primary={text} style={{ color: "#000000" }} />
+            <ListItemIcon>{getIcon(stackName)}</ListItemIcon>
+            <ListItemText primary={stackName} style={{ color: "#000000" }} />
           </ListItemButton>
         </ListItem>
       ))}
