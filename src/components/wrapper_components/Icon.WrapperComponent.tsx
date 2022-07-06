@@ -1,7 +1,9 @@
 import React from "react";
+
+import FileDownload from "@mui/icons-material/FileDownload";
 import Image from "@mui/icons-material/Image";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import FileDownload from "@mui/icons-material/FileDownload";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { SvgIcon, SxProps, Theme } from "@mui/material";
 
 interface IconProps {
@@ -13,7 +15,8 @@ interface IconProps {
     | "flutter"
     | "reactNative"
     | "swift"
-    | "xamarin";
+    | "xamarin"
+    | "moreVertIcon";
   style?: SxProps<Theme>;
 }
 
@@ -135,6 +138,10 @@ const Icon: React.FC<IconProps> = (props) => {
         />
       </SvgIcon>
     );
+  }
+
+  if (props.type === "moreVertIcon") {
+    return <MoreVertIcon sx={props.style} />;
   }
 
   return null;
