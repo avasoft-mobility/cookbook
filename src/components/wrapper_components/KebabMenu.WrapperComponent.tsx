@@ -30,8 +30,8 @@ interface KebabMenuProps {
   ) => void | undefined;
   selected?: boolean | undefined;
   iconButtonStyle?: SxProps<Theme> | undefined;
-  menuStyle: React.CSSProperties | undefined;
-  menuItemStyle: React.CSSProperties | undefined;
+  menuStyle?: React.CSSProperties | undefined;
+  menuItemStyle?: React.CSSProperties | undefined;
 }
 
 const KebabMenu: React.FC<KebabMenuProps> = (props) => {
