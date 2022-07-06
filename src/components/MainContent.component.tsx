@@ -2,11 +2,10 @@ import React from "react";
 import StackDetail from "../models/StackDetails.model";
 import Accordian from "./wrapper_components/Accordian.WrapperComponent";
 
-interface AccordianProps {
+interface MainContentProps {
   stackDetails: StackDetail[];
 }
-
-const MainContent = () => {
+const MainContent: React.FC<MainContentProps> = (props) => {
   const result: StackDetail[] = [
     {
       id: 1,
