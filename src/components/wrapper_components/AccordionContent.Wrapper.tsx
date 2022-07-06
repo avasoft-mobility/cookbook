@@ -10,7 +10,7 @@ interface AccordianContentProps {
   imageWidth?: string;
 }
 
-const AccordianContent: React.FC<AccordianContentProps> = (props) => {
+const AccordionContent: React.FC<AccordianContentProps> = (props) => {
   return (
     <div>
       <Text
@@ -48,4 +48,4 @@ const styles = {
   },
 };
 
-export default AccordianContent;
+export default AccordionContent;

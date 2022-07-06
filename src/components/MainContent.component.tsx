@@ -1,6 +1,6 @@
 import React from "react";
 import StackDetail from "../models/StackDetails.model";
-import AccordionList from "./wrapper_components/AccordianList.WrapperComponent";
+import AccordionList from "./wrapper_components/AccordionList.WrapperComponent";
 
 interface MainContentProps {
   stackDetails: StackDetail[];

@@ -8,7 +8,7 @@ interface AccordianTitleProps {
   titleColor?: string;
 }
 
-const AccordianTitle: React.FC<AccordianTitleProps> = (props) => {
+const AccordionTitle: React.FC<AccordianTitleProps> = (props) => {
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
       <Text
@@ -27,4 +27,4 @@ const AccordianTitle: React.FC<AccordianTitleProps> = (props) => {
   );
 };
 
-export default AccordianTitle;
+export default AccordionTitle;

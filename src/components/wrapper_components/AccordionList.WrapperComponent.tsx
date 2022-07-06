@@ -1,6 +1,6 @@
 import React from "react";
-import AccordianTitle from "./AccordianTitle.WrapperComponent";
-import AccordianContent from "./AccordianContent.Wrapper";
+import AccordionTitle from "./AccordionTitle.WrapperComponent";
+import AccordionContent from "./AccordionContent.Wrapper";
 import StackDetail from "../../models/StackDetails.model";
 import Accordion from "./Accordion.WrapperComponent";
 
@@ -16,14 +16,14 @@ const AccordionList: React.FC<AccordionListProps> = (props) => {
           key={stackDetail.id}
           iconColor="#648DE5"
           accordionTitle={
-            <AccordianTitle
+            <AccordionTitle
               title={stackDetail.topic}
               id={stackDetail.id}
               idColor="#6133BD"
             />
           }
           accordionContent={
-            <AccordianContent
+            <AccordionContent
               content={stackDetail.content}
               code={stackDetail.code}
               contentColor="#424242"
