@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "./wrapper_components/Input.WrapperComponent";
-import { SvgIconProps } from "@mui/material/SvgIcon";
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
-
-const Search = (props: SvgIconProps) => {
-  const searchText = (text: string) => {
-    console.log(text);
+interface SearchProps {
+  input: Function;
+}
+const Search: React.FC<SearchProps> = (props) => {
+  const inputText = (text: string) => {
+    props.input(text);
   };
   return (
     <Paper
@@ -22,7 +23,7 @@ const Search = (props: SvgIconProps) => {
       <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
         <SearchIcon color="primary" />
       </IconButton>
-      <Input input={searchText} />
+      <Input input={inputText} />
     </Paper>
   );
 };

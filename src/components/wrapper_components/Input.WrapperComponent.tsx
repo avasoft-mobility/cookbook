@@ -2,12 +2,12 @@ import React from "react";
 import { InputBase } from "@mui/material";
 
 interface InputProps {
-  input:Function;
+  input: Function;
 }
 
-const Input: React.FC<InputProps>  = (props) => {
+const Input: React.FC<InputProps> = (props) => {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.input(event.target.value)
+    props.input(event.target.value);
   };
   return (
     <InputBase
