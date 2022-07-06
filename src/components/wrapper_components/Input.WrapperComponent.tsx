@@ -3,6 +3,7 @@ import { InputBase } from "@mui/material";
 
 interface InputProps {
   input: Function;
+  placeholderStyle?: React.CSSProperties;
 }
 
 const Input: React.FC<InputProps> = (props) => {
@@ -16,30 +17,12 @@ const Input: React.FC<InputProps> = (props) => {
       onChange={onChange}
       inputProps={{
         sx: {
-          fontSize: "25px",
-          "&::placeholder": {
-            color: "#D3DFF8",
-            fontFamily: "Roboto",
-            fontStyle: "normal",
-            fontWeight: "600",
-            fontSize: "25px",
-            lineHeight: "47px",
-          },
+          "&::placeholder":
+            props.placeholderStyle !== undefined && props.placeholderStyle,
         },
       }}
     />
   );
-};
-const styles = {
-  inputContainer: {
-    borderRadius: "none",
-    borderWidth: "0px",
-    outline: "none",
-    width: "100%",
-    height: "50px",
-    display: "flex",
-    fontSize: "20px",
-  },
 };
 
 export default Input;
