@@ -42,7 +42,6 @@ const styles = {
     marginRight: "10px",
     display: "flex",
     alignItems: "center",
-    // height:'50px'
   },
 };
 
