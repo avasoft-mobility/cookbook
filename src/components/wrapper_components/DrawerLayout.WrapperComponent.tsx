@@ -4,7 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 
-const drawerWidth = 240;
+const DRAWERWIDTH = 240;
 
 interface DrawerLayoutProps {
   header: React.ReactNode;
@@ -27,10 +27,10 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
       <Drawer
         variant="permanent"
         sx={{
-          width: drawerWidth,
+          width: DRAWERWIDTH,
           flexShrink: 0,
           [`& .MuiDrawer-paper`]: {
-            width: drawerWidth,
+            width: DRAWERWIDTH,
             boxSizing: "border-box",
           },
         }}
