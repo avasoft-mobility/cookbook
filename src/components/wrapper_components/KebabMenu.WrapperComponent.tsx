@@ -19,7 +19,7 @@ interface KebabMenuProps {
     | "info"
     | "success"
     | "warning";
-  onMenuItemClicked: React.MouseEventHandler<HTMLLIElement>;
+  onMenuItemClicked: Function;
   onIconButtonClicked: React.MouseEventHandler<HTMLButtonElement>;
   menuItems: string[];
   anchorEl: Element | ((element: Element) => Element) | null | undefined;
@@ -65,7 +65,9 @@ const KebabMenu: React.FC<KebabMenuProps> = (props) => {
           <MenuItem
             key={option}
             selected={props.selected}
-            onClick={props.onMenuItemClicked}
+            onClick={() => {
+              props.onMenuItemClicked(option);
+            }}
             style={props.menuItemStyle}
           >
             {option}

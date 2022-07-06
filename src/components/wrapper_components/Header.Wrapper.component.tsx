@@ -7,20 +7,21 @@ import KebabMenu from "./KebabMenu.WrapperComponent";
 interface HeaderProps {
   headerText: string;
   headerHeight?: string;
+  onClickMenuItem:Function
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const onClickMenuIcon = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const onClickMenuItem = (event: React.MouseEvent<HTMLElement>) => {
-    console.log(event.currentTarget);
+  const onClickMenuItem = (menu:string) => {
     setAnchorEl(null);
+    props.onClickMenuItem(menu)
   };
   return (
     <Box
@@ -44,7 +45,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           iconButtonColor={"default"}
           iconButtonStyle={{ color: "#FFFFFF" }}
           onMenuItemClicked={onClickMenuItem}
-          onIconButtonClicked={handleClick}
+          onIconButtonClicked={onClickMenuIcon}
           menuItems={["Download Code", "See Topic Flow", "See Technical Flow"]}
           anchorEl={anchorEl}
           open={open}
