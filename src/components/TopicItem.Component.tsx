@@ -6,7 +6,7 @@ import Pill from "./wrapper_components/Pill.WrapperComponent";
 
 interface TopicItemProps {
   topic: any;
-  style?: any;
+  style?: React.CSSProperties;
 }
 
 const TopicItem: React.FC<TopicItemProps> = (props) => {
