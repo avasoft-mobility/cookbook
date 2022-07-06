@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { SxProps, Theme } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Icon from "../wrapper_components/Icon.WrapperComponent";
 
 import IconButton from "./IconButton.WrapperComponent";
 
@@ -32,6 +32,7 @@ interface KebabMenuProps {
   iconButtonStyle?: SxProps<Theme> | undefined;
   menuStyle?: React.CSSProperties | undefined;
   menuItemStyle?: React.CSSProperties | undefined;
+  iconStyle?: SxProps<Theme> | undefined;
 }
 
 const KebabMenu: React.FC<KebabMenuProps> = (props) => {
@@ -42,7 +43,7 @@ const KebabMenu: React.FC<KebabMenuProps> = (props) => {
         onClick={props.onIconButtonClicked}
         style={props.iconButtonStyle}
       >
-        <MoreVertIcon />
+        <Icon type="moreVertIcon" style={props.iconStyle} />
       </IconButton>
       <Menu
         id="long-menu"
