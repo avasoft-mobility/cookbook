@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import Text from "./Text.wrapperComponent";
 import KebabMenu from "./KebabMenu.WrapperComponent";
+import Theme from "../../configs/ThemeConfig";
 
 interface HeaderProps {
   headerText: string;
@@ -30,19 +31,19 @@ const Header: React.FC<HeaderProps> = (props) => {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        backgroundColor: "#6133BD",
+        backgroundColor: Theme.palette.primary.main,
         height: props.headerHeight,
       }}
     >
       <div style={styles.headerText}>
-        <Text variant="inherit" color="#FFFFFF">
+        <Text variant="inherit" color={Theme.palette.text.primary}>
           {props.headerText}
         </Text>
       </div>
       <div>
         <KebabMenu
           iconButtonColor={"default"}
-          iconButtonStyle={{ color: "#FFFFFF" }}
+          iconButtonStyle={{ color: Theme.palette.text.primary }}
           onMenuItemClicked={onClickMenuItem}
           onIconButtonClicked={onClickMenuIcon}
           menuItems={["Download Code", "See Topic Flow", "See Technical Flow"]}
