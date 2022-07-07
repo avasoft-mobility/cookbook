@@ -4,7 +4,8 @@ import Header from "../components/wrapper_components/Header.Wrapper.component";
 import SideBar from "../components/SideBar.Component";
 import StackDetail from "../models/StackDetails.model";
 import MainContent from "../components/MainContent.component";
-const DetailsPage = () => {
+
+const DetailsPage: React.FC = () => {
   const result: StackDetail[] = [
     {
       id: 1,
