@@ -40,7 +40,7 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, marginLeft: "80px", marginRight: "80px" }}
+        sx={{ flexGrow: 1, p: 3, marginLeft: "80px", marginRight: "80px" ,width:"9rem"}}
       >
         <Toolbar />
         {props.mainContent}
