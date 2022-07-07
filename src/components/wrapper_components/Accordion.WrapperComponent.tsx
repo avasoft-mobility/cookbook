@@ -3,6 +3,7 @@ import {
   Accordion as MaterialAccordion,
   AccordionDetails,
   AccordionSummary,
+  Toolbar,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -17,18 +18,16 @@ const Accordion: React.FC<AccordionListProps> = (props) => {
     <div>
       <MaterialAccordion
         sx={{
-          marginBottom: 3,
           boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
         }}
       >
         <AccordionSummary
           expandIcon={
             <ExpandMoreIcon
-              sx={
-                props.iconColor !== undefined
-                  ? { color: props.iconColor }
-                  : { color: "#000000" }
-              }
+              sx={{
+                color:
+                  props.iconColor !== undefined ? props.iconColor : "#00000",
+              }}
             />
           }
         >
@@ -38,8 +37,8 @@ const Accordion: React.FC<AccordionListProps> = (props) => {
           <div>{props.accordionContent}</div>
         </AccordionDetails>
       </MaterialAccordion>
+      <Toolbar style={{ minHeight: 20 }} />
     </div>
   );
 };
-
 export default Accordion;
