@@ -17,9 +17,13 @@ class ApiService {
     return topics;
   };
 
-  public static fetchTopic = (id: string) => {
+  public static fetchTopic = (id: string): Topic => {
     let topics: Topic[] = JSON.parse(JSON.stringify(DummyData));
-    return topics[0];
+    let topic = topics.find((topic) => topic.id === id);
+    if (topic) {
+      return topic;
+    }
+    throw Error("No topic found");
   };
 }
 
