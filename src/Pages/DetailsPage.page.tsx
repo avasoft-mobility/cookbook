@@ -1,65 +1,122 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import { useParams } from "react-router-dom";
+
+import MainContent from "../components/MainContent.component";
+import SideBar from "../components/SideBar.Component";
 import DrawerLayout from "../components/wrapper_components/DrawerLayout.WrapperComponent";
 import Header from "../components/wrapper_components/Header.Wrapper.component";
-import SideBar from "../components/SideBar.Component";
-import StackDetail from "../models/StackDetails.model";
-import MainContent from "../components/MainContent.component";
+
+import Cookbook from "../models/Cookbook.Model";
+import Stack from "../models/Stack.Model";
+import Topic from "../models/Topic.Model";
+
+import ApiService from "../services/ApiService";
 
 const DetailsPage: React.FC = () => {
-  const result: StackDetail[] = [
-    {
-      id: 1,
-      topic: "Installation of NPM Packages",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-      code: "npx react-native init AwesomeTSProject --template react-native-template-typescript \nnpx react-native init AwesomeTSProject --template react-native-template-typescript",
-      image: "https://www.tutorialspoint.com/android/images/architecture.jpg",
-    },
-    {
-      id: 2,
-      topic: "Configure Notification on App.tsx",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-    },
-    {
-      id: 3,
-      topic: "Integrating with Firebase",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-      code: "function trigger() \n{\n document.getElementById('hover').addEventListener('mouseover', popup);\nfunction popup()\n{\nalert('Welcome to my WebPage!!!');\n}\n} ",
-    },
-  ];
-  let [stackTopic, setStackTopic] = useState("React Native");
-  const onClickMenuItem = (menu: string) => {
-    //When the user clicks the Menu Item
+  let [topic, setTopic] = useState<Topic>({
+    id: "Archibaldo",
+    title: "Lotlux",
+    tags: ["Redhold", ""],
+    cookbooks: [
+      {
+        id: "Bordie",
+        stack: { id: "Pamella", name: "Y-find" },
+        steps: [
+          {
+            id: "Amie",
+            title: "Anterior cord syndrome",
+            description:
+              "Anterior cord syndrome at T11-T12 level of thoracic spinal cord",
+            code: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+            image: "http://dummyimage.com/410x469.png/dddddd/000000",
+          },
+        ],
+      },
+    ],
+  });
+
+  const [selectedStackName, setSelectedStackName] = useState<string>("");
+  const [stacks, setStacks] = useState<Stack[]>([]);
+  const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>({
+    id: "Bordie",
+    stack: { id: "Pamella", name: "Y-find" },
+    steps: [
+      {
+        id: "Amie",
+        title: "Anterior cord syndrome",
+        description:
+          "Anterior cord syndrome at T11-T12 level of thoracic spinal cord",
+        code: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
+        image: "http://dummyimage.com/410x469.png/dddddd/000000",
+      },
+    ],
+  });
+
+  const routeParams = useParams();
+
+  useEffect(() => {
+    initialize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const initialize = () => {
+    try {
+      if (routeParams.topicSlug === undefined) {
+        return;
+      }
+
+      const selectedTopic = ApiService.fetchTopic(routeParams.topicSlug);
+      setTopic(selectedTopic);
+
+      const extractedStacks: Stack[] = [];
+      selectedTopic.cookbooks.forEach((element) => {
+        extractedStacks.push(element.stack);
+      });
+      setStacks(extractedStacks);
+    } catch (error) {}
   };
-  const onSelectStack = (stackName: string) => {
-    setStackTopic(stackName);
+
+  const onClickMenuItem = (selectedMenu: string) => {
+    if (selectedMenu === "Download Code") {
+      return window.location.replace("https://www.google.com");
+    }
+
+    if (selectedMenu === "See Topic Flow") {
+      return window.location.replace("https://www.microsoft.com");
+    }
+
+    if (selectedMenu === "See Technical Flow") {
+      return window.location.replace("https://www.google.com");
+    }
   };
+
+  const onStackSelected = (stackName: string) => {
+    setSelectedStackName(stackName);
+    const cookbook = topic.cookbooks.find(
+      (cookbook) => cookbook.stack.name === stackName
+    );
+    setSelectedCookbook(cookbook!);
+  };
+
   return (
     <div>
       <DrawerLayout
         header={
           <Header
-            headerText="Push Notification Implementation"
+            headerText={topic.title}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
           />
         }
         leftNavigation={
           <SideBar
-            selectedTopic={stackTopic}
-            Topics={[
-              "React Native",
-              "Native Android",
-              "Native Ios",
-              "Flutter",
-              "Xamarin Forms",
-            ]}
-            onSelect={onSelectStack}
+            selectedStack={selectedStackName}
+            stacks={stacks}
+            onSelect={onStackSelected}
           />
         }
-        mainContent={<MainContent stackDetails={result} />}
+        mainContent={<MainContent steps={selectedCookbook.steps} />}
       />
     </div>
   );

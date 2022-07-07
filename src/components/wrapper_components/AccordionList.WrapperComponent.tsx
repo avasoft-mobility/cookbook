@@ -1,33 +1,29 @@
 import React from "react";
-import AccordionTitle from "./AccordionTitle.WrapperComponent";
-import AccordionContent from "./AccordionContent.Wrapper";
-import StackDetail from "../../models/StackDetails.model";
+import Step from "../../models/Step.Model";
 import Accordion from "./Accordion.WrapperComponent";
+import AccordionContent from "./AccordionContent.Wrapper";
+import AccordionTitle from "./AccordionTitle.WrapperComponent";
 
 interface AccordionListProps {
-  stackDetails: StackDetail[];
+  steps: Step[];
 }
 
 const AccordionList: React.FC<AccordionListProps> = (props) => {
   return (
     <div>
-      {props.stackDetails.map((stackDetail: StackDetail) => (
+      {props.steps.map((step: Step) => (
         <Accordion
-          key={stackDetail.id}
+          key={step.id}
           iconColor="#648DE5"
           accordionTitle={
-            <AccordionTitle
-              title={stackDetail.topic}
-              id={stackDetail.id}
-              idColor="#6133BD"
-            />
+            <AccordionTitle title={step.title} id={step.id} idColor="#6133BD" />
           }
           accordionContent={
             <AccordionContent
-              content={stackDetail.content}
-              code={stackDetail.code}
+              content={step.description}
+              code={step.code}
               contentColor="#424242"
-              image={stackDetail.image}
+              image={step.image}
             />
           }
         />
