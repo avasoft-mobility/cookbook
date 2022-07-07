@@ -1,62 +1,71 @@
 import React from "react";
+import { ButtonBase } from "@mui/material";
 
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Icon from "./wrapper_components/Icon.WrapperComponent";
 import Pill from "./wrapper_components/Pill.WrapperComponent";
 
+import Topic from "../models/Topic.Model";
+
 interface TopicItemProps {
-  topic: any;
+  topic: Topic;
   style?: React.CSSProperties;
 }
 
-const TopicItem: React.FC<TopicItemProps> = (props) => {
-  const getIcon = (stack: string) => {
-    if (stack === "React Native") {
-      return <Icon type="reactNative" style={styles.icon} />;
+const TopicItem: React.FC<TopicItemProps> = ({ topic, style }) => {
+  const getIcon = (stackName: string) => {
+    if (stackName === "React Native") {
+      return <Icon key={stackName} type="reactNative" style={styles.icon} />;
     }
-    if (stack === "Native Android") {
-      return <Icon type="androidStudio" style={styles.icon} />;
+    if (stackName === "Native Android") {
+      return <Icon key={stackName} type="androidStudio" style={styles.icon} />;
     }
-    if (stack === "Native Ios") {
-      return <Icon type="swift" style={styles.icon} />;
+    if (stackName === "Native Ios") {
+      return <Icon key={stackName} type="swift" style={styles.icon} />;
     }
-    if (stack === "Flutter") {
-      return <Icon type="flutter" style={styles.icon} />;
+    if (stackName === "Flutter") {
+      return <Icon key={stackName} type="flutter" style={styles.icon} />;
     }
-    if (stack === "Xamarin Forms") {
-      return <Icon type="xamarin" style={styles.icon} />;
+    if (stackName === "Xamarin Forms") {
+      return <Icon key={stackName} type="xamarin" style={styles.icon} />;
     }
   };
 
   return (
-    <div style={{ ...styles.topicContaner, ...props.style }}>
-      <div style={{ ...styles.innerContainer, ...{ flexDirection: "column" } }}>
-        <div>
-          <Text variant="h4" color="#648DE5">
-            {props.topic.name}
-          </Text>
-          <div style={styles.tagsContainer}>
-            {props.topic.tags.map((item: any) => {
-              return (
-                <div style={styles.pills}>
-                  <Pill label={item} color="primary" />
-                </div>
-              );
+    <ButtonBase
+      style={{ textAlign: "left", width: "100%", borderRadius: "16px" }}
+    >
+      <div style={{ ...styles.topicContainer, ...style }}>
+        <div
+          style={{ ...styles.innerContainer, ...{ flexDirection: "column" } }}
+        >
+          <div>
+            <Text variant="h4" color="#648DE5">
+              {topic.title}
+            </Text>
+            <div style={styles.tagsContainer}>
+              {topic.tags.map((item: string) => {
+                return (
+                  <div key={item} style={styles.pills}>
+                    <Pill label={item} color="primary" />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            {topic.cookbooks.map((cookbook: any) => {
+              return getIcon(cookbook.stack.name as string);
             })}
           </div>
         </div>
-        <div>
-          {props.topic.supportedCommunity.map((stack: string) => {
-            return getIcon(stack);
-          })}
-        </div>
       </div>
-    </div>
+    </ButtonBase>
   );
 };
 
 const styles = {
-  topicContaner: {
+  topicContainer: {
     display: "flex",
     flex: 1,
     height: "250px",
