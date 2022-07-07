@@ -1,8 +1,8 @@
 [
   {
     "id": "Archibaldo",
-    "title": "Lotlux",
-    "tags": ["Redhold"],
+    "title": "Deeplink Integeration",
+    "tags": ["Redhold", "Fixflex", "Interface", "Sonsing", "Toughjoyfax"],
     "cookbooks": [
       {
         "id": "Bordie",
@@ -97,8 +97,8 @@
   },
   {
     "id": "Seamus",
-    "title": "Span",
-    "tags": ["Subin"],
+    "title": "Push Notifications",
+    "tags": ["Subin", "Interface"],
     "cookbooks": [
       {
         "id": "Laurice",
@@ -145,8 +145,8 @@
   },
   {
     "id": "Roz",
-    "title": "Sub-Ex",
-    "tags": ["Bitwolf"],
+    "title": "API Calls",
+    "tags": ["Bitwolf", "Opela", "Holdlamis"],
     "cookbooks": [
       {
         "id": "Erica",
@@ -280,7 +280,7 @@
       },
       {
         "id": "Judas",
-        "stack": { "id": "Rita", "name": "React Native" },
+        "stack": { "id": "Rita", "name": "Xamarin Forms" },
         "steps": [
           {
             "id": "Beverlee",
@@ -293,7 +293,7 @@
       },
       {
         "id": "Josefa",
-        "stack": { "id": "Emalee", "name": "Fintone" },
+        "stack": { "id": "Emalee", "name": "Native Android" },
         "steps": [
           {
             "id": "Amos",
@@ -595,7 +595,7 @@
   {
     "id": "Shirlene",
     "title": "Sonsing",
-    "tags":[ "Opela"],
+    "tags": ["Opela", "Fixflex", "Sonsing", "Toughjoyfax"],
     "cookbooks": [
       {
         "id": "Sonnie",
