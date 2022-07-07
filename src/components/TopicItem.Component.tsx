@@ -13,21 +13,21 @@ interface TopicItemProps {
 }
 
 const TopicItem: React.FC<TopicItemProps> = ({ topic, style }) => {
-  const getIcon = (stackNaame: string) => {
-    if (stackNaame === "React Native") {
-      return <Icon key={stackNaame} type="reactNative" style={styles.icon} />;
+  const getIcon = (stackName: string) => {
+    if (stackName === "React Native") {
+      return <Icon key={stackName} type="reactNative" style={styles.icon} />;
     }
-    if (stackNaame === "Native Android") {
-      return <Icon key={stackNaame} type="androidStudio" style={styles.icon} />;
+    if (stackName === "Native Android") {
+      return <Icon key={stackName} type="androidStudio" style={styles.icon} />;
     }
-    if (stackNaame === "Native Ios") {
-      return <Icon key={stackNaame} type="swift" style={styles.icon} />;
+    if (stackName === "Native Ios") {
+      return <Icon key={stackName} type="swift" style={styles.icon} />;
     }
-    if (stackNaame === "Flutter") {
-      return <Icon key={stackNaame} type="flutter" style={styles.icon} />;
+    if (stackName === "Flutter") {
+      return <Icon key={stackName} type="flutter" style={styles.icon} />;
     }
-    if (stackNaame === "Xamarin Forms") {
-      return <Icon key={stackNaame} type="xamarin" style={styles.icon} />;
+    if (stackName === "Xamarin Forms") {
+      return <Icon key={stackName} type="xamarin" style={styles.icon} />;
     }
   };
 
