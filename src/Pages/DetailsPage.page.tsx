@@ -116,7 +116,7 @@ const DetailsPage: React.FC = () => {
             onSelect={onStackSelected}
           />
         }
-        mainContent={<MainContent step={selectedCookbook.steps} />}
+        mainContent={<MainContent steps={selectedCookbook.steps} />}
       />
     </div>
   );

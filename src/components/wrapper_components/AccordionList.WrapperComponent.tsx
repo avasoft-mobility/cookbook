@@ -5,13 +5,13 @@ import AccordionContent from "./AccordionContent.Wrapper";
 import AccordionTitle from "./AccordionTitle.WrapperComponent";
 
 interface AccordionListProps {
-  step: Step[];
+  steps: Step[];
 }
 
 const AccordionList: React.FC<AccordionListProps> = (props) => {
   return (
     <div>
-      {props.step.map((step: Step) => (
+      {props.steps.map((step: Step) => (
         <Accordion
           key={step.id}
           iconColor="#648DE5"

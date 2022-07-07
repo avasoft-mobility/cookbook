@@ -3,12 +3,12 @@ import Step from "../models/Step.Model";
 import AccordionList from "./wrapper_components/AccordionList.WrapperComponent";
 
 interface MainContentProps {
-  step: Step[];
+  steps: Step[];
 }
 const MainContent: React.FC<MainContentProps> = (props) => {
   return (
     <div>
-      <AccordionList step={props.step} />
+      <AccordionList steps={props.steps} />
     </div>
   );
 };
