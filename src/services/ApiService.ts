@@ -7,7 +7,7 @@ class ApiService {
     let searchedTopics: Topic[] = [];
     if (topic !== undefined) {
       topics.forEach((element) => {
-        if (element.title.includes(topic)) {
+        if (element.title.toLowerCase().includes(topic.toLowerCase())) {
           searchedTopics.push(element);
         }
       });
