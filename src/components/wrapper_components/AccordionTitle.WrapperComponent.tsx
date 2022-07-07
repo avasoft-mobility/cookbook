@@ -2,7 +2,7 @@ import React from "react";
 import Text from "./Text.wrapperComponent";
 
 interface AccordianTitleProps {
-  id: number;
+  id: string;
   title: string;
   idColor?: string;
   titleColor?: string;

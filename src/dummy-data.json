@@ -2,38 +2,43 @@
   {
     "id": "Archibaldo",
     "title": "Lotlux",
-    "tags": "Redhold",
+    "tags": ["Redhold"],
     "cookbooks": [
       {
         "id": "Bordie",
-        "stack": { "id": "Pamella", "name": "Y-find" },
+        "stack": { "id": "Pamella", "name": "React Native" },
         "steps": [
           {
             "id": "Amie",
+            "title": "Anterior cord syndrome",
             "description": "Anterior cord syndrome at T11-T12 level of thoracic spinal cord",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
             "image": "http://dummyimage.com/410x469.png/dddddd/000000"
           },
           {
             "id": "Jon",
+            "title": "Anterior cord syndrome",
             "description": "Poisoning by other hormone antagonists, undetermined, subsequent encounter",
             "code": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
             "image": "http://dummyimage.com/493x450.png/dddddd/000000"
           },
           {
             "id": "Jermayne",
+            "title": "Anterior cord syndrome",
             "description": "Malar fracture, right side, subsequent encounter for fracture with nonunion",
             "code": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
             "image": "http://dummyimage.com/417x410.png/5fa2dd/ffffff"
           },
           {
             "id": "Redd",
+            "title": "Anterior cord syndrome",
             "description": "Non-ABO incompatibility with acute hemolytic transfusion reaction",
             "code": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
             "image": "http://dummyimage.com/535x476.png/5fa2dd/ffffff"
           },
           {
             "id": "Nealon",
+            "title": "Anterior cord syndrome",
             "description": "Person boarding or alighting a pedal cycle injured in collision with heavy transport vehicle or bus",
             "code": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
             "image": "http://dummyimage.com/519x426.png/5fa2dd/ffffff"
@@ -42,40 +47,46 @@
       },
       {
         "id": "Damiano",
-        "stack": { "id": "Quintus", "name": "Flexidy" },
+        "stack": { "id": "Quintus", "name": "Native Android" },
         "steps": [
           {
             "id": "Annetta",
+            "title": "Anterior cord syndrome",
             "description": "Cervical disc disorder with myelopathy, mid-cervical region",
             "code": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
             "image": "http://dummyimage.com/520x400.png/dddddd/000000"
           },
           {
             "id": "Sylas",
+            "title": "Anterior cord syndrome",
             "description": "Foreign body granuloma of soft tissue, not elsewhere classified, left shoulder",
             "code": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
             "image": "http://dummyimage.com/425x453.png/ff4444/ffffff"
           },
           {
             "id": "Francisco",
+            "title": "Anterior cord syndrome",
             "description": "Vestibular neuronitis, bilateral",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
             "image": "http://dummyimage.com/521x474.png/dddddd/000000"
           },
           {
             "id": "Adrianna",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified car occupant injured in noncollision transport accident in traffic accident",
             "code": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
             "image": "http://dummyimage.com/494x443.png/dddddd/000000"
           },
           {
             "id": "Chery",
+            "title": "Anterior cord syndrome",
             "description": "Other osteoporosis with current pathological fracture, unspecified hand, subsequent encounter for fracture with nonunion",
             "code": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
             "image": "http://dummyimage.com/455x481.png/ff4444/ffffff"
           },
           {
             "id": "Rebeka",
+            "title": "Anterior cord syndrome",
             "description": "Other disorders of external ear in diseases classified elsewhere, unspecified ear",
             "code": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
             "image": "http://dummyimage.com/449x409.png/5fa2dd/ffffff"
@@ -87,38 +98,43 @@
   {
     "id": "Seamus",
     "title": "Span",
-    "tags": "Subin",
+    "tags": ["Subin"],
     "cookbooks": [
       {
         "id": "Laurice",
-        "stack": { "id": "Gracia", "name": "Sonair" },
+        "stack": { "id": "Gracia", "name": "React Native" },
         "steps": [
           {
             "id": "Wynnie",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified fracture of shaft of unspecified tibia, subsequent encounter for open fracture type I or II with delayed healing",
             "code": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
             "image": "http://dummyimage.com/495x486.png/5fa2dd/ffffff"
           },
           {
             "id": "Arni",
+            "title": "Anterior cord syndrome",
             "description": "Military operation involving nuclear radiation effects of nuclear weapon",
             "code": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
             "image": "http://dummyimage.com/457x473.png/cc0000/ffffff"
           },
           {
             "id": "Beverlie",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced bicondylar fracture of right tibia, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with nonunion",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
             "image": "http://dummyimage.com/445x461.png/cc0000/ffffff"
           },
           {
             "id": "Adaline",
+            "title": "Anterior cord syndrome",
             "description": "Displaced transverse fracture of shaft of right radius, sequela",
             "code": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
             "image": "http://dummyimage.com/535x451.png/dddddd/000000"
           },
           {
             "id": "Hasty",
+            "title": "Anterior cord syndrome",
             "description": "Calcium deposit in bursa, left elbow",
             "code": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
             "image": "http://dummyimage.com/433x413.png/dddddd/000000"
@@ -130,32 +146,36 @@
   {
     "id": "Roz",
     "title": "Sub-Ex",
-    "tags": "Bitwolf",
+    "tags": ["Bitwolf"],
     "cookbooks": [
       {
         "id": "Erica",
-        "stack": { "id": "Grace", "name": "Flowdesk" },
+        "stack": { "id": "Grace", "name": "Native Ios" },
         "steps": [
           {
             "id": "Franciska",
+            "title": "Anterior cord syndrome",
             "description": "Other specified systemic involvement of connective tissue",
             "code": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
             "image": "http://dummyimage.com/508x458.png/ff4444/ffffff"
           },
           {
             "id": "Koo",
+            "title": "Anterior cord syndrome",
             "description": "Paralytic lagophthalmos left lower eyelid",
             "code": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
             "image": "http://dummyimage.com/543x460.png/dddddd/000000"
           },
           {
             "id": "Gena",
+            "title": "Anterior cord syndrome",
             "description": "Contact with nail gun, subsequent encounter",
             "code": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
             "image": "http://dummyimage.com/433x471.png/ff4444/ffffff"
           },
           {
             "id": "Galina",
+            "title": "Anterior cord syndrome",
             "description": "Female partner, perpetrator of maltreatment and neglect",
             "code": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
             "image": "http://dummyimage.com/413x477.png/cc0000/ffffff"
@@ -164,40 +184,46 @@
       },
       {
         "id": "Schuyler",
-        "stack": { "id": "Eulalie", "name": "Solarbreeze" },
+        "stack": { "id": "Eulalie", "name": "React Native" },
         "steps": [
           {
             "id": "Nettie",
+            "title": "Anterior cord syndrome",
             "description": "Accidental drowning and submersion while in bath-tub, sequela",
             "code": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
             "image": "http://dummyimage.com/444x426.png/cc0000/ffffff"
           },
           {
             "id": "Lew",
+            "title": "Anterior cord syndrome",
             "description": "Puncture wound without foreign body of right ear, sequela",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
             "image": "http://dummyimage.com/480x442.png/cc0000/ffffff"
           },
           {
             "id": "Harland",
+            "title": "Anterior cord syndrome",
             "description": "Toxic effect of dichloromethane, accidental (unintentional), sequela",
             "code": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
             "image": "http://dummyimage.com/536x475.png/5fa2dd/ffffff"
           },
           {
             "id": "Gerard",
+            "title": "Anterior cord syndrome",
             "description": "Sclerosing keratitis, left eye",
             "code": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
             "image": "http://dummyimage.com/529x487.png/dddddd/000000"
           },
           {
             "id": "Stacy",
+            "title": "Anterior cord syndrome",
             "description": "Postprocedural hematoma of the spleen following other procedure",
             "code": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
             "image": "http://dummyimage.com/525x445.png/5fa2dd/ffffff"
           },
           {
             "id": "Thornie",
+            "title": "Anterior cord syndrome",
             "description": "Pure hyperglyceridemia",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
             "image": "http://dummyimage.com/518x400.png/5fa2dd/ffffff"
@@ -206,40 +232,46 @@
       },
       {
         "id": "Merline",
-        "stack": { "id": "Alric", "name": "Alpha" },
+        "stack": { "id": "Alric", "name": "Flutter" },
         "steps": [
           {
             "id": "Friederike",
+            "title": "Anterior cord syndrome",
             "description": "Influenza due to unidentified influenza virus with unspecified type of pneumonia",
             "code": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
             "image": "http://dummyimage.com/463x445.png/cc0000/ffffff"
           },
           {
             "id": "Will",
+            "title": "Anterior cord syndrome",
             "description": "Toxic effect of unspecified substance, intentional self-harm, sequela",
             "code": "Sed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
             "image": "http://dummyimage.com/512x441.png/dddddd/000000"
           },
           {
             "id": "Beauregard",
+            "title": "Anterior cord syndrome",
             "description": "Atrophy of vulva",
             "code": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
             "image": "http://dummyimage.com/510x472.png/5fa2dd/ffffff"
           },
           {
             "id": "Bryana",
+            "title": "Anterior cord syndrome",
             "description": "Foreign body in other and multiple parts of external eye, left eye, subsequent encounter",
             "code": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
             "image": "http://dummyimage.com/458x405.png/dddddd/000000"
           },
           {
             "id": "Justina",
+            "title": "Anterior cord syndrome",
             "description": "Age-related osteoporosis with current pathological fracture, unspecified humerus, subsequent encounter for fracture with nonunion",
             "code": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
             "image": "http://dummyimage.com/475x400.png/cc0000/ffffff"
           },
           {
             "id": "Henderson",
+            "title": "Anterior cord syndrome",
             "description": "Strain of other extensor muscle, fascia and tendon at forearm level, unspecified arm",
             "code": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
             "image": "http://dummyimage.com/445x465.png/ff4444/ffffff"
@@ -248,10 +280,11 @@
       },
       {
         "id": "Judas",
-        "stack": { "id": "Rita", "name": "Veribet" },
+        "stack": { "id": "Rita", "name": "React Native" },
         "steps": [
           {
             "id": "Beverlee",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified injury of right lower leg, initial encounter",
             "code": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
             "image": "http://dummyimage.com/414x431.png/cc0000/ffffff"
@@ -264,24 +297,28 @@
         "steps": [
           {
             "id": "Amos",
+            "title": "Anterior cord syndrome",
             "description": "Exposure to bed fire due to unspecified burning material, initial encounter",
             "code": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
             "image": "http://dummyimage.com/444x486.png/5fa2dd/ffffff"
           },
           {
             "id": "Geraldine",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced fracture of medial phalanx of left little finger, subsequent encounter for fracture with delayed healing",
             "code": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
             "image": "http://dummyimage.com/412x411.png/ff4444/ffffff"
           },
           {
             "id": "Joly",
+            "title": "Anterior cord syndrome",
             "description": "War operations involving explosion due to accidental detonation and discharge of own munitions or munitions launch device, military personnel, subsequent encounter",
             "code": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
             "image": "http://dummyimage.com/412x456.png/ff4444/ffffff"
           },
           {
             "id": "Marcella",
+            "title": "Anterior cord syndrome",
             "description": "Adjustment disorder, unspecified",
             "code": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
             "image": "http://dummyimage.com/524x452.png/cc0000/ffffff"
@@ -293,14 +330,15 @@
   {
     "id": "Woodie",
     "title": "Home Ing",
-    "tags": "Fixflex",
+    "tags": ["Fixflex"],
     "cookbooks": [
       {
         "id": "Flori",
-        "stack": { "id": "Grete", "name": "Bitchip" },
+        "stack": { "id": "Grete", "name": "React Native" },
         "steps": [
           {
             "id": "Raffaello",
+            "title": "Anterior cord syndrome",
             "description": "Abnormal cytological findings in specimens from respiratory organs and thorax",
             "code": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
             "image": "http://dummyimage.com/413x457.png/dddddd/000000"
@@ -312,26 +350,29 @@
   {
     "id": "Pearce",
     "title": "Rank",
-    "tags": "Toughjoyfax",
+    "tags": ["Toughjoyfax"],
     "cookbooks": [
       {
         "id": "Florentia",
-        "stack": { "id": "Cherise", "name": "Sonair" },
+        "stack": { "id": "Cherise", "name": "React Native" },
         "steps": [
           {
             "id": "Weider",
+            "title": "Anterior cord syndrome",
             "description": "Other disorders of optic nerve, not elsewhere classified, bilateral",
             "code": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
             "image": "http://dummyimage.com/481x491.png/dddddd/000000"
           },
           {
             "id": "Petronella",
+            "title": "Anterior cord syndrome",
             "description": "Angiodysplasia of stomach and duodenum without bleeding",
             "code": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
             "image": "http://dummyimage.com/527x438.png/ff4444/ffffff"
           },
           {
             "id": "Moreen",
+            "title": "Anterior cord syndrome",
             "description": "Poisoning by antidotes and chelating agents, accidental (unintentional), sequela",
             "code": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
             "image": "http://dummyimage.com/468x454.png/ff4444/ffffff"
@@ -340,10 +381,11 @@
       },
       {
         "id": "Glen",
-        "stack": { "id": "Jacinda", "name": "Ronstring" },
+        "stack": { "id": "Jacinda", "name": "Native Android" },
         "steps": [
           {
             "id": "Irina",
+            "title": "Anterior cord syndrome",
             "description": "Adverse effect of emollients, demulcents and protectants, initial encounter",
             "code": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
             "image": "http://dummyimage.com/490x442.png/5fa2dd/ffffff"
@@ -352,34 +394,39 @@
       },
       {
         "id": "Tilly",
-        "stack": { "id": "Odele", "name": "Zoolab" },
+        "stack": { "id": "Odele", "name": "Native Ios" },
         "steps": [
           {
             "id": "Ron",
+            "title": "Anterior cord syndrome",
             "description": "Superficial foreign body of lower leg",
             "code": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
             "image": "http://dummyimage.com/513x456.png/dddddd/000000"
           },
           {
             "id": "Cynthie",
+            "title": "Anterior cord syndrome",
             "description": "Corrosion of second degree of chest wall, sequela",
             "code": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
             "image": "http://dummyimage.com/412x402.png/dddddd/000000"
           },
           {
             "id": "Valeria",
+            "title": "Anterior cord syndrome",
             "description": "Infection and inflammatory reaction due to internal fixation device of right humerus, initial encounter",
             "code": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
             "image": "http://dummyimage.com/541x489.png/5fa2dd/ffffff"
           },
           {
             "id": "Nap",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced fracture of medial condyle of unspecified humerus, subsequent encounter for fracture with routine healing",
             "code": "Phasellus in felis. Donec semper sapien a libero. Nam dui.",
             "image": "http://dummyimage.com/526x447.png/dddddd/000000"
           },
           {
             "id": "Magnum",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified car occupant injured in collision with other type car in traffic accident, subsequent encounter",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
             "image": "http://dummyimage.com/528x426.png/ff4444/ffffff"
@@ -388,22 +435,25 @@
       },
       {
         "id": "Emily",
-        "stack": { "id": "Robbin", "name": "Tin" },
+        "stack": { "id": "Robbin", "name": "Flutter" },
         "steps": [
           {
             "id": "Lilyan",
+            "title": "Anterior cord syndrome",
             "description": "Drug-induced gout, elbow",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
             "image": "http://dummyimage.com/468x458.png/ff4444/ffffff"
           },
           {
             "id": "Adrian",
+            "title": "Anterior cord syndrome",
             "description": "Other anomalies of pupillary function",
             "code": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
             "image": "http://dummyimage.com/526x423.png/5fa2dd/ffffff"
           },
           {
             "id": "Merla",
+            "title": "Anterior cord syndrome",
             "description": "Displaced subtrochanteric fracture of unspecified femur, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with delayed healing",
             "code": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
             "image": "http://dummyimage.com/518x420.png/ff4444/ffffff"
@@ -412,40 +462,46 @@
       },
       {
         "id": "Brandice",
-        "stack": { "id": "Glynda", "name": "Gembucket" },
+        "stack": { "id": "Glynda", "name": "Xamarin Forms" },
         "steps": [
           {
             "id": "Cart",
+            "title": "Anterior cord syndrome",
             "description": "Burn of unspecified degree of left axilla, subsequent encounter",
             "code": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
             "image": "http://dummyimage.com/505x433.png/cc0000/ffffff"
           },
           {
             "id": "Cathrine",
+            "title": "Anterior cord syndrome",
             "description": "Primary respiratory tuberculosis",
             "code": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
             "image": "http://dummyimage.com/479x435.png/ff4444/ffffff"
           },
           {
             "id": "Dimitry",
+            "title": "Anterior cord syndrome",
             "description": "Other injury of extensor muscle, fascia and tendon of left index finger at wrist and hand level, initial encounter",
             "code": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
             "image": "http://dummyimage.com/477x491.png/5fa2dd/ffffff"
           },
           {
             "id": "Any",
+            "title": "Anterior cord syndrome",
             "description": "Idiopathic chronic gout, unspecified knee",
             "code": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
             "image": "http://dummyimage.com/503x420.png/ff4444/ffffff"
           },
           {
             "id": "Lauree",
+            "title": "Anterior cord syndrome",
             "description": "Contusion of left great toe without damage to nail, subsequent encounter",
             "code": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
             "image": "http://dummyimage.com/490x406.png/cc0000/ffffff"
           },
           {
             "id": "Blanche",
+            "title": "Anterior cord syndrome",
             "description": "Ulcerative colitis, unspecified with unspecified complications",
             "code": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
             "image": "http://dummyimage.com/514x496.png/cc0000/ffffff"
@@ -457,38 +513,43 @@
   {
     "id": "Hetty",
     "title": "Greenlam",
-    "tags": "Sonsing",
+    "tags": ["Sonsing"],
     "cookbooks": [
       {
         "id": "Manolo",
-        "stack": { "id": "Tracie", "name": "Flexidy" },
+        "stack": { "id": "Tracie", "name": "React Native" },
         "steps": [
           {
             "id": "Padgett",
+            "title": "Anterior cord syndrome",
             "description": "Displaced supracondylar fracture with intracondylar extension of lower end of left femur, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with malunion",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
             "image": "http://dummyimage.com/519x482.png/dddddd/000000"
           },
           {
             "id": "Cloe",
+            "title": "Anterior cord syndrome",
             "description": "Retained (nonmagnetic) (old) foreign body in posterior wall of globe, right eye",
             "code": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
             "image": "http://dummyimage.com/441x475.png/5fa2dd/ffffff"
           },
           {
             "id": "Kit",
+            "title": "Anterior cord syndrome",
             "description": "Other scooter (nonmotorized) accident, subsequent encounter",
             "code": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
             "image": "http://dummyimage.com/511x413.png/ff4444/ffffff"
           },
           {
             "id": "Ginnie",
+            "title": "Anterior cord syndrome",
             "description": "Driver of dune buggy injured in traffic accident, initial encounter",
             "code": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
             "image": "http://dummyimage.com/550x412.png/dddddd/000000"
           },
           {
             "id": "Koral",
+            "title": "Anterior cord syndrome",
             "description": "Other dislocation of unspecified shoulder joint, sequela",
             "code": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
             "image": "http://dummyimage.com/474x405.png/5fa2dd/ffffff"
@@ -497,28 +558,32 @@
       },
       {
         "id": "Jessica",
-        "stack": { "id": "Fanni", "name": "Holdlamis" },
+        "stack": { "id": "Fanni", "name": "Native Android" },
         "steps": [
           {
             "id": "Gwenni",
+            "title": "Anterior cord syndrome",
             "description": "Displaced fracture of proximal phalanx of right thumb, subsequent encounter for fracture with routine healing",
             "code": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
             "image": "http://dummyimage.com/486x451.png/dddddd/000000"
           },
           {
             "id": "Corene",
+            "title": "Anterior cord syndrome",
             "description": "Other specified counseling",
             "code": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
             "image": "http://dummyimage.com/434x423.png/dddddd/000000"
           },
           {
             "id": "Steffen",
+            "title": "Anterior cord syndrome",
             "description": "Fracture of T9-T10 vertebra",
             "code": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
             "image": "http://dummyimage.com/440x402.png/ff4444/ffffff"
           },
           {
             "id": "Dede",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced fracture of medial phalanx of unspecified finger",
             "code": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
             "image": "http://dummyimage.com/543x422.png/5fa2dd/ffffff"
@@ -530,14 +595,15 @@
   {
     "id": "Shirlene",
     "title": "Sonsing",
-    "tags": "Opela",
+    "tags":[ "Opela"],
     "cookbooks": [
       {
         "id": "Sonnie",
-        "stack": { "id": "Carlin", "name": "Alpha" },
+        "stack": { "id": "Carlin", "name": "React Native" },
         "steps": [
           {
             "id": "Jannel",
+            "title": "Anterior cord syndrome",
             "description": "Superficial thrombophlebitis in pregnancy, second trimester",
             "code": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
             "image": "http://dummyimage.com/479x418.png/ff4444/ffffff"
@@ -546,40 +612,46 @@
       },
       {
         "id": "Kare",
-        "stack": { "id": "Issy", "name": "Bigtax" },
+        "stack": { "id": "Issy", "name": "Native Android" },
         "steps": [
           {
             "id": "Ellie",
+            "title": "Anterior cord syndrome",
             "description": "Sprain of joints and ligaments of other parts of head",
             "code": "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
             "image": "http://dummyimage.com/523x447.png/cc0000/ffffff"
           },
           {
             "id": "Lenci",
+            "title": "Anterior cord syndrome",
             "description": "Other myositis, right lower leg",
             "code": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
             "image": "http://dummyimage.com/499x496.png/dddddd/000000"
           },
           {
             "id": "Ennis",
+            "title": "Anterior cord syndrome",
             "description": "Legal intervention, means unspecified, suspect injured, initial encounter",
             "code": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
             "image": "http://dummyimage.com/526x467.png/ff4444/ffffff"
           },
           {
             "id": "Bobinette",
+            "title": "Anterior cord syndrome",
             "description": "Abscess of external ear",
             "code": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
             "image": "http://dummyimage.com/491x414.png/dddddd/000000"
           },
           {
             "id": "Latashia",
+            "title": "Anterior cord syndrome",
             "description": "Paraplegia, complete",
             "code": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
             "image": "http://dummyimage.com/495x491.png/5fa2dd/ffffff"
           },
           {
             "id": "Florance",
+            "title": "Anterior cord syndrome",
             "description": "Poisoning by pertussis vaccine, including combinations with a pertussis component, accidental (unintentional), sequela",
             "code": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
             "image": "http://dummyimage.com/522x441.png/dddddd/000000"
@@ -588,34 +660,39 @@
       },
       {
         "id": "Kacie",
-        "stack": { "id": "Roddy", "name": "Toughjoyfax" },
+        "stack": { "id": "Roddy", "name": "Native Ios" },
         "steps": [
           {
             "id": "Aylmar",
+            "title": "Anterior cord syndrome",
             "description": "Traumatic hemorrhage of cerebrum, unspecified, with loss of consciousness of 6 hours to 24 hours, initial encounter",
             "code": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
             "image": "http://dummyimage.com/434x402.png/5fa2dd/ffffff"
           },
           {
             "id": "Omar",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced fracture of lateral condyle of left tibia, subsequent encounter for open fracture type I or II with routine healing",
             "code": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
             "image": "http://dummyimage.com/402x451.png/5fa2dd/ffffff"
           },
           {
             "id": "Frederigo",
+            "title": "Anterior cord syndrome",
             "description": "Puncture wound with foreign body of left lesser toe(s) without damage to nail, sequela",
             "code": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
             "image": "http://dummyimage.com/518x437.png/5fa2dd/ffffff"
           },
           {
             "id": "Dalenna",
+            "title": "Anterior cord syndrome",
             "description": "Other disorders of sclera",
             "code": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
             "image": "http://dummyimage.com/513x428.png/ff4444/ffffff"
           },
           {
             "id": "Roda",
+            "title": "Anterior cord syndrome",
             "description": "Paralytic calcification and ossification of muscle, right ankle and foot",
             "code": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
             "image": "http://dummyimage.com/491x489.png/5fa2dd/ffffff"
@@ -624,22 +701,25 @@
       },
       {
         "id": "Justin",
-        "stack": { "id": "Laura", "name": "Toughjoyfax" },
+        "stack": { "id": "Laura", "name": "Xamarin Forms" },
         "steps": [
           {
             "id": "Klement",
+            "title": "Anterior cord syndrome",
             "description": "Person on outside of car injured in collision with pick-up truck in traffic accident, sequela",
             "code": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
             "image": "http://dummyimage.com/518x493.png/5fa2dd/ffffff"
           },
           {
             "id": "Wilow",
+            "title": "Anterior cord syndrome",
             "description": "Other instability of joint",
             "code": "Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
             "image": "http://dummyimage.com/475x419.png/cc0000/ffffff"
           },
           {
             "id": "Sebastiano",
+            "title": "Anterior cord syndrome",
             "description": "External constriction, left thigh",
             "code": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
             "image": "http://dummyimage.com/504x455.png/ff4444/ffffff"
@@ -652,12 +732,14 @@
         "steps": [
           {
             "id": "Andy",
+            "title": "Anterior cord syndrome",
             "description": "Malignant neoplasm of anterior two-thirds of tongue, part unspecified",
             "code": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
             "image": "http://dummyimage.com/474x468.png/dddddd/000000"
           },
           {
             "id": "Conney",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified injury of other muscle(s) and tendon(s) at lower leg level, left leg, initial encounter",
             "code": "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
             "image": "http://dummyimage.com/469x466.png/cc0000/ffffff"
@@ -669,44 +751,50 @@
   {
     "id": "Margaretha",
     "title": "Gembucket",
-    "tags": "It",
+    "tags": ["It"],
     "cookbooks": [
       {
         "id": "Penni",
-        "stack": { "id": "Caprice", "name": "Kanlam" },
+        "stack": { "id": "Caprice", "name": "React Native" },
         "steps": [
           {
             "id": "Ashia",
+            "title": "Anterior cord syndrome",
             "description": "Gastric contents in trachea causing other injury, sequela",
             "code": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
             "image": "http://dummyimage.com/475x492.png/cc0000/ffffff"
           },
           {
             "id": "Bunnie",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified lesions of oral mucosa",
             "code": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
             "image": "http://dummyimage.com/472x492.png/ff4444/ffffff"
           },
           {
             "id": "Nerita",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced fracture of coronoid process of left ulna, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with routine healing",
             "code": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
             "image": "http://dummyimage.com/497x419.png/ff4444/ffffff"
           },
           {
             "id": "Alexander",
+            "title": "Anterior cord syndrome",
             "description": "Posterior displaced Type II dens fracture, subsequent encounter for fracture with delayed healing",
             "code": "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
             "image": "http://dummyimage.com/522x500.png/cc0000/ffffff"
           },
           {
             "id": "Jana",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced fracture of body of scapula, unspecified shoulder",
             "code": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.",
             "image": "http://dummyimage.com/410x444.png/5fa2dd/ffffff"
           },
           {
             "id": "Berte",
+            "title": "Anterior cord syndrome",
             "description": "Corrosion of first degree of single right finger (nail) except thumb, sequela",
             "code": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
             "image": "http://dummyimage.com/489x450.png/dddddd/000000"
@@ -715,16 +803,18 @@
       },
       {
         "id": "Clayborn",
-        "stack": { "id": "Brad", "name": "Fintone" },
+        "stack": { "id": "Brad", "name": "Native Android" },
         "steps": [
           {
             "id": "Abbi",
+            "title": "Anterior cord syndrome",
             "description": "Sprain of joints and ligaments of unspecified parts of head, subsequent encounter",
             "code": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
             "image": "http://dummyimage.com/400x497.png/5fa2dd/ffffff"
           },
           {
             "id": "Tuesday",
+            "title": "Anterior cord syndrome",
             "description": "Synovial hypertrophy, not elsewhere classified, right ankle and foot",
             "code": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\n\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.",
             "image": "http://dummyimage.com/437x450.png/cc0000/ffffff"
@@ -733,28 +823,32 @@
       },
       {
         "id": "Cherye",
-        "stack": { "id": "Royall", "name": "Daltfresh" },
+        "stack": { "id": "Royall", "name": "Native Ios" },
         "steps": [
           {
             "id": "Harmonia",
+            "title": "Anterior cord syndrome",
             "description": "Pathological fracture in neoplastic disease, left foot, subsequent encounter for fracture with nonunion",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
             "image": "http://dummyimage.com/519x498.png/dddddd/000000"
           },
           {
             "id": "Felice",
+            "title": "Anterior cord syndrome",
             "description": "Contact with and (suspected) exposure to other environmental pollution",
             "code": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
             "image": "http://dummyimage.com/462x466.png/ff4444/ffffff"
           },
           {
             "id": "Jonathan",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified subluxation of right little finger, initial encounter",
             "code": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
             "image": "http://dummyimage.com/543x457.png/ff4444/ffffff"
           },
           {
             "id": "Saul",
+            "title": "Anterior cord syndrome",
             "description": "Displaced segmental fracture of shaft of unspecified femur, subsequent encounter for open fracture type I or II with malunion",
             "code": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
             "image": "http://dummyimage.com/450x411.png/ff4444/ffffff"
@@ -763,40 +857,46 @@
       },
       {
         "id": "Odelle",
-        "stack": { "id": "Babbette", "name": "Y-find" },
+        "stack": { "id": "Babbette", "name": "Xamarin Forms" },
         "steps": [
           {
             "id": "Eloise",
+            "title": "Anterior cord syndrome",
             "description": "Contact with other powered powered hand tools and household machinery, subsequent encounter",
             "code": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
             "image": "http://dummyimage.com/493x405.png/5fa2dd/ffffff"
           },
           {
             "id": "Maisey",
+            "title": "Anterior cord syndrome",
             "description": "Osteomyelitis of vertebra, lumbosacral region",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
             "image": "http://dummyimage.com/548x474.png/dddddd/000000"
           },
           {
             "id": "Perceval",
+            "title": "Anterior cord syndrome",
             "description": "Sprain of deltoid ligament of right ankle, sequela",
             "code": "Fusce consequat. Nulla nisl. Nunc nisl.",
             "image": "http://dummyimage.com/521x480.png/cc0000/ffffff"
           },
           {
             "id": "Wang",
+            "title": "Anterior cord syndrome",
             "description": "Hemangioma of intra-abdominal structures",
             "code": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
             "image": "http://dummyimage.com/400x421.png/cc0000/ffffff"
           },
           {
             "id": "Findley",
+            "title": "Anterior cord syndrome",
             "description": "Underdosing of other psychotropic drugs",
             "code": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
             "image": "http://dummyimage.com/466x493.png/dddddd/000000"
           },
           {
             "id": "Ellissa",
+            "title": "Anterior cord syndrome",
             "description": "Complete traumatic amputation of left breast, initial encounter",
             "code": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
             "image": "http://dummyimage.com/513x462.png/ff4444/ffffff"
@@ -809,6 +909,7 @@
         "steps": [
           {
             "id": "Malynda",
+            "title": "Anterior cord syndrome",
             "description": "Displaced other extraarticular fracture of left calcaneus, subsequent encounter for fracture with nonunion",
             "code": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.",
             "image": "http://dummyimage.com/428x425.png/dddddd/000000"
@@ -820,26 +921,29 @@
   {
     "id": "Neil",
     "title": "Tresom",
-    "tags": "It",
+    "tags": ["It"],
     "cookbooks": [
       {
         "id": "Emmalyn",
-        "stack": { "id": "Thain", "name": "Transcof" },
+        "stack": { "id": "Thain", "name": "React Native" },
         "steps": [
           {
             "id": "Emmy",
+            "title": "Anterior cord syndrome",
             "description": "Injury of unspecified intrathoracic organ, subsequent encounter",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
             "image": "http://dummyimage.com/460x422.png/ff4444/ffffff"
           },
           {
             "id": "Jeromy",
+            "title": "Anterior cord syndrome",
             "description": "Contusion and laceration of right cerebrum with loss of consciousness of 30 minutes or less, sequela",
             "code": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
             "image": "http://dummyimage.com/433x475.png/5fa2dd/ffffff"
           },
           {
             "id": "Zacharia",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced avulsion fracture of right ilium, sequela",
             "code": "Fusce consequat. Nulla nisl. Nunc nisl.",
             "image": "http://dummyimage.com/504x471.png/dddddd/000000"
@@ -848,28 +952,32 @@
       },
       {
         "id": "Carla",
-        "stack": { "id": "Jeramie", "name": "Redhold" },
+        "stack": { "id": "Jeramie", "name": "Native Android" },
         "steps": [
           {
             "id": "Layla",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified superficial injury of unspecified external genital organs, male, sequela",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
             "image": "http://dummyimage.com/440x475.png/dddddd/000000"
           },
           {
             "id": "Connor",
+            "title": "Anterior cord syndrome",
             "description": "Hypothermia, initial encounter",
             "code": "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\n\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
             "image": "http://dummyimage.com/426x477.png/cc0000/ffffff"
           },
           {
             "id": "Broddy",
+            "title": "Anterior cord syndrome",
             "description": "Poisoning by, adverse effect of and underdosing of diuretics and other and unspecified drugs, medicaments and biological substances",
             "code": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
             "image": "http://dummyimage.com/480x415.png/5fa2dd/ffffff"
           },
           {
             "id": "Mirilla",
+            "title": "Anterior cord syndrome",
             "description": "Adverse effect of unspecified agents primarily acting on the respiratory system, sequela",
             "code": "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
             "image": "http://dummyimage.com/430x407.png/dddddd/000000"
@@ -878,40 +986,46 @@
       },
       {
         "id": "Diahann",
-        "stack": { "id": "Lucina", "name": "Latlux" },
+        "stack": { "id": "Lucina", "name": "Native Ios" },
         "steps": [
           {
             "id": "Sophi",
+            "title": "Anterior cord syndrome",
             "description": "Torus fracture of upper end of left radius, subsequent encounter for fracture with delayed healing",
             "code": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\n\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
             "image": "http://dummyimage.com/450x433.png/ff4444/ffffff"
           },
           {
             "id": "Omar",
+            "title": "Anterior cord syndrome",
             "description": "Calculus of bile duct without cholangitis or cholecystitis with obstruction",
             "code": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
             "image": "http://dummyimage.com/474x464.png/dddddd/000000"
           },
           {
             "id": "Dominique",
+            "title": "Anterior cord syndrome",
             "description": "Displaced fracture of posterior column [ilioischial] of left acetabulum, initial encounter for closed fracture",
             "code": "Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
             "image": "http://dummyimage.com/506x493.png/ff4444/ffffff"
           },
           {
             "id": "Heall",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified fracture of shaft of unspecified ulna, subsequent encounter for closed fracture with malunion",
             "code": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\n\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.",
             "image": "http://dummyimage.com/471x467.png/cc0000/ffffff"
           },
           {
             "id": "Rollin",
+            "title": "Anterior cord syndrome",
             "description": "Attention and concentration deficit following cerebral infarction",
             "code": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\n\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
             "image": "http://dummyimage.com/469x403.png/5fa2dd/ffffff"
           },
           {
             "id": "Elroy",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified injury of muscle(s) and tendon(s) of peroneal muscle group at lower leg level, left leg, subsequent encounter",
             "code": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.",
             "image": "http://dummyimage.com/403x472.png/5fa2dd/ffffff"
@@ -923,44 +1037,50 @@
   {
     "id": "Christina",
     "title": "Zontrax",
-    "tags": "Holdlamis",
+    "tags": ["Holdlamis"],
     "cookbooks": [
       {
         "id": "Xymenes",
-        "stack": { "id": "Eadmund", "name": "Matsoft" },
+        "stack": { "id": "Eadmund", "name": "React Native" },
         "steps": [
           {
             "id": "Shalna",
+            "title": "Anterior cord syndrome",
             "description": "Other superficial bite of left knee",
             "code": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
             "image": "http://dummyimage.com/476x484.png/5fa2dd/ffffff"
           },
           {
             "id": "Joete",
+            "title": "Anterior cord syndrome",
             "description": "Unspecified disorder of vestibular function, bilateral",
             "code": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
             "image": "http://dummyimage.com/481x430.png/cc0000/ffffff"
           },
           {
             "id": "Barbra",
+            "title": "Anterior cord syndrome",
             "description": "Nondisplaced segmental fracture of shaft of radius, unspecified arm, subsequent encounter for closed fracture with malunion",
             "code": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
             "image": "http://dummyimage.com/407x408.png/ff4444/ffffff"
           },
           {
             "id": "Sharleen",
+            "title": "Anterior cord syndrome",
             "description": "Torus fracture of upper end of left fibula, subsequent encounter for fracture with malunion",
             "code": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
             "image": "http://dummyimage.com/418x426.png/cc0000/ffffff"
           },
           {
             "id": "Emmie",
+            "title": "Anterior cord syndrome",
             "description": "Open wound of unspecified part of head",
             "code": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.",
             "image": "http://dummyimage.com/479x473.png/dddddd/000000"
           },
           {
             "id": "Krissy",
+            "title": "Anterior cord syndrome",
             "description": "Toxic effect of hydrogen sulfide, undetermined",
             "code": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\n\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
             "image": "http://dummyimage.com/437x421.png/cc0000/ffffff"

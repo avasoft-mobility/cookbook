@@ -1,14 +1,14 @@
 import React from "react";
-import StackDetail from "../models/StackDetails.model";
+import Step from "../models/Step.Model";
 import AccordionList from "./wrapper_components/AccordionList.WrapperComponent";
 
 interface MainContentProps {
-  stackDetails: StackDetail[];
+  step: Step[];
 }
 const MainContent: React.FC<MainContentProps> = (props) => {
   return (
     <div>
-      <AccordionList stackDetails={props.stackDetails} />
+      <AccordionList step={props.step} />
     </div>
   );
 };
