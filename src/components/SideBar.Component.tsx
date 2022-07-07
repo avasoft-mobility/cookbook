@@ -1,5 +1,4 @@
 import {
-  colors,
   List,
   ListItem,
   ListItemButton,
@@ -7,16 +6,14 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import Color from "../configs/ColorConfig";
-
 import Icon from "./wrapper_components/Icon.WrapperComponent";
 
-import Cookbook from "../models/Cookbook.Model";
+import Color from "../configs/ColorConfig";
 import Stack from "../models/Stack.Model";
 
 interface SideBarProps {
   selectedStack: string;
-  stacks: Cookbook[];
+  stacks: Stack[];
   onSelect: Function;
 }
 
@@ -49,23 +46,21 @@ const SideBar: React.FC<SideBarProps> = ({
 
   return (
     <List>
-      {stacks.map((cookbook: Cookbook) => (
-        <ListItem key={cookbook.stack.id} disablePadding>
+      {stacks.map((stack: Stack) => (
+        <ListItem key={stack.id} disablePadding>
           <ListItemButton
             sx={{
               backgroundColor:
-              cookbook.stack.name === selectedStack
-                  ? Color.primaryTintColor
-                  : null,
+                stack.name === selectedStack ? Color.primaryTintColor : null,
               "&:hover": {
                 backgroundColor: Color.primaryLight,
               },
             }}
-            onClick={() => onSelect(cookbook.stack.name)}
+            onClick={() => onSelect(stack.name)}
           >
-            <ListItemIcon>{getIcon(cookbook.stack.name)}</ListItemIcon>
+            <ListItemIcon>{getIcon(stack.name)}</ListItemIcon>
             <ListItemText
-              primary={cookbook.stack.name}
+              primary={stack.name}
               style={{ color: Color.textSecondaryColor }}
             />
           </ListItemButton>
