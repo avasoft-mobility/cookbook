@@ -1,5 +1,6 @@
-import React from "react";
 import { InputBase } from "@mui/material";
+import React from "react";
+import Theme from '../../configs/ThemeConfig';
 
 interface InputProps {
   input: Function;
@@ -12,7 +13,7 @@ const Input: React.FC<InputProps> = (props) => {
   };
   return (
     <InputBase
-      sx={{ width: "100%" }}
+      sx={{ width: "100%", fontSize: "25px", color: Theme.palette.text.secondary }}
       placeholder="Explore the topics..."
       onChange={onChange}
       inputProps={{
