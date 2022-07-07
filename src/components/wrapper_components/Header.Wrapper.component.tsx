@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       }}
     >
       <div style={styles.headerText}>
-        <Text variant="inherit" color={Theme.palette.text.primary}>
+        <Text variant="h5" color={Theme.palette.text.primary}>
           {props.headerText}
         </Text>
       </div>
