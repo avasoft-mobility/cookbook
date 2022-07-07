@@ -22,7 +22,7 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
           zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
-        <Toolbar>{props.header}</Toolbar>
+        <div>{props.header}</div>
       </AppBar>
       <Drawer
         variant="permanent"
@@ -36,9 +36,12 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
         }}
       >
         <Toolbar />
-        <Box sx={{ overflow: "auto" }}>{props.leftNavigation}</Box>
+        <div style={{ width: "240px" }}>{props.leftNavigation}</div>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 3, marginLeft: "80px", marginRight: "80px" }}
+      >
         <Toolbar />
         {props.mainContent}
       </Box>
