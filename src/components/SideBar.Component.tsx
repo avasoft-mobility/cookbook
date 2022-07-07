@@ -16,7 +16,7 @@ import Stack from "../models/Stack.Model";
 
 interface SideBarProps {
   selectedStack: string;
-  stacks: Stack[];
+  stacks: Cookbook[];
   onSelect: Function;
 }
 
@@ -49,23 +49,23 @@ const SideBar: React.FC<SideBarProps> = ({
 
   return (
     <List>
-      {stacks.map((stack: Stack) => (
-        <ListItem key={stack.id} disablePadding>
+      {stacks.map((cookbook: Cookbook) => (
+        <ListItem key={cookbook.stack.id} disablePadding>
           <ListItemButton
             sx={{
               backgroundColor:
-                stack.name === selectedStack
+              cookbook.stack.name === selectedStack
                   ? Color.primaryTintColor
                   : null,
               "&:hover": {
                 backgroundColor: Color.primaryLight,
               },
             }}
-            onClick={() => onSelect(stack.name)}
+            onClick={() => onSelect(cookbook.stack.name)}
           >
-            <ListItemIcon>{getIcon(stack.name)}</ListItemIcon>
+            <ListItemIcon>{getIcon(cookbook.stack.name)}</ListItemIcon>
             <ListItemText
-              primary={stack.name}
+              primary={cookbook.stack.name}
               style={{ color: Color.textSecondaryColor }}
             />
           </ListItemButton>
