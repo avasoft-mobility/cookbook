@@ -17,7 +17,6 @@ const Accordion: React.FC<AccordionListProps> = (props) => {
     <div>
       <MaterialAccordion
         sx={{
-          marginTop: 3,
           marginBottom: 3,
           boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
         }}
