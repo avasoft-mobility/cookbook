@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Icon from "../wrapper_components/Icon.WrapperComponent";
 
 import IconButton from "./IconButton.WrapperComponent";
+import theme from "../../configs/ThemeConfig";
 
 const ITEM_HEIGHT = 48;
 
@@ -57,6 +58,7 @@ const KebabMenu: React.FC<KebabMenuProps> = (props) => {
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
             width: "20ch",
+            color: theme.palette.text.secondary,
           },
         }}
         style={props.menuStyle}
