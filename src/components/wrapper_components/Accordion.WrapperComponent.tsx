@@ -1,22 +1,29 @@
 import React from "react";
+
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion as MaterialAccordion,
   AccordionDetails,
   AccordionSummary,
-  Toolbar,
+  Toolbar
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface AccordionListProps {
   accordionTitle: React.ReactNode;
   accordionContent: React.ReactNode;
   iconColor?: string;
+  expanded: boolean | undefined;
+  onChange?:
+    | ((event: React.SyntheticEvent<Element, Event>, expanded: boolean) => void)
+    | undefined;
 }
 
 const Accordion: React.FC<AccordionListProps> = (props) => {
   return (
     <div>
       <MaterialAccordion
+        expanded={props.expanded}
+        onChange={props.onChange}
         sx={{
           boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
         }}
