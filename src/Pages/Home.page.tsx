@@ -13,6 +13,7 @@ import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
 import { useQuery } from "react-query";
+import '../App.css'
 
 const HomePage = () => {
   let [topics, setTopic] = useState<Topic[]>([]);
@@ -41,20 +42,20 @@ const HomePage = () => {
 
   return (
     <div style={styles.container}>
-      <div style={styles.innerContainer}>
+      <div className="innerContainer" >
         <div style={{ marginBottom: "30px" }}>
-          <Text variant="h4" color={Theme.palette.primary.main}>
+          <Text variant="h3" color={Theme.palette.primary.main}>
             CookBook
           </Text>
         </div>
         <Search input={onSearch} />
       </div>
-      <div style={styles.innerContainer}>
+      <div className="innerContainer" >
         {topics !== undefined ? (
-          <Grid container spacing={10}>
+          <Grid container spacing={{ xs: 7 }} columns={{ xs: 12, sm: 12, md: 12 }}>
             {topics.map((topic: Topic) => {
               return (
-                <Grid key={topic._id} item xs={6}>
+                <Grid key={topic.slug} item xs={12} sm={6} md={6} >
                   <TopicItem topic={topic} onSelect={onSelect} />
                 </Grid>
               );
@@ -68,7 +69,7 @@ const HomePage = () => {
 
 const styles = {
   container: {
-    width: "100%",
+    width: "100vw",
     height: "100vh",
   },
   innerContainer: {
