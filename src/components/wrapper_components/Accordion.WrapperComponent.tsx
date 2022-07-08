@@ -11,12 +11,19 @@ interface AccordionListProps {
   accordionTitle: React.ReactNode;
   accordionContent: React.ReactNode;
   iconColor?: string;
+  expanded: boolean | undefined;
+  onChange?: (
+    event: React.SyntheticEvent<Element, Event>,
+    expanded: boolean
+  ) => void;
 }
 
 const Accordion: React.FC<AccordionListProps> = (props) => {
   return (
     <div>
       <MaterialAccordion
+        expanded={props.expanded}
+        onChange={props.onChange}
         sx={{
           boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
         }}
