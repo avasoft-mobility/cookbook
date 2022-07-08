@@ -79,15 +79,15 @@ const DetailsPage: React.FC = () => {
 
   const onClickMenuItem = (selectedMenu: string) => {
     if (selectedMenu === "Download Code") {
-      return window.location.replace("https://www.google.com");
+      return window.open("https://www.microsoft.com");
     }
 
     if (selectedMenu === "See Topic Flow") {
-      return window.location.replace("https://www.microsoft.com");
+      return window.open("https://www.microsoft.com");
     }
 
     if (selectedMenu === "See Technical Flow") {
-      return window.location.replace("https://www.google.com");
+      return window.open("https://www.google.com");
     }
   };
 
