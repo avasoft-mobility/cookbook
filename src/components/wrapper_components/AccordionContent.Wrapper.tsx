@@ -28,6 +28,7 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
               width: props.imageWidth !== undefined ? props.imageWidth : "100%",
             }}
             src={props.image}
+            alt="could not found"
           />
         </div>
       )}
