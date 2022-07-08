@@ -5,6 +5,7 @@ import HomePage from "../Pages/Home.page";
 const RouterConfig = () => {
   return (
     <Routes>
+      <Route path="/" element={<HomePage />} />
       <Route path="/topics" element={<HomePage />} />
       <Route path="/topics/:topicSlug" element={<DetailsPage />} />
     </Routes>
