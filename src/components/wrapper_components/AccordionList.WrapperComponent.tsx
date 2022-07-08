@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-
-import Color from "../../configs/ColorConfig";
-import Theme from "../../configs/ThemeConfig";
-
+import Step from "../../models/Step.Model";
 import Accordion from "./Accordion.WrapperComponent";
 import AccordionContent from "./AccordionContent.Wrapper";
 import AccordionTitle from "./AccordionTitle.WrapperComponent";
-
-import Step from "../../models/Step.Model";
+import Theme from "../../configs/ThemeConfig";
+import Color from "../../configs/ColorConfig";
 
 interface AccordionListProps {
   steps: Step[];
