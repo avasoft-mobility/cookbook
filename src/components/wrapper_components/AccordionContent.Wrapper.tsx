@@ -14,7 +14,7 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
   return (
     <div>
       <Text
-        variant={"body2"}
+        variant={"subtitle2"}
         color={
           props.contentColor !== undefined ? props.contentColor : "#000000"
         }
