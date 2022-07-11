@@ -8,7 +8,8 @@ import ConfirmationDialogRow from "./ConfirmationDialogRow.WrapperComponent";
 interface ConfirmationDialogProps {
   title: string;
   dialogValues: string[];
-  value: Function;
+  dialogHeader: string;
+  onConfirm: Function;
 }
 
 const ConfirmationDialog: React.FC<ConfirmationDialogProps> = (props) => {
@@ -24,7 +25,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = (props) => {
     if (newValue) {
       setValue(newValue);
     }
-    props.value(newValue);
+    props.onConfirm(newValue);
   };
 
   return (
@@ -39,7 +40,7 @@ const ConfirmationDialog: React.FC<ConfirmationDialogProps> = (props) => {
           onClose={handleClose}
           value={value}
           dialogValues={props.dialogValues}
-          DialogHeader="Topics"
+          DialogHeader={props.dialogHeader}
         />
       </List>
     </Box>
