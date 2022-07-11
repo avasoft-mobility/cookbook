@@ -1,16 +1,21 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, IconButton, Toolbar } from "@mui/material";
 import Text from "./Text.wrapperComponent";
 import KebabMenu from "./KebabMenu.WrapperComponent";
 import Theme from "../../configs/ThemeConfig";
+import MenuIcon from "@mui/icons-material/Menu";
 
 interface HeaderProps {
   headerText: string;
   headerHeight?: string;
   onClickMenuItem: Function;
+  onClickSideBarMenu: Function;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
+  const onClickSideBarMenu = () => {
+    props.onClickSideBarMenu();
+  };
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const onClickMenuIcon = (event: React.MouseEvent<HTMLElement>) => {
@@ -35,10 +40,25 @@ const Header: React.FC<HeaderProps> = (props) => {
         height: props.headerHeight,
       }}
     >
-      <div style={styles.headerText}>
-        <Text variant="h5" color={Theme.palette.text.primary}>
-          {props.headerText}
-        </Text>
+      <div
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={onClickSideBarMenu}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+        <div style={styles.headerText}>
+          <Text variant="h5" color={Theme.palette.text.primary}>
+            {props.headerText}
+          </Text>
+        </div>
       </div>
       <div>
         <KebabMenu

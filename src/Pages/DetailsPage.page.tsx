@@ -15,6 +15,8 @@ import TopicDetail from "../models/TopicDetail.Model";
 
 import ApiService from "../services/ApiService";
 
+import useWindowSize from "../configs/WindowSize";
+
 const DetailsPage: React.FC = () => {
   const routeParams = useParams();
   const [stacks, setStacks] = useState<Stack[]>([]);
@@ -78,15 +80,24 @@ const DetailsPage: React.FC = () => {
     );
     setSelectedCookbook(cookbook!);
   };
+  const onClickSideBarMenu = (isSideBarMenuClicked: boolean) => {
+    showSideBar();
+  };
+  const showSideBar = () => {
+    setSideBarMenuClicked(!isSideBarMenuClicked);
+  };
 
   return (
     <div>
       <DrawerLayout
+        isSideBarMenuClicked={isSideBarMenuClicked}
+        clickAway={onClickSideBarMenu}
         header={
           <Header
             headerText={data ? data.title : ""}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
+            onClickSideBarMenu={onClickSideBarMenu}
           />
         }
         leftNavigation={
