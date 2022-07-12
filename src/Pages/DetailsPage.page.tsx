@@ -27,13 +27,13 @@ const DetailsPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const initialize = () => {
+  const initialize = async () => {
     try {
       if (routeParams.topicSlug === undefined) {
         return;
       }
 
-      const selectedTopic = ApiService.fetchTopic(routeParams.topicSlug);
+      const selectedTopic = await ApiService.fetchTopic(routeParams.topicSlug);
       setTopic(selectedTopic);
 
       const extractedStacks: Stack[] = [];
