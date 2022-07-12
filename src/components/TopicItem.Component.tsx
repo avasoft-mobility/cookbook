@@ -11,6 +11,7 @@ import Topic from "../models/Topic.Model";
 import Tag from "../models/Tag.Model";
 import Stack from "../models/Stack.Model";
 import '../App.css'
+import "../App.css";
 
 interface TopicItemProps {
   topic: Topic;
@@ -42,7 +43,7 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
       style={{ textAlign: "left", width: "100%", borderRadius: "16px" }}
       onClick={() => onSelect(topic.slug)}
     >
-      <div style={{ ...styles.topicContainer, ...style }} className="topicItem" >
+      <div style={{ ...styles.topicContainer, ...style }} className="topicItem">
         <div
           style={{ ...styles.innerContainer, ...{ flexDirection: "column" } }}
         >
@@ -50,7 +51,7 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
             <Text variant="h4" color={Theme.palette.secondary.main}>
               {topic.title}
             </Text>
-            <div style={styles.tagsContainer}>
+            <div className="tagsContainer">
               {topic.tags.map((item: Tag) => {
                 return (
                   <div key={item._id} style={styles.pills}>

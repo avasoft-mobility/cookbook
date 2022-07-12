@@ -42,7 +42,7 @@ const HomePage = () => {
 
   return (
     <div style={styles.container}>
-      <div className="innerContainer" >
+      <div className="innerContainer">
         <div style={{ marginBottom: "30px" }}>
           <Text variant="h3" color={Theme.palette.primary.main}>
             CookBook
@@ -50,9 +50,13 @@ const HomePage = () => {
         </div>
         <Search input={onSearch} />
       </div>
-      <div className="innerContainer" >
+      <div className="innerContainer">
         {topics !== undefined ? (
-          <Grid container spacing={{ xs: 7 }} columns={{ xs: 12, sm: 12, md: 12 }}>
+          <Grid
+            container
+            spacing={{ xs: 7 }}
+            columns={{ xs: 12, sm: 12, md: 12 }}
+          >
             {topics.map((topic: Topic) => {
               return (
                 <Grid key={topic.slug} item xs={12} sm={6} md={6} >
@@ -69,12 +73,8 @@ const HomePage = () => {
 
 const styles = {
   container: {
-    width: "100vw",
+    width: "100%",
     height: "100vh",
-  },
-  innerContainer: {
-    flex: 1,
-    padding: "30px 20%",
   },
 };
 

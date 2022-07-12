@@ -1,3 +1,18 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #ffffff;
+    border-radius: 10px;
+}
+  
+
+::-webkit-scrollbar-thumb {
+    background: #D3DFF8;
+    border-radius: 10px;
+}
+
 .innerContainer {
     flex: 1;
     padding: 30px 20%;
@@ -13,32 +28,31 @@
 
 .tagsContainer {
     margin-top: 12px;
-    min-height: 100px;
+    max-height: 80px;
+    overflow: auto;
+}
+
+.tagsContainer::-webkit-scrollbar {
+    width: 6px
 }
 
 @media only screen and (max-width: 1350px) {
     .innerContainer {
+        flex: 1;
         padding: 30px 17%
-    }
-    .topicItem {
-        height: 275px
-    }
-    tagsContainer {
-        height: 150px,
     }
 }
 
 @media only screen and (max-width: 1165px) {
     .innerContainer {
+        flex: 1;
         padding: 30px 10%
     }
 }
 
 @media only screen and (max-width: 900px) {
     .innerContainer {
+        flex: 1;
         padding: 30px 5%
-    }
-    .topicItem {
-        height: 250px
     }
 }
