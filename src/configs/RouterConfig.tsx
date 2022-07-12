@@ -4,6 +4,7 @@ import CreateTag from "../Pages/CreateTag.page";
 import DetailsPage from "../Pages/DetailsPage.page";
 import HomePage from "../Pages/Home.page";
 import Stackpage from "../Pages/CreateStack.page";
+import TopicPage from "../Pages/Topic.Page";
 
 const RouterConfig = () => {
   return (
@@ -14,6 +15,7 @@ const RouterConfig = () => {
       <Route path="/create/stack" element={<Stackpage />} />
       <Route path="/create/cookbook" element={<CreateCookbookPage />} />
       <Route path="/create/tag" element={<CreateTag />} />
+      <Route path="/create/topic" element={<TopicPage />} />
     </Routes>
   );
 };

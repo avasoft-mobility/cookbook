@@ -3,6 +3,8 @@ import FileUploadResponse from "../models/request_response_models/FileUpload.res
 import { StackCreateRequest } from "../models/request_response_models/stack_create.request.model";
 import Stack from "../models/Stack.Model";
 import TagCreateRequest from "../models/request_response_models/tag_create.request.model";
+import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
+import Tag from "../models/Tag.Model";
 import Topic from "../models/Topic.Model";
 import TopicDetail from "../models/TopicDetail.Model";
 import { HttpClient } from "./Client";
@@ -78,6 +80,21 @@ class ApiService {
       newCookbook
     );
     return cookbook;
+  }
+  
+  public static fetchTags = async (): Promise<Tag[]> => {
+    let tags = await HttpClient.get<Tag[]>(`${RouteConfig.tags}`);
+    return tags.data;
+  };
+
+  public static addTopic = async (
+    topic: TopicCreateRequest
+  ): Promise<Topic> => {
+    let createdtopic = await HttpClient.post<TopicCreateRequest, Topic>(
+      `${RouteConfig.topics}`,
+      topic
+    );
+    return createdtopic;
   };
 }
 
