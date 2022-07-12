@@ -89,7 +89,7 @@ const Stackpage = () => {
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
-          <Text variant={"inherit"} color={""}>
+          <Text variant={"body2"} color={""}>
             Stack Name
           </Text>
           <div style={style.inputContainer}>
@@ -150,14 +150,12 @@ const style = {
   mainContainer: {
     display: "flex",
     flex: 1,
-    marginLeft: "35%",
-    marginRight: "35%",
+    padding: "30px 20%",
     height: "100vh",
     justifyContent: "space-between",
   },
   headingContainer: {
     flex: 1,
-    marginTop: "40px",
   },
   subContainer: {
     display: "flex",
@@ -171,6 +169,9 @@ const style = {
     border: "1px solid #6133BD",
     width: "100%",
     marginBottom: "30px",
+    marginTop: "10px",
+    paddingLeft: "10px",
+    borderRadius: "10px",
   },
   buttonContainer: {
     flex: 4,
