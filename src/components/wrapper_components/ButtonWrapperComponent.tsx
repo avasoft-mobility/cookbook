@@ -12,6 +12,7 @@ interface ClickableProps {
   startIcon?: string;
   endIcon?: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  style?: React.CSSProperties;
 }
 
 const Clickable: React.FC<ClickableProps> = (props) => {
@@ -37,6 +38,7 @@ const Clickable: React.FC<ClickableProps> = (props) => {
             ? props.textColor
             : Theme.palette.text.primary,
       }}
+      style={props.style}
     >
       {props.ClickableText}
     </Button>

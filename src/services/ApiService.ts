@@ -1,5 +1,6 @@
 import { RouteConfig } from "../configs/RouteConfig";
 import FileUploadResponse from "../models/request_response_models/FileUpload.response";
+import { StackCreateRequest } from "../models/request_response_models/stack_create.request.model";
 import Topic from "../models/Topic.Model";
 import TopicDetail from "../models/TopicDetail.Model";
 import { HttpClient } from "./Client";
@@ -34,6 +35,18 @@ class ApiService {
       }
     );
     return fileUpload.data;
+  };
+
+  public static addStack = async (
+    name?: string
+  ): Promise<StackCreateRequest> => {
+    let stack = await HttpClient.post<StackCreateRequest>(
+      `${RouteConfig.stacks}`,
+      {
+        name: `${name}`,
+      }
+    );
+    return stack.data;
   };
 }
 
