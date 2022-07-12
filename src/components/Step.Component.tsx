@@ -13,33 +13,36 @@ interface StepProps {
 }
 
 const Step: React.FC<StepProps> = (props) => {
-  const [selectedFile, setSelectedFile] = useState("");
-  const fileInputRef = useRef();
-  const handleFileUpload = (event: any) => {};
-
   const changeHandler = async (event: any) => {
     const result = await ApiService.uploadFile(event.target.files[0]);
-    formik.values.fileUpload = result.url;
+    formik.values.image = result.url;
     props.onValueChange(formik.values, props.currentIndex);
   };
+
   const formik = useFormik({
     initialValues: {
       title: props.values.title,
       description: props.values.description,
       code: props.values.code,
-      fileUpload: props.values.fileUpload,
+      image: props.values.image,
     },
     validate: (values) => {
       let errors: any = {};
+
       if (!values.title) {
         errors.title = "Required";
-      } else if (values.title.length > 10) {
-        errors.title = "Must be 10 characters or less";
       }
+
+      if (values.title.length < 10) {
+        errors.title = "Must be 10 characters or more";
+      }
+
       if (!values.description) {
         errors.description = "Required";
-      } else if (values.description.length > 20) {
-        errors.description = "Must be 20 characters or less";
+      }
+
+      if (values.description.length < 20) {
+        errors.description = "Must be 20 characters or more";
       }
       return errors;
     },
@@ -56,16 +59,11 @@ const Step: React.FC<StepProps> = (props) => {
       <div style={{ marginLeft: "10px", marginRight: "10px" }}>
         <form>
           <div style={{ paddingTop: "10px" }}>
-            <Text variant={"h5"} color={Theme.palette.text.secondary}>
+            <Text variant={"body2"} color={Theme.palette.text.secondary}>
               Title
             </Text>
             <input
-              style={{
-                border: "1px solid #1A1110",
-                width: "100%",
-                height: "50px",
-                fontSize: "20px",
-              }}
+              style={styles.inputStyle}
               name="title"
               onChange={onVisualChange}
               placeholder="Title"
@@ -79,16 +77,11 @@ const Step: React.FC<StepProps> = (props) => {
             ) : null}
           </div>
           <div style={{ paddingTop: "10px" }}>
-            <Text variant={"h5"} color={Theme.palette.text.secondary}>
+            <Text variant={"body2"} color={Theme.palette.text.secondary}>
               Description
             </Text>
             <textarea
-              style={{
-                border: "1px solid #1A1110",
-                width: "100%",
-                height: "50px",
-                fontSize: "20px",
-              }}
+              style={styles.inputStyle}
               name="description"
               onChange={onVisualChange}
               placeholder="description"
@@ -102,25 +95,21 @@ const Step: React.FC<StepProps> = (props) => {
             ) : null}
           </div>
           <div style={{ paddingTop: "10px" }}>
-            <Text variant={"h5"} color={Theme.palette.text.secondary}>
+            <Text variant={"body2"} color={Theme.palette.text.secondary}>
               Code
             </Text>
             <textarea
-              style={{
-                border: "1px solid #1A1110",
-                width: "100%",
-                height: "50px",
-                fontSize: "20px",
-              }}
+              style={styles.inputStyle}
               name="code"
               onChange={onVisualChange}
               placeholder="code"
+              rows={10}
               value={formik.values.code}
               onBlur={onVisualChange}
             />
           </div>
           <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-            <Text variant={"h5"} color={Theme.palette.text.secondary}>
+            <Text variant={"body2"} color={Theme.palette.text.secondary}>
               Upload File
             </Text>
             <input
@@ -135,4 +124,16 @@ const Step: React.FC<StepProps> = (props) => {
     </div>
   );
 };
+
+const styles = {
+  inputStyle: {
+    marginTop: "8px",
+    border: "1px solid rgb(195 195 195)",
+    width: "100%",
+    fontSize: "16px",
+    padding: "10px 8px",
+    borderRadius: "8px",
+  },
+};
+
 export default Step;

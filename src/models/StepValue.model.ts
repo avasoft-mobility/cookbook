@@ -2,7 +2,7 @@ interface StepValue {
   title: string;
   description: string;
   code: string;
-  fileUpload: string;
+  image: string;
   id: string;
 }
 export default StepValue;

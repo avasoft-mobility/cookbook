@@ -6,6 +6,8 @@ import TagCreateRequest from "../models/request_response_models/tag_create.reque
 import Topic from "../models/Topic.Model";
 import TopicDetail from "../models/TopicDetail.Model";
 import { HttpClient } from "./Client";
+import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
+import Cookbook from "../models/Cookbook.Model";
 
 class ApiService {
   public static fetchTopics = async (searchText: string): Promise<Topic[]> => {
@@ -66,6 +68,16 @@ class ApiService {
       name: `${name}`,
     });
     return tag.data;
+  };
+
+  public static createCookbook = async (
+    newCookbook: CookbookCreateRequest
+  ): Promise<Cookbook> => {
+    const cookbook = await HttpClient.post<CookbookCreateRequest, Cookbook>(
+      `${RouteConfig.cookbooks}`,
+      newCookbook
+    );
+    return cookbook;
   };
 }
 

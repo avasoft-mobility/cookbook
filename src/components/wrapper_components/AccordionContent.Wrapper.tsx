@@ -21,7 +21,7 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
       >
         {props.content}
       </Text>
-      {props.image !== undefined && (
+      {props.image !== undefined && props.image!.trim() !== "" && (
         <div style={styles.imageContainer}>
           <img
             style={{
@@ -32,7 +32,7 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
           />
         </div>
       )}
-      {props.code !== undefined && (
+      {props.code !== undefined && props.code!.trim() !== "" && (
         <div style={styles.codeBlockContainer}>
           <CodeBlock code={props.code} language={"tsx"} />
         </div>

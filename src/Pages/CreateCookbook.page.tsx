@@ -1,18 +1,35 @@
 import { useSnackbar } from "notistack";
 import { ChangeEvent, useState } from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import StepWrapper from "../components/StepWrapper.component";
 import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import ConfirmationDialog from "../components/wrapper_components/ConfirmationDialog.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 
 import Theme from "../configs/ThemeConfig";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
+import Step from "../models/Step.Model";
+import StepValue from "../models/StepValue.model";
 import ApiService from "../services/ApiService";
 
 const CreateCookbookPage = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);
+  const createCookbookCall = useMutation(ApiService.createCookbook, {
+    onSuccess: () => {
+      navigate("/topics");
+    },
+    onError: () => {
+      showSnackBar(
+        "We could not create this cookbook, could you please try again?",
+        "error"
+      );
+    },
+  });
 
   const [newCookbook, setNewCookbook] = useState<CookbookCreateRequest>({
     topicId: "",
@@ -68,6 +85,21 @@ const CreateCookbookPage = () => {
     setNewCookbook(clonedCookbook);
   };
 
+  const onStepsChanged = async (steps: StepValue[]) => {
+    if (steps.length === 0) {
+      return;
+    }
+
+    steps = steps.map((step, index) => {
+      step.id = index.toString();
+      return step;
+    });
+
+    const clonedCookbook = { ...newCookbook };
+    clonedCookbook.steps = steps as Step[];
+    setNewCookbook(clonedCookbook);
+  };
+
   const isCookbookValid = () => {
     if (!newCookbook.topicId || newCookbook.topicId.trim() === "") {
       console.log("asd");
@@ -109,6 +141,8 @@ const CreateCookbookPage = () => {
     if (!isCookbookValid()) {
       return;
     }
+
+    createCookbookCall.mutate(newCookbook);
   };
 
   const showSnackBar = (message: string, type: string) => {
@@ -149,6 +183,17 @@ const CreateCookbookPage = () => {
           value={"Choose the Stack"}
           onConfirm={onStackChosed}
         />
+
+        <div style={styles.steps}>
+          <Text variant="body1" color={Theme.palette.text.secondary}>
+            Steps
+          </Text>
+          <StepWrapper
+            onValueChange={onStepsChanged}
+            onAddNew={onStepsChanged}
+            onDelete={onStepsChanged}
+          />
+        </div>
 
         <div>
           <div style={styles.fileUploadContainer}>
@@ -200,6 +245,9 @@ const styles = {
     margin: "30px 0px",
   },
   fileUploadItem: {
+    marginTop: "10px",
+  },
+  steps: {
     marginTop: "10px",
   },
 };

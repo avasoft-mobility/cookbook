@@ -8,10 +8,9 @@ import StepValue from "../models/StepValue.model";
 import { v4 as uuidv4 } from "uuid";
 
 interface StepWrapperProps {
-  onValueChange:Function;
-  onDelete:Function;
-  onAddNew:Function;
-
+  onValueChange: Function;
+  onDelete: Function;
+  onAddNew: Function;
 }
 
 const StepWrapper: React.FC<StepWrapperProps> = (props) => {
@@ -21,7 +20,7 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
       title: "",
       description: "",
       code: "",
-      fileUpload: "",
+      image: "",
     },
   ]);
   const onValueChange = (value: StepValue, index: number) => {
@@ -30,10 +29,10 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
     currentStepElement.title = value.title;
     currentStepElement.description = value.description;
     currentStepElement.code = value.code;
-    currentStepElement.fileUpload = value.fileUpload;
+    currentStepElement.image = value.image;
     newStep[index] = currentStepElement;
     setStepValue(newStep);
-    props.onValueChange(stepValue)
+    props.onValueChange(stepValue);
   };
   const handleAddNew = () => {
     const newStep: StepValue = {
@@ -41,10 +40,10 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
       title: "",
       description: "",
       code: "",
-      fileUpload: "",
+      image: "",
     };
     setStepValue([...stepValue, newStep]);
-    props.onAddNew(stepValue)
+    props.onAddNew(stepValue);
   };
   const handleDelete = (id: string) => {
     if (stepValue.length === 1) {
@@ -52,10 +51,10 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
     }
     const currentStep = stepValue.filter((value) => value.id !== id);
     setStepValue(currentStep);
-    props.onDelete(stepValue)
+    props.onDelete(stepValue);
   };
   return (
-    <div style={{ marginLeft: "100px", marginRight: "100px" }}>
+    <div>
       {stepValue.map((value, index: number) => (
         <div
           key={value.id}
@@ -63,6 +62,9 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
             display: "flex",
             flexDirection: "row",
             marginTop: "20px",
+            backgroundColor: "rgb(240 240 240 / 37%)",
+            padding: "10px",
+            borderRadius: "20px",
           }}
         >
           <div style={{ width: "100%" }}>
@@ -73,7 +75,13 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
               currentIndex={index}
             />
           </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <IconButton
               aria-label="delete"
               sx={{ color: Theme.palette.primary.main }}
@@ -87,14 +95,14 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
       <div
         style={{
           display: "flex",
-          justifyContent: "flex-end",
+          justifyContent: "center",
           marginTop: "20px",
         }}
       >
         <Clickable
-          ClickableText={"Add new"}
+          ClickableText={"Add new Step"}
           variant={"contained"}
-          clickableSize={"large"}
+          clickableSize={"medium"}
           onClick={handleAddNew}
         />
       </div>
