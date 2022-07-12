@@ -9,49 +9,16 @@ import Header from "../components/wrapper_components/Header.Wrapper.component";
 
 import Cookbook from "../models/Cookbook.Model";
 import Stack from "../models/Stack.Model";
-import Topic from "../models/Topic.Model";
+import TopicDetail from "../models/TopicDetail.Model";
 
 import ApiService from "../services/ApiService";
 
 const DetailsPage: React.FC = () => {
-  let [topic, setTopic] = useState<Topic>({
-    id: "Archibaldo",
-    title: "Lotlux",
-    tags: ["Redhold", ""],
-    cookbooks: [
-      {
-        id: "Bordie",
-        stack: { id: "Pamella", name: "Y-find" },
-        steps: [
-          {
-            id: "Amie",
-            title: "Anterior cord syndrome",
-            description:
-              "Anterior cord syndrome at T11-T12 level of thoracic spinal cord",
-            code: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-            image: "http://dummyimage.com/410x469.png/dddddd/000000",
-          },
-        ],
-      },
-    ],
-  });
+  let [topic, setTopic] = useState<TopicDetail>();
 
   const [selectedStackName, setSelectedStackName] = useState<string>("");
   const [stacks, setStacks] = useState<Stack[]>([]);
-  const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>({
-    id: "Bordie",
-    stack: { id: "Pamella", name: "Y-find" },
-    steps: [
-      {
-        id: "Amie",
-        title: "Anterior cord syndrome",
-        description:
-          "Anterior cord syndrome at T11-T12 level of thoracic spinal cord",
-        code: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.",
-        image: "http://dummyimage.com/410x469.png/dddddd/000000",
-      },
-    ],
-  });
+  const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
 
   const routeParams = useParams();
 
@@ -70,7 +37,7 @@ const DetailsPage: React.FC = () => {
       setTopic(selectedTopic);
 
       const extractedStacks: Stack[] = [];
-      selectedTopic.cookbooks.forEach((element) => {
+      selectedTopic.cookbooks.forEach((element: Cookbook) => {
         extractedStacks.push(element.stack);
       });
       setStacks(extractedStacks);
@@ -93,7 +60,7 @@ const DetailsPage: React.FC = () => {
 
   const onStackSelected = (stackName: string) => {
     setSelectedStackName(stackName);
-    const cookbook = topic.cookbooks.find(
+    const cookbook = topic?.cookbooks.find(
       (cookbook) => cookbook.stack.name === stackName
     );
     setSelectedCookbook(cookbook!);
@@ -104,7 +71,7 @@ const DetailsPage: React.FC = () => {
       <DrawerLayout
         header={
           <Header
-            headerText={topic.title}
+            headerText={topic ? topic.title : ""}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
           />
@@ -116,7 +83,9 @@ const DetailsPage: React.FC = () => {
             onSelect={onStackSelected}
           />
         }
-        mainContent={<MainContent steps={selectedCookbook.steps} />}
+        mainContent={
+          <MainContent steps={selectedCookbook ? selectedCookbook.steps : []} />
+        }
       />
     </div>
   );

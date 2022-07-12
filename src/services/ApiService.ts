@@ -1,5 +1,6 @@
 import DummyData from "../dummy-data.json";
 import Topic from "../models/Topic.Model";
+import TopicDetail from "../models/TopicDetail.Model";
 
 class ApiService {
   public static fetchTopics = (topic?: string) => {
@@ -17,9 +18,9 @@ class ApiService {
     return topics;
   };
 
-  public static fetchTopic = (id: string): Topic => {
-    let topics: Topic[] = JSON.parse(JSON.stringify(DummyData));
-    let topic = topics.find((topic) => topic.id === id);
+  public static fetchTopic = (id: string): TopicDetail => {
+    let topics: TopicDetail[] = JSON.parse(JSON.stringify(DummyData));
+    let topic = topics.find((topic) => topic._id === id);
     if (topic) {
       return topic;
     }

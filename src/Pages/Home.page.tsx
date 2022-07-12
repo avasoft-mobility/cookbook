@@ -48,7 +48,7 @@ const HomePage = () => {
           <Grid container spacing={10}>
             {topics.map((topic: Topic) => {
               return (
-                <Grid key={topic.id} item xs={6}>
+                <Grid key={topic._id} item xs={6}>
                   <TopicItem topic={topic} onSelect={onSelect} />
                 </Grid>
               );
