@@ -1,6 +1,7 @@
 import { RouteConfig } from "../configs/RouteConfig";
 import FileUploadResponse from "../models/request_response_models/FileUpload.response";
 import { StackCreateRequest } from "../models/request_response_models/stack_create.request.model";
+import Stack from "../models/Stack.Model";
 import Topic from "../models/Topic.Model";
 import TopicDetail from "../models/TopicDetail.Model";
 import { HttpClient } from "./Client";
@@ -47,6 +48,16 @@ class ApiService {
       }
     );
     return stack.data;
+  };
+
+  public static getTopics = async (): Promise<Topic[]> => {
+    const topics = await HttpClient.get<Topic[]>(RouteConfig.topics);
+    return topics.data;
+  };
+
+  public static getStacks = async (): Promise<Stack[]> => {
+    const stacks = await HttpClient.get<Stack[]>(RouteConfig.stacks);
+    return stacks.data;
   };
 }
 

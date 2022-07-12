@@ -6,17 +6,20 @@ import { BrowserRouter } from "react-router-dom";
 import RouterConfig from "./configs/RouterConfig";
 
 import Theme from "./configs/ThemeConfig";
+import { SnackbarProvider } from "notistack";
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <ThemeProvider theme={Theme}>
-          <RouterConfig />
-        </ThemeProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <SnackbarProvider maxSnack={10} preventDuplicate>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <ThemeProvider theme={Theme}>
+            <RouterConfig />
+          </ThemeProvider>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </SnackbarProvider>
   );
 }
 

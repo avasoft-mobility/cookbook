@@ -10,11 +10,14 @@ interface ConfirmationDialogProps {
   dialogValues: string[];
   dialogHeader: string;
   onConfirm: Function;
+  value?: string;
 }
 
 const ConfirmationDialog: React.FC<ConfirmationDialogProps> = (props) => {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("Choose the Topic");
+  const [value, setValue] = React.useState(
+    props.value ? props.value : "Select"
+  );
 
   const openDialog = () => {
     setOpen(true);
