@@ -29,6 +29,34 @@ const Stackpage = () => {
     },
   });
 
+  const validateStackName = (value?: string) => {
+    if (value === undefined) {
+      setStackData({
+        stackName: "",
+        errors: "Stack name required",
+      });
+      return false;
+    }
+
+    if (value === "") {
+      setStackData({
+        stackName: "",
+        errors: "Stack name required",
+      });
+      return false;
+    }
+
+    if (value!.length < 2) {
+      setStackData({
+        stackName: stackData!.stackName,
+        errors: "Stack name length should be atleast 2 characters",
+      });
+      return false;
+    }
+
+    return true;
+  };
+
   const onInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -38,41 +66,13 @@ const Stackpage = () => {
   const onInputBlur = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    if (event.target.value === "") {
-      setStackData({
-        stackName: "",
-        errors: "Stack name required",
-      });
-      return;
-    }
-
-    if (event.target.value.length < 2) {
-      setStackData({
-        stackName: "",
-        errors: "Stack name length should be atleast 2 characters",
-      });
-      return;
-    }
+    validateStackName(event.target.value);
   };
 
   const onAddButtonClicked = () => {
-    if (stackData?.stackName === undefined) {
-      setStackData({
-        stackName: "",
-        errors: "Stack name required",
-      });
-      return;
+    if (validateStackName(stackData?.stackName)) {
+      mutation.mutate(stackData!.stackName);
     }
-
-    if (stackData?.stackName.length < 2) {
-      setStackData({
-        stackName: "",
-        errors: "Stack name length should be atleast 2 characters",
-      });
-      return;
-    }
-
-    mutation.mutate(stackData.stackName);
   };
 
   const onAddNewCookbookClicked = () => {
