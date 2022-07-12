@@ -2,6 +2,7 @@ import { RouteConfig } from "../configs/RouteConfig";
 import FileUploadResponse from "../models/request_response_models/FileUpload.response";
 import { StackCreateRequest } from "../models/request_response_models/stack_create.request.model";
 import Stack from "../models/Stack.Model";
+import TagCreateRequest from "../models/request_response_models/tag_create.request.model";
 import Topic from "../models/Topic.Model";
 import TopicDetail from "../models/TopicDetail.Model";
 import { HttpClient } from "./Client";
@@ -58,6 +59,13 @@ class ApiService {
   public static getStacks = async (): Promise<Stack[]> => {
     const stacks = await HttpClient.get<Stack[]>(RouteConfig.stacks);
     return stacks.data;
+  };
+
+  public static addTag = async (name?: string): Promise<TagCreateRequest> => {
+    let tag = await HttpClient.post<TagCreateRequest>(`${RouteConfig.tags}`, {
+      name: `${name}`,
+    });
+    return tag.data;
   };
 }
 
