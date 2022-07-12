@@ -3,7 +3,7 @@ import CreateCookbookPage from "../Pages/CreateCookbook.page";
 import CreateTag from "../Pages/CreateTag.page";
 import DetailsPage from "../Pages/DetailsPage.page";
 import HomePage from "../Pages/Home.page";
-import Stackpage from "../Pages/Stackpage.page";
+import Stackpage from "../Pages/CreateStack.page";
 
 const RouterConfig = () => {
   return (
