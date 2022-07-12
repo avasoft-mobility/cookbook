@@ -11,6 +11,7 @@ interface ClickableProps {
   textColor?: string;
   startIcon?: string;
   endIcon?: string;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Clickable: React.FC<ClickableProps> = (props) => {
@@ -22,8 +23,10 @@ const Clickable: React.FC<ClickableProps> = (props) => {
       return <SendIcon />;
     }
   };
+
   return (
     <Button
+      onClick={props.onClick}
       size={props.clickableSize}
       variant={props.variant}
       startIcon={props.startIcon !== undefined ? Icon(props.startIcon) : null}
