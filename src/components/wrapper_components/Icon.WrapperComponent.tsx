@@ -4,6 +4,7 @@ import FileDownload from "@mui/icons-material/FileDownload";
 import Image from "@mui/icons-material/Image";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { SvgIcon, SxProps, Theme } from "@mui/material";
 
 interface IconProps {
@@ -16,7 +17,8 @@ interface IconProps {
     | "reactNative"
     | "swift"
     | "xamarin"
-    | "moreVertIcon";
+    | "moreVertIcon"
+    | "delete";
   style?: SxProps<Theme>;
 }
 
@@ -27,6 +29,10 @@ const Icon: React.FC<IconProps> = (props) => {
 
   if (props.type === "fileDownload") {
     return <FileDownload sx={props.style} />;
+  }
+
+  if (props.type === "delete") {
+    return <DeleteIcon sx={props.style} />;
   }
 
   if (props.type === "keyboardArrowDown") {
