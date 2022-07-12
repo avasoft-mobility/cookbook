@@ -6,7 +6,7 @@ interface SearchProps {
   input: Function;
 }
 const Search: React.FC<SearchProps> = (props) => {
-  const inputText = (text: string) => {
+  const onChange = (text: string) => {
     props.input(text);
   };
   return (
@@ -23,7 +23,9 @@ const Search: React.FC<SearchProps> = (props) => {
         <SearchIcon color="primary" />
       </div>
       <Input
-        input={inputText}
+        onChange={(event) => {
+          onChange(event.target.value);
+        }}
         placeholderStyle={{
           color: "#D3DFF8",
           fontFamily: "Roboto",
