@@ -47,7 +47,7 @@ const SideBar: React.FC<SideBarProps> = ({
   return (
     <List>
       {stacks.map((stack: Stack) => (
-        <ListItem key={stack.id} disablePadding>
+        <ListItem key={stack._id} disablePadding>
           <ListItemButton
             sx={{
               backgroundColor:

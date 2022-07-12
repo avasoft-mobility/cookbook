@@ -5,17 +5,18 @@ import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Icon from "./wrapper_components/Icon.WrapperComponent";
 import Pill from "./wrapper_components/Pill.WrapperComponent";
 
-import Color from '../configs/ColorConfig';
-import Theme from '../configs/ThemeConfig';
+import Color from "../configs/ColorConfig";
+import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
+import Tag from "../models/Tag.Model";
 
 interface TopicItemProps {
   topic: Topic;
   style?: React.CSSProperties;
-  onSelect: Function
+  onSelect: Function;
 }
 
-const TopicItem: React.FC<TopicItemProps> = ({ topic, style , onSelect }) => {
+const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
   const getIcon = (stackName: string) => {
     if (stackName === "React Native") {
       return <Icon key={stackName} type="reactNative" style={styles.icon} />;
@@ -37,9 +38,9 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style , onSelect }) => {
   return (
     <ButtonBase
       style={{ textAlign: "left", width: "100%", borderRadius: "16px" }}
-      onClick={() => onSelect(topic.id)}
+      onClick={() => onSelect(topic._id)}
     >
-      <div style={{ ...styles.topicContainer, ...style }} >
+      <div style={{ ...styles.topicContainer, ...style }}>
         <div
           style={{ ...styles.innerContainer, ...{ flexDirection: "column" } }}
         >
@@ -48,10 +49,10 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style , onSelect }) => {
               {topic.title}
             </Text>
             <div style={styles.tagsContainer}>
-              {topic.tags.map((item: string) => {
+              {topic.tags.map((item: Tag) => {
                 return (
-                  <div key={item} style={styles.pills}>
-                    <Pill label={item} color={Color.tagColor} />
+                  <div key={item._id} style={styles.pills}>
+                    <Pill label={item.name} color={Color.tagColor} />
                   </div>
                 );
               })}
