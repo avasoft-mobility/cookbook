@@ -9,6 +9,7 @@ import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
 import Tag from "../models/Tag.Model";
+import Stack from "../models/Stack.Model";
 
 interface TopicItemProps {
   topic: Topic;
@@ -38,7 +39,7 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
   return (
     <ButtonBase
       style={{ textAlign: "left", width: "100%", borderRadius: "16px" }}
-      onClick={() => onSelect(topic._id)}
+      onClick={() => onSelect(topic.slug)}
     >
       <div style={{ ...styles.topicContainer, ...style }}>
         <div
@@ -59,8 +60,8 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
             </div>
           </div>
           <div>
-            {topic.cookbooks.map((cookbook: any) => {
-              return getIcon(cookbook.stack.name as string);
+            {topic.stacks.map((stack: Stack) => {
+              return getIcon(stack.name);
             })}
           </div>
         </div>
