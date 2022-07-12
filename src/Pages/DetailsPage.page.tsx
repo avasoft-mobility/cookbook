@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 import { useParams } from "react-router-dom";
 
@@ -14,53 +15,58 @@ import TopicDetail from "../models/TopicDetail.Model";
 import ApiService from "../services/ApiService";
 
 const DetailsPage: React.FC = () => {
-  let [topic, setTopic] = useState<TopicDetail>();
-
-  const [selectedStackName, setSelectedStackName] = useState<string>("");
+  const routeParams = useParams();
   const [stacks, setStacks] = useState<Stack[]>([]);
+  const [selectedStackName, setSelectedStackName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
 
-  const routeParams = useParams();
+  const { isLoading, data } = useQuery(
+    ["topic", routeParams.topicSlug],
+    () => {
+      if (routeParams.topicSlug) {
+        return ApiService.fetchTopic(routeParams.topicSlug);
+      }
+    },
+    {
+      onSuccess: (response) => {
+        onSuccessfulTopicFetch(response!);
+      },
+    }
+  );
 
   useEffect(() => {
-    initialize();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    onStackSelected(selectedStackName);
+  }, [selectedStackName]);
 
-  const initialize = async () => {
-    try {
-      if (routeParams.topicSlug === undefined) {
-        return;
-      }
+  const onSuccessfulTopicFetch = (response: TopicDetail) => {
+    const extractedStacks: Stack[] = [];
+    response?.cookbooks.forEach((element: Cookbook) => {
+      extractedStacks.push(element.stack);
+    });
+    setStacks(extractedStacks);
 
-      const selectedTopic = await ApiService.fetchTopic(routeParams.topicSlug);
-      setTopic(selectedTopic);
-
-      const extractedStacks: Stack[] = [];
-      selectedTopic.cookbooks.forEach((element: Cookbook) => {
-        extractedStacks.push(element.stack);
-      });
-      setStacks(extractedStacks);
-    } catch (error) {}
+    if (extractedStacks.length > 0) {
+      setSelectedStackName(extractedStacks[0].name);
+    }
   };
 
   const onClickMenuItem = (selectedMenu: string) => {
     if (selectedMenu === "Download Code") {
-      return window.open("https://www.microsoft.com");
+      return window.open(selectedCookbook?.sampleProjectUrl);
     }
 
     if (selectedMenu === "See Topic Flow") {
-      return window.open("https://www.microsoft.com");
+      return window.open(data?.flowchartUrl);
     }
 
     if (selectedMenu === "See Technical Flow") {
-      return window.open("https://www.google.com");
+      return window.open(selectedCookbook?.flowchartUrl);
     }
   };
 
   const onStackSelected = (stackName: string) => {
     setSelectedStackName(stackName);
-    const cookbook = topic?.cookbooks.find(
+    const cookbook = data?.cookbooks.find(
       (cookbook) => cookbook.stack.name === stackName
     );
     setSelectedCookbook(cookbook!);
@@ -71,7 +77,7 @@ const DetailsPage: React.FC = () => {
       <DrawerLayout
         header={
           <Header
-            headerText={topic ? topic.title : ""}
+            headerText={data ? data.title : ""}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
           />

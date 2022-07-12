@@ -7,6 +7,8 @@ interface Cookbook extends TimestampedDB {
   stack: Stack;
   steps: Step[];
   topic: Topic;
+  flowchartUrl: string;
+  sampleProjectUrl: string;
 }
 
 export default Cookbook;

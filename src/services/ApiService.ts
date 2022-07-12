@@ -11,7 +11,7 @@ class ApiService {
     return topics.data;
   };
 
-  public static fetchTopic = async (slug: string): Promise<TopicDetail> => {
+  public static fetchTopic = async (slug?: string): Promise<TopicDetail> => {
     let topic = await HttpClient.get<TopicDetail>(
       `${RouteConfig.topics}/${slug}`
     );
