@@ -3,18 +3,18 @@ import React from "react";
 import Theme from "../../configs/ThemeConfig";
 
 interface InputProps {
-  input: Function;
+  onChange:
+    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
   placeholderStyle?: React.CSSProperties;
   placeHolderText?: string;
   numberOfLines?: number;
   value?: string;
   inputTextStyle?: React.CSSProperties;
+  onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 const Input: React.FC<InputProps> = (props) => {
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.input(event.target.value);
-  };
   return (
     <InputBase
       sx={
@@ -27,7 +27,7 @@ const Input: React.FC<InputProps> = (props) => {
             }
       }
       placeholder={props.placeHolderText}
-      onChange={onChange}
+      onChange={props.onChange}
       rows={props.numberOfLines}
       inputProps={{
         sx: {
@@ -37,6 +37,7 @@ const Input: React.FC<InputProps> = (props) => {
       }}
       multiline
       value={props.value}
+      onBlur={props.onBlur}
     />
   );
 };
