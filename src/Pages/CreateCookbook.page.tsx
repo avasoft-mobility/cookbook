@@ -72,19 +72,17 @@ const CreateCookbookPage = () => {
     if (!newCookbook.topicId || newCookbook.topicId.trim() === "") {
       console.log("asd");
 
-      enqueueSnackbar("Choose any topic", { variant: "error" });
+      showSnackBar("Choose any topic", "error");
       return false;
     }
 
     if (!newCookbook.stackId || newCookbook.stackId.trim() === "") {
-      enqueueSnackbar("Choose any stack", { variant: "error" });
+      showSnackBar("Choose any stack", "error");
       return false;
     }
 
     if (!newCookbook.flowchartUrl || newCookbook.flowchartUrl.trim() === "") {
-      enqueueSnackbar("You must upload one flowchart for cookbook", {
-        variant: "error",
-      });
+      showSnackBar("You must upload one flowchart for cookbook", "error");
       return false;
     }
 
@@ -92,16 +90,15 @@ const CreateCookbookPage = () => {
       !newCookbook.sampleProjectUrl ||
       newCookbook.sampleProjectUrl.trim() === ""
     ) {
-      enqueueSnackbar("You must upload one sample code for this cookbook", {
-        variant: "error",
-      });
+      showSnackBar(
+        "You must upload one sample code for this cookbook",
+        "error"
+      );
       return false;
     }
 
     if (!newCookbook.steps || newCookbook.steps.length === 0) {
-      enqueueSnackbar("You have atleast one step", {
-        variant: "error",
-      });
+      showSnackBar("You should have atleast one step", "error");
       return false;
     }
 
@@ -112,6 +109,16 @@ const CreateCookbookPage = () => {
     if (!isCookbookValid()) {
       return;
     }
+  };
+
+  const showSnackBar = (message: string, type: string) => {
+    enqueueSnackbar("Choose any topic", {
+      variant: "error",
+      anchorOrigin: {
+        horizontal: "right",
+        vertical: "top",
+      },
+    });
   };
 
   return (
