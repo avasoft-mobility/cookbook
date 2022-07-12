@@ -83,7 +83,7 @@ const Stackpage = () => {
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
       <div style={style.headingContainer}>
         <Text variant={"h4"} color={Theme.palette.primary.main}>
-          Add new stack
+          Create Stack
         </Text>
       </div>
 
@@ -98,6 +98,11 @@ const Stackpage = () => {
                 onInputChange(event);
               }}
               onBlur={onInputBlur}
+              inputTextStyle={{
+                fontSize: "16px",
+                padding: "12px 8px",
+                color: Theme.palette.text.secondary,
+              }}
             />
           </div>
 
@@ -111,7 +116,7 @@ const Stackpage = () => {
             <>
               <div>
                 <Clickable
-                  ClickableText={"ADD"}
+                  ClickableText={"Add Stack"}
                   variant={"contained"}
                   clickableSize={"large"}
                   onClick={onAddButtonClicked}

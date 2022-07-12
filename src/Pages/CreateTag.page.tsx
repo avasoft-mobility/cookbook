@@ -83,7 +83,7 @@ const CreateTagPage = () => {
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
       <div style={style.headingContainer}>
         <Text variant={"h4"} color={Theme.palette.primary.main}>
-          Add new tag
+          Create Tag
         </Text>
       </div>
 
@@ -98,6 +98,11 @@ const CreateTagPage = () => {
                 onInputChange(event);
               }}
               onBlur={onInputBlur}
+              inputTextStyle={{
+                fontSize: "16px",
+                padding: "12px 8px",
+                color: Theme.palette.text.secondary,
+              }}
             />
           </div>
 
@@ -111,7 +116,7 @@ const CreateTagPage = () => {
             <>
               <div>
                 <Clickable
-                  ClickableText={"ADD"}
+                  ClickableText={"Add Tag"}
                   variant={"contained"}
                   clickableSize={"large"}
                   onClick={onAddButtonClicked}
