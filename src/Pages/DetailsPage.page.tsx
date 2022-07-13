@@ -75,9 +75,11 @@ const DetailsPage: React.FC = () => {
     );
     setSelectedCookbook(cookbook!);
   };
+
   const onSideBarMenuClick = () => {
     toggleSideBar();
   };
+
   const toggleSideBar = () => {
     setSideBarMenuClicked(!isSideBarOpened);
   };

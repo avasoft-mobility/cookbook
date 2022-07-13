@@ -39,6 +39,7 @@ const Icon: React.FC<IconProps> = (props) => {
   if (props.type === "keyboardArrowDown") {
     return <KeyboardArrowDown sx={props.style} />;
   }
+
   if (props.type === "sideBarMenu") {
     return <SideBarMenuIcon sx={props.style} />;
   }
