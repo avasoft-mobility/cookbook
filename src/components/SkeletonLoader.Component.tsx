@@ -10,9 +10,9 @@ const SkeletonLoader = () => {
 
   return (
     <Grid container spacing={{ xs: 7 }} columns={{ xs: 12, sm: 12, md: 12 }}>
-      {[1, 2, 3, 4].map((num: number) => {
+      {[1, 2, 3, 4].map((value: number) => {
         return (
-          <Grid key={num} item xs={12} sm={6} md={6}>
+          <Grid key={value} item xs={12} sm={6} md={6}>
             <div
               style={{
                 ...styles.topicItem,
@@ -30,10 +30,10 @@ const SkeletonLoader = () => {
                   }}
                 />
                 <div style={{ display: "flex" }}>
-                  {[90, 80].map((width: number) => {
+                  {[90, 80].map((width: number, index: number) => {
                     return (
                       <Skeleton
-                        key={width}
+                        key={index}
                         variant="rectangular"
                         animation="wave"
                         sx={{ ...styles.chipSkeleton, ...{ width: width } }}
@@ -43,10 +43,10 @@ const SkeletonLoader = () => {
                 </div>
               </div>
               <div style={{ display: "flex" }}>
-                {[1, 2, 3, 4, 5].map((num: number) => {
+                {[1, 2, 3, 4, 5].map((value: number) => {
                   return (
                     <Skeleton
-                      key={num}
+                      key={value}
                       variant="circular"
                       animation="wave"
                       sx={styles.logoSkeleton}
