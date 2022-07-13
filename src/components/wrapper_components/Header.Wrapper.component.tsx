@@ -1,13 +1,16 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 import Text from "./Text.wrapperComponent";
 import KebabMenu from "./KebabMenu.WrapperComponent";
 import Theme from "../../configs/ThemeConfig";
+import IconButton from "../wrapper_components/IconButton.WrapperComponent";
+import Icon from "../wrapper_components/Icon.WrapperComponent";
 
 interface HeaderProps {
   headerText: string;
   headerHeight?: string;
   onClickMenuItem: Function;
+  onSideBarMenuClick: Function;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -16,12 +19,18 @@ const Header: React.FC<HeaderProps> = (props) => {
   const onClickMenuIcon = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const onClickMenuItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
     props.onClickMenuItem(event.currentTarget.innerText);
+  };
+
+  const onSideBarMenuClick = () => {
+    props.onSideBarMenuClick();
   };
   return (
     <Box
@@ -35,10 +44,23 @@ const Header: React.FC<HeaderProps> = (props) => {
         height: props.headerHeight,
       }}
     >
-      <div style={styles.headerText}>
-        <Text variant="h5" color={Theme.palette.text.primary}>
-          {props.headerText}
-        </Text>
+      <div
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <Toolbar>
+          <IconButton
+            color={"inherit"}
+            onClick={onSideBarMenuClick}
+            style={{ mr: 2, display: { sm: "none" } }}
+          >
+            <Icon type="sideBarMenu" />
+          </IconButton>
+        </Toolbar>
+        <div style={styles.headerText}>
+          <Text variant="h5" color={Theme.palette.text.primary}>
+            {props.headerText}
+          </Text>
+        </div>
       </div>
       <div>
         <KebabMenu
