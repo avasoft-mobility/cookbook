@@ -8,30 +8,25 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useWindowSize from "../../configs/WindowSize";
 
-const DRAWER_WIDTH = 240;
+const DRAWER_WIDTH = 241;
 
 interface DrawerLayoutProps {
   header: React.ReactNode;
   leftNavigation: React.ReactNode;
   mainContent: React.ReactNode;
-  window?: () => Window;
-  isSideBarMenuClicked: boolean;
-  showSideBar: Function;
+  isSideBarOpened: boolean;
+  toggleSideBar: Function;
 }
 
 const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
   const [sideBarOpen, setSideBarOpen] = useState(false);
-  const width = useWindowSize();
+  const windowSize = useWindowSize();
   useEffect(() => {
-    props.isSideBarMenuClicked ? setSideBarOpen(true) : setSideBarOpen(false);
+    props.isSideBarOpened ? setSideBarOpen(true) : setSideBarOpen(false);
   });
 
-  const { window } = props;
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
   const handleDrawerToggle = () => {
-    props.showSideBar();
+    props.toggleSideBar();
   };
 
   return (
@@ -47,13 +42,9 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
       </AppBar>
 
       <Drawer
-        container={container}
         variant="permanent"
         open={sideBarOpen}
         onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
         sx={{
           display: { xs: "none", sm: "block" },
           width: DRAWER_WIDTH,
@@ -70,7 +61,6 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
       <ClickAwayListener onClickAway={handleDrawerToggle}>
         <React.Fragment>
           <SwipeableDrawer
-            container={container}
             open={sideBarOpen}
             onClose={handleDrawerToggle}
             onOpen={handleDrawerToggle}
@@ -85,8 +75,8 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
         sx={{
           flexGrow: 1,
           p: 3,
-          marginLeft: width.width > 870 ? "80px" : "0px",
-          marginRight: width.width > 870 ? "80px" : "0px",
+          marginLeft: windowSize.width > 870 ? "80px" : "0px",
+          marginRight: windowSize.width > 870 ? "80px" : "0px",
           width: "9rem",
         }}
       >

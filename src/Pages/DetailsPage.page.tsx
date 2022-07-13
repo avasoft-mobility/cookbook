@@ -15,13 +15,12 @@ import TopicDetail from "../models/TopicDetail.Model";
 
 import ApiService from "../services/ApiService";
 
-
 const DetailsPage: React.FC = () => {
   const routeParams = useParams();
   const [stacks, setStacks] = useState<Stack[]>([]);
   const [selectedItemName, setSelectedItemName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
-  const [isSideBarMenuClicked, setSideBarMenuClicked] = useState(false);
+  const [isSideBarOpened, setSideBarMenuClicked] = useState(false);
 
   const { isLoading, data } = useQuery(
     ["topic", routeParams.topicSlug],
@@ -70,32 +69,30 @@ const DetailsPage: React.FC = () => {
 
   const onStackSelected = (stackName: string) => {
     setSelectedStackName(stackName);
-    if (isSideBarMenuClicked === true) {
-      showSideBar();
-    }
+    isSideBarOpened && toggleSideBar();
     const cookbook = data?.cookbooks.find(
       (cookbook) => cookbook.stack.name === selectedItem
     );
     setSelectedCookbook(cookbook!);
   };
-  const onClickSideBarMenu = () => {
-    showSideBar();
+  const onSideBarMenuClick = () => {
+    toggleSideBar();
   };
-  const showSideBar = () => {
-    setSideBarMenuClicked(!isSideBarMenuClicked);
+  const toggleSideBar = () => {
+    setSideBarMenuClicked(!isSideBarOpened);
   };
 
   return (
     <div>
       <DrawerLayout
-        isSideBarMenuClicked={isSideBarMenuClicked}
-        showSideBar={showSideBar}
+        isSideBarOpened={isSideBarOpened}
+        toggleSideBar={toggleSideBar}
         header={
           <Header
             headerText={data ? data.title : ""}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
-            onClickSideBarMenu={onClickSideBarMenu}
+            onSideBarMenuClick={onSideBarMenuClick}
           />
         }
         leftNavigation={

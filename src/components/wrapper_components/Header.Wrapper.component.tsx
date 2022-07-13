@@ -1,20 +1,21 @@
 import React from "react";
-import { Box, IconButton, Toolbar } from "@mui/material";
+import { Box, Toolbar } from "@mui/material";
 import Text from "./Text.wrapperComponent";
 import KebabMenu from "./KebabMenu.WrapperComponent";
 import Theme from "../../configs/ThemeConfig";
-import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "../wrapper_components/IconButton.WrapperComponent";
+import Icon from "../wrapper_components/Icon.WrapperComponent";
 
 interface HeaderProps {
   headerText: string;
   headerHeight?: string;
   onClickMenuItem: Function;
-  onClickSideBarMenu: Function;
+  onSideBarMenuClick: Function;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const onClickSideBarMenu = () => {
-    props.onClickSideBarMenu();
+  const onSideBarMenuClick = () => {
+    props.onSideBarMenuClick();
   };
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -45,13 +46,11 @@ const Header: React.FC<HeaderProps> = (props) => {
       >
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={onClickSideBarMenu}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            color={"inherit"}
+            onClick={onSideBarMenuClick}
+            style={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <Icon type="sideBarMenu" />
           </IconButton>
         </Toolbar>
         <div style={styles.headerText}>
