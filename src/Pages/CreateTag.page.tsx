@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AxiosError } from "axios";
 
 import { useNavigate } from "react-router-dom";
 
@@ -15,18 +16,26 @@ import Input from "../components/wrapper_components/Input.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Color from "../configs/ColorConfig";
 
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
+
 interface TagPageData {
   tagName: string;
   errors: string;
 }
 
 const CreateTagPage = () => {
+  const showErrorSnackBar = useErrorSnackbar();
+
   const [tagData, setTagData] = useState<TagPageData>();
   const navigate = useNavigate();
 
   const mutation = useMutation(ApiService.addTag, {
     onSuccess: () => {
       navigate("/create/topic");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 

@@ -7,6 +7,7 @@ import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LinkIcon from "@mui/icons-material/Link";
 import { SvgIcon, SxProps, Theme } from "@mui/material";
+import SideBarMenuIcon from "@mui/icons-material/Menu";
 
 interface IconProps {
   type:
@@ -20,7 +21,8 @@ interface IconProps {
     | "xamarin"
     | "moreVertIcon"
     | "delete"
-    | "links";
+    | "links"
+    | "sideBarMenu";
   style?: SxProps<Theme>;
 }
 
@@ -35,6 +37,10 @@ const Icon: React.FC<IconProps> = (props) => {
 
   if (props.type === "keyboardArrowDown") {
     return <KeyboardArrowDown sx={props.style} />;
+  }
+
+  if (props.type === "sideBarMenu") {
+    return <SideBarMenuIcon sx={props.style} />;
   }
 
   if (props.type === "androidStudio") {

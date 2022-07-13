@@ -1,4 +1,4 @@
-import { useSnackbar } from "notistack";
+import { AxiosError } from "axios";
 import { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
@@ -9,13 +9,15 @@ import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Color from "../configs/ColorConfig";
 
 import Theme from "../configs/ThemeConfig";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import Step from "../models/Step.Model";
 import StepValue from "../models/StepValue.model";
 import ApiService from "../services/ApiService";
 
 const CreateCookbookPage = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
@@ -24,11 +26,8 @@ const CreateCookbookPage = () => {
     onSuccess: () => {
       navigate("/topics");
     },
-    onError: () => {
-      showSnackBar(
-        "We could not create this cookbook, could you please try again?",
-        "error"
-      );
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 
@@ -105,17 +104,17 @@ const CreateCookbookPage = () => {
     if (!newCookbook.topicId || newCookbook.topicId.trim() === "") {
       console.log("asd");
 
-      showSnackBar("Choose any topic", "error");
+      showErrorSnackBar("Choose any topic");
       return false;
     }
 
     if (!newCookbook.stackId || newCookbook.stackId.trim() === "") {
-      showSnackBar("Choose any stack", "error");
+      showErrorSnackBar("Choose any stack");
       return false;
     }
 
     if (!newCookbook.flowchartUrl || newCookbook.flowchartUrl.trim() === "") {
-      showSnackBar("You must upload one flowchart for cookbook", "error");
+      showErrorSnackBar("You must upload one flowchart for cookbook");
       return false;
     }
 
@@ -123,15 +122,12 @@ const CreateCookbookPage = () => {
       !newCookbook.sampleProjectUrl ||
       newCookbook.sampleProjectUrl.trim() === ""
     ) {
-      showSnackBar(
-        "You must upload one sample code for this cookbook",
-        "error"
-      );
+      showErrorSnackBar("You must upload one sample code for this cookbook");
       return false;
     }
 
     if (!newCookbook.steps || newCookbook.steps.length === 0) {
-      showSnackBar("You should have atleast one step", "error");
+      showErrorSnackBar("You should have atleast one step");
       return false;
     }
 
@@ -144,16 +140,6 @@ const CreateCookbookPage = () => {
     }
 
     createCookbookCall.mutate(newCookbook);
-  };
-
-  const showSnackBar = (message: string, type: string) => {
-    enqueueSnackbar("Choose any topic", {
-      variant: "error",
-      anchorOrigin: {
-        horizontal: "right",
-        vertical: "top",
-      },
-    });
   };
 
   return (

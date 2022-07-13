@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useMutation } from "react-query";
+import { AxiosError, AxiosResponse } from "axios";
+import { useSnackbar } from "notistack";
 
 import Theme from "../configs/ThemeConfig";
 
@@ -14,6 +16,8 @@ import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import Input from "../components/wrapper_components/Input.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Color from "../configs/ColorConfig";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 interface StackPageData {
   stackName: string;
@@ -21,12 +25,16 @@ interface StackPageData {
 }
 
 const Stackpage = () => {
+  const showErrorSnackBar = useErrorSnackbar();
   const [stackData, setStackData] = useState<StackPageData>();
   const navigate = useNavigate();
 
   const mutation = useMutation(ApiService.addStack, {
     onSuccess: () => {
       navigate("/create/cookbook");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 

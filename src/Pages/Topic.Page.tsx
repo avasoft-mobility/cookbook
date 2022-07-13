@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import { AxiosError } from "axios";
 
 import ApiService from "../services/ApiService";
 
@@ -15,8 +16,11 @@ import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
 import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 const TopicPage = () => {
+  const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
   const [references, setReferences] = useState([
     {
@@ -37,6 +41,9 @@ const TopicPage = () => {
   const topicCreateCall = useMutation(ApiService.addTopic, {
     onSuccess: () => {
       navigate("/create/cookbook");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 
