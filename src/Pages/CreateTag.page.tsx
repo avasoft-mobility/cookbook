@@ -13,6 +13,7 @@ import ApiService from "../services/ApiService";
 import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import Input from "../components/wrapper_components/Input.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
+import Color from "../configs/ColorConfig";
 
 interface TagPageData {
   tagName: string;
@@ -128,7 +129,7 @@ const CreateTagPage = () => {
                 <Clickable
                   ClickableText={"ADD NEW TOPIC"}
                   variant={"text"}
-                  textColor="black"
+                  textColor={Color.lightTextSecondaryColor}
                   clickableSize={"large"}
                   onClick={onAddNewTopicClicked}
                   style={style.newTopicButton}
@@ -189,6 +190,7 @@ const style = {
   },
   newTopicButton: {
     width: "100%",
+    fontWeight: "400",
   },
 };
 
