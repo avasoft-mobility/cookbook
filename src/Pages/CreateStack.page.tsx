@@ -190,7 +190,7 @@ const style = {
   },
   cookbookButton: {
     width: "100%",
-    fontWeight:'400'
+    fontWeight: "400",
   },
 };
 
