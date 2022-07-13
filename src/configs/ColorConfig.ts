@@ -9,5 +9,6 @@ class Color {
   static tagColor: string = "#F9C0C0";
   static primaryLight: string = "#E1D7F455";
   static errorMessage: string = "#f00";
+  static skeletonColor: string = "#0000000d";
 }
 export default Color;
