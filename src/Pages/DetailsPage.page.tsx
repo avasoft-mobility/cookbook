@@ -37,7 +37,7 @@ const DetailsPage: React.FC = () => {
   );
 
   useEffect(() => {
-    onSidebarItemSelected(selectedItemName);
+    setSelectedItemName(selectedItemName);
   }, [selectedItemName]);
 
   const onSuccessfulTopicFetch = (response: TopicDetail) => {
@@ -67,10 +67,10 @@ const DetailsPage: React.FC = () => {
   };
 
   const onStackSelected = (stackName: string) => {
-    setSelectedStackName(stackName);
+    setSelectedItemName(stackName);
     isSideBarOpened && toggleSideBar();
     const cookbook = data?.cookbooks.find(
-      (cookbook) => cookbook.stack.name === selectedItem
+      (cookbook) => cookbook.stack.name === stackName
     );
     setSelectedCookbook(cookbook!);
   };
@@ -98,7 +98,7 @@ const DetailsPage: React.FC = () => {
           <SideBar
             selectedStack={selectedItemName}
             stacks={stacks}
-            onSelect={onSidebarItemSelected}
+            onSelect={onStackSelected}
           />
         }
         mainContent={
