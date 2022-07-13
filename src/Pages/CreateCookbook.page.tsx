@@ -91,7 +91,7 @@ const CreateCookbookPage = () => {
     }
 
     steps = steps.map((step, index) => {
-      step.id = index.toString();
+      step.id = (index + 1).toString();
       return step;
     });
 
