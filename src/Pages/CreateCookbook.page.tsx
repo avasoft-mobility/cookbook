@@ -1,3 +1,4 @@
+import { AxiosError, AxiosResponse } from "axios";
 import { useSnackbar } from "notistack";
 import { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";
@@ -10,6 +11,7 @@ import Color from "../configs/ColorConfig";
 
 import Theme from "../configs/ThemeConfig";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import Step from "../models/Step.Model";
 import StepValue from "../models/StepValue.model";
 import ApiService from "../services/ApiService";
@@ -24,11 +26,8 @@ const CreateCookbookPage = () => {
     onSuccess: () => {
       navigate("/topics");
     },
-    onError: () => {
-      showSnackBar(
-        "We could not create this cookbook, could you please try again?",
-        "error"
-      );
+    onError: (error: AxiosError) => {
+      showSnackBar((error.response?.data as ErrorResponse).message, "error");
     },
   });
 
@@ -147,7 +146,7 @@ const CreateCookbookPage = () => {
   };
 
   const showSnackBar = (message: string, type: string) => {
-    enqueueSnackbar("Choose any topic", {
+    enqueueSnackbar(message, {
       variant: "error",
       anchorOrigin: {
         horizontal: "right",
