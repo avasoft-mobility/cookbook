@@ -5,7 +5,7 @@ import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 import { useEffect, useState } from "react";
-import useWindowSize from "../../configs/WindowSizeConfig";
+import useWindowSize from "../../hooks/useWindowSize.hook";
 import { ClickAwayListener, SwipeableDrawer } from "@mui/material";
 
 const DRAWER_WIDTH = 241;

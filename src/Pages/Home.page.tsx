@@ -9,18 +9,20 @@ import Search from "../components/Search.component";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 
 import { useQuery } from "react-query";
-import { AxiosError, AxiosResponse } from "axios";
-import { useSnackbar } from "notistack";
+import { AxiosError } from "axios";
 import "../App.css";
 import HomePageMainContent from "../components/HomePageMainContent.component";
 import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 const HomePage = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  const showErrorSnackBar = useErrorSnackbar();
+
   let [topics, setTopic] = useState<Topic[]>([]);
   let [searchText, setSearchText] = useState<string>("");
+
   const debouncedSearchText = useDebounce(searchText, 500);
   const { isLoading } = useQuery(
     ["topics", debouncedSearchText],
@@ -30,7 +32,7 @@ const HomePage = () => {
         setTopic(data);
       },
       onError: (error: AxiosError) => {
-        showSnackBar((error.response?.data as ErrorResponse).message, "error");
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
       },
     }
   );
@@ -43,16 +45,6 @@ const HomePage = () => {
 
   const onSelect = (slug: string) => {
     navigate(`/topics/${slug}`);
-  };
-
-  const showSnackBar = (message: string, type: string) => {
-    enqueueSnackbar(message, {
-      variant: "error",
-      anchorOrigin: {
-        horizontal: "right",
-        vertical: "top",
-      },
-    });
   };
 
   return (

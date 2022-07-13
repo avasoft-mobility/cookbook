@@ -16,6 +16,7 @@ import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import Input from "../components/wrapper_components/Input.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 interface StackPageData {
   stackName: string;
@@ -23,7 +24,7 @@ interface StackPageData {
 }
 
 const Stackpage = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  const showErrorSnackBar = useErrorSnackbar();
   const [stackData, setStackData] = useState<StackPageData>();
   const navigate = useNavigate();
 
@@ -32,7 +33,7 @@ const Stackpage = () => {
       navigate("/create/cookbook");
     },
     onError: (error: AxiosError) => {
-      showSnackBar((error.response?.data as ErrorResponse).message, "error");
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 
@@ -84,16 +85,6 @@ const Stackpage = () => {
 
   const onAddNewCookbookClicked = () => {
     navigate("/create/cookbook");
-  };
-
-  const showSnackBar = (message: string, type: string) => {
-    enqueueSnackbar(message, {
-      variant: "error",
-      anchorOrigin: {
-        horizontal: "right",
-        vertical: "top",
-      },
-    });
   };
 
   return (

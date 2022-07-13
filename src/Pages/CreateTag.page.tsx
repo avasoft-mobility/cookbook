@@ -13,6 +13,9 @@ import ApiService from "../services/ApiService";
 import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import Input from "../components/wrapper_components/Input.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import { AxiosError } from "axios";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
 
 interface TagPageData {
   tagName: string;
@@ -20,12 +23,17 @@ interface TagPageData {
 }
 
 const CreateTagPage = () => {
+  const showErrorSnackBar = useErrorSnackbar();
+
   const [tagData, setTagData] = useState<TagPageData>();
   const navigate = useNavigate();
 
   const mutation = useMutation(ApiService.addTag, {
     onSuccess: () => {
       navigate("/create/topic");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 

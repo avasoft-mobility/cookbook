@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import { useParams } from "react-router-dom";
-import CookbookContent from "../components/CookbookContent.component";
 import DetailScreenMainContent from "../components/DetailScreenMainContent";
 
 import SideBar from "../components/SideBar.Component";
@@ -16,11 +15,13 @@ import TopicDetail from "../models/TopicDetail.Model";
 import ApiService from "../services/ApiService";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import { AxiosError } from "axios";
-import { useSnackbar } from "notistack";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 const DetailsPage: React.FC = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  const showErrorSnackBar = useErrorSnackbar();
+
   const routeParams = useParams();
+
   const [stacks, setStacks] = useState<Stack[]>([]);
   const [selectedItemName, setSelectedItemName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
@@ -39,7 +40,7 @@ const DetailsPage: React.FC = () => {
         onSuccessfulTopicFetch(response!);
       },
       onError: (error: AxiosError) => {
-        showSnackBar((error.response?.data as ErrorResponse).message, "error");
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
       },
     }
   );
@@ -94,16 +95,6 @@ const DetailsPage: React.FC = () => {
 
   const toggleSideBar = () => {
     setSideBarMenuClicked(!isSideBarOpened);
-  };
-
-  const showSnackBar = (message: string, type: string) => {
-    enqueueSnackbar(message, {
-      variant: "error",
-      anchorOrigin: {
-        horizontal: "right",
-        vertical: "top",
-      },
-    });
   };
 
   return (

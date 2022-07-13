@@ -2,8 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { AxiosError, AxiosResponse } from "axios";
-import { useSnackbar } from "notistack";
+import { AxiosError } from "axios";
 
 import ApiService from "../services/ApiService";
 
@@ -18,9 +17,10 @@ import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
 import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 const TopicPage = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
   const [references, setReferences] = useState([
     {
@@ -43,7 +43,7 @@ const TopicPage = () => {
       navigate("/create/cookbook");
     },
     onError: (error: AxiosError) => {
-      showSnackBar((error.response?.data as ErrorResponse).message, "error");
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
 
@@ -117,16 +117,6 @@ const TopicPage = () => {
     clonedTopic.flowchartUrl = response.url;
 
     setTopic(clonedTopic);
-  };
-
-  const showSnackBar = (message: string, type: string) => {
-    enqueueSnackbar(message, {
-      variant: "error",
-      anchorOrigin: {
-        horizontal: "right",
-        vertical: "top",
-      },
-    });
   };
 
   return (
