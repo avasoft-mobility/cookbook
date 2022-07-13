@@ -14,6 +14,7 @@ import { useQuery } from "react-query";
 import "../App.css";
 import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
+import SkeletonLoader from "../components/SkeletonLoader.Component";
 
 const HomePage = () => {
   let [topics, setTopic] = useState<Topic[]>([]);
@@ -40,6 +41,50 @@ const HomePage = () => {
     navigate(`/topics/${slug}`);
   };
 
+  const loadTopics = () => {
+    if (isLoading) {
+      return (
+        <div style={styles.innerContainer}>
+          <SkeletonLoader />
+        </div>
+      );
+    }
+
+    if (topics.length === 0) {
+      return (
+        <div style={styles.innerContainer}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text variant={"h6"} color={""}>
+              No Topics Found
+            </Text>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div style={styles.innerContainer}>
+        {topics !== undefined ? (
+          <Grid container spacing={10}>
+            {topics.map((topic: Topic) => {
+              return (
+                <Grid key={topic._id} item xs={6}>
+                  <TopicItem topic={topic} onSelect={onSelect} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        ) : null}
+      </div>
+    );
+  };
+
   return (
     <div style={styles.container}>
       <div className="innerContainer">
@@ -50,23 +95,7 @@ const HomePage = () => {
         </div>
         <Search input={onSearch} />
       </div>
-      <div className="innerContainer">
-        {topics !== undefined ? (
-          <Grid
-            container
-            spacing={{ xs: 7 }}
-            columns={{ xs: 12, sm: 12, md: 12 }}
-          >
-            {topics.map((topic: Topic) => {
-              return (
-                <Grid key={topic.slug} item xs={12} sm={6} md={6}>
-                  <TopicItem topic={topic} onSelect={onSelect} />
-                </Grid>
-              );
-            })}
-          </Grid>
-        ) : null}
-      </div>
+      {loadTopics()}
     </div>
   );
 };
@@ -75,6 +104,10 @@ const styles = {
   container: {
     width: "100%",
     height: "100vh",
+  },
+  innerContainer: {
+    flex: 1,
+    padding: "30px 20%",
   },
 };
 
