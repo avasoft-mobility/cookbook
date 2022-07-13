@@ -6,6 +6,7 @@ import StepWrapper from "../components/StepWrapper.component";
 import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import ConfirmationDialog from "../components/wrapper_components/ConfirmationDialog.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
+import Color from "../configs/ColorConfig";
 
 import Theme from "../configs/ThemeConfig";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
@@ -165,24 +166,53 @@ const CreateCookbookPage = () => {
         </div>
       </div>
       <div style={styles.innerContainer}>
-        <ConfirmationDialog
-          title="Topic"
-          dialogHeader="Choose Topic"
-          dialogValues={
-            topicsCall.data ? topicsCall.data.map((topic) => topic.title) : []
-          }
-          value={"Choose the Topic"}
-          onConfirm={onTopicChosed}
-        />
-        <ConfirmationDialog
-          title="Stack"
-          dialogHeader="Choose Stack"
-          dialogValues={
-            stacksCall.data ? stacksCall.data.map((stack) => stack.name) : []
-          }
-          value={"Choose the Stack"}
-          onConfirm={onStackChosed}
-        />
+        <div style={styles.spaceBetween}>
+          <ConfirmationDialog
+            title="Topic"
+            dialogHeader="Choose Topic"
+            dialogValues={
+              topicsCall.data ? topicsCall.data.map((topic) => topic.title) : []
+            }
+            value={"Choose the Topic"}
+            onConfirm={onTopicChosed}
+          />
+          <div style={styles.buttonConatiner}>
+            <Clickable
+              ClickableText={"Add Topic"}
+              variant={"text"}
+              clickableSize={"large"}
+              onClick={(event) => {
+                navigate("/create/topic");
+              }}
+              textColor={Color.primaryColor}
+              style={{ width: "150px", height: "50px" }}
+            />
+          </div>
+        </div>
+
+        <div style={styles.spaceBetween}>
+          <ConfirmationDialog
+            title="Stack"
+            dialogHeader="Choose Stack"
+            dialogValues={
+              stacksCall.data ? stacksCall.data.map((stack) => stack.name) : []
+            }
+            value={"Choose the Stack"}
+            onConfirm={onStackChosed}
+          />
+          <div style={styles.buttonConatiner}>
+            <Clickable
+              ClickableText={"Add Stack"}
+              variant={"text"}
+              clickableSize={"large"}
+              onClick={(event) => {
+                navigate("/create/stack");
+              }}
+              textColor={Color.primaryColor}
+              style={{ width: "150px", height: "50px" }}
+            />
+          </div>
+        </div>
 
         <div style={styles.steps}>
           <Text variant="body1" color={Theme.palette.text.secondary}>
@@ -249,6 +279,16 @@ const styles = {
   },
   steps: {
     marginTop: "10px",
+  },
+  buttonConatiner: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    paddingBottom: "8px",
+  },
+  spaceBetween: {
+    display: "flex",
+    justifyContent: "space-between",
   },
 };
 
