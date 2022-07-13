@@ -15,13 +15,13 @@ import TopicDetail from "../models/TopicDetail.Model";
 
 import ApiService from "../services/ApiService";
 
-import useWindowSize from "../configs/WindowSize";
 
 const DetailsPage: React.FC = () => {
   const routeParams = useParams();
   const [stacks, setStacks] = useState<Stack[]>([]);
   const [selectedItemName, setSelectedItemName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
+  const [isSideBarMenuClicked, setSideBarMenuClicked] = useState(false);
 
   const { isLoading, data } = useQuery(
     ["topic", routeParams.topicSlug],
@@ -68,19 +68,17 @@ const DetailsPage: React.FC = () => {
     }
   };
 
-  const onSidebarItemSelected = (selectedItem: string) => {
-    setSelectedItemName(selectedItem);
-
-    if (selectedItem === "additional_links") {
-      return;
+  const onStackSelected = (stackName: string) => {
+    setSelectedStackName(stackName);
+    if (isSideBarMenuClicked === true) {
+      showSideBar();
     }
-
     const cookbook = data?.cookbooks.find(
       (cookbook) => cookbook.stack.name === selectedItem
     );
     setSelectedCookbook(cookbook!);
   };
-  const onClickSideBarMenu = (isSideBarMenuClicked: boolean) => {
+  const onClickSideBarMenu = () => {
     showSideBar();
   };
   const showSideBar = () => {
@@ -91,7 +89,7 @@ const DetailsPage: React.FC = () => {
     <div>
       <DrawerLayout
         isSideBarMenuClicked={isSideBarMenuClicked}
-        clickAway={onClickSideBarMenu}
+        showSideBar={showSideBar}
         header={
           <Header
             headerText={data ? data.title : ""}

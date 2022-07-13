@@ -16,7 +16,7 @@ interface DrawerLayoutProps {
   mainContent: React.ReactNode;
   window?: () => Window;
   isSideBarMenuClicked: boolean;
-  clickAway: Function;
+  showSideBar: Function;
 }
 
 const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
@@ -31,7 +31,7 @@ const DrawerLayout: React.FC<DrawerLayoutProps> = (props) => {
     window !== undefined ? () => window().document.body : undefined;
 
   const handleDrawerToggle = () => {
-    props.clickAway(true);
+    props.showSideBar();
   };
 
   return (
