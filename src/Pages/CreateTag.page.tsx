@@ -99,6 +99,7 @@ const CreateTagPage = () => {
               }}
               onBlur={onInputBlur}
               inputTextStyle={{
+                width: "100%",
                 fontSize: "16px",
                 padding: "12px 8px",
                 color: Theme.palette.text.secondary,
