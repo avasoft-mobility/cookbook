@@ -2,10 +2,10 @@ import React from "react";
 import Step from "../models/Step.Model";
 import AccordionList from "./wrapper_components/AccordionList.WrapperComponent";
 
-interface MainContentProps {
+interface CookbookContentProps {
   steps: Step[];
 }
-const MainContent: React.FC<MainContentProps> = (props) => {
+const CookbookContent: React.FC<CookbookContentProps> = (props) => {
   return (
     <div>
       <AccordionList steps={props.steps} />
@@ -13,4 +13,4 @@ const MainContent: React.FC<MainContentProps> = (props) => {
   );
 };
 
-export default MainContent;
+export default CookbookContent;
