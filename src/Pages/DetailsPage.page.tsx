@@ -14,8 +14,12 @@ import Stack from "../models/Stack.Model";
 import TopicDetail from "../models/TopicDetail.Model";
 
 import ApiService from "../services/ApiService";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import { AxiosError } from "axios";
+import { useSnackbar } from "notistack";
 
 const DetailsPage: React.FC = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const routeParams = useParams();
   const [stacks, setStacks] = useState<Stack[]>([]);
   const [selectedItemName, setSelectedItemName] = useState<string>("");
@@ -33,6 +37,9 @@ const DetailsPage: React.FC = () => {
       refetchOnWindowFocus: false,
       onSuccess: (response) => {
         onSuccessfulTopicFetch(response!);
+      },
+      onError: (error: AxiosError) => {
+        showSnackBar((error.response?.data as ErrorResponse).message, "error");
       },
     }
   );
@@ -87,6 +94,16 @@ const DetailsPage: React.FC = () => {
 
   const toggleSideBar = () => {
     setSideBarMenuClicked(!isSideBarOpened);
+  };
+
+  const showSnackBar = (message: string, type: string) => {
+    enqueueSnackbar(message, {
+      variant: "error",
+      anchorOrigin: {
+        horizontal: "right",
+        vertical: "top",
+      },
+    });
   };
 
   return (
