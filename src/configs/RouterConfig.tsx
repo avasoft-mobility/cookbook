@@ -4,7 +4,7 @@ import CreateTag from "../Pages/CreateTag.page";
 import DetailsPage from "../Pages/DetailsPage.page";
 import HomePage from "../Pages/Home.page";
 import Stackpage from "../Pages/CreateStack.page";
-import TopicPage from "../Pages/Topic.Page";
+import TopicPage from "../Pages/CreateTopic.Page";
 
 const RouterConfig = () => {
   return (
