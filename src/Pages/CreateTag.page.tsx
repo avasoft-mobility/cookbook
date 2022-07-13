@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AxiosError } from "axios";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,8 +14,9 @@ import ApiService from "../services/ApiService";
 import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
 import Input from "../components/wrapper_components/Input.WrapperComponent";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
+import Color from "../configs/ColorConfig";
+
 import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
-import { AxiosError } from "axios";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 
 interface TagPageData {
@@ -136,7 +138,7 @@ const CreateTagPage = () => {
                 <Clickable
                   ClickableText={"ADD NEW TOPIC"}
                   variant={"text"}
-                  textColor="black"
+                  textColor={Color.lightTextSecondaryColor}
                   clickableSize={"large"}
                   onClick={onAddNewTopicClicked}
                   style={style.newTopicButton}
@@ -197,6 +199,7 @@ const style = {
   },
   newTopicButton: {
     width: "100%",
+    fontWeight: "400",
   },
 };
 
