@@ -10,5 +10,6 @@ class Color {
   static primaryLight: string = "#E1D7F455";
   static errorMessage: string = "#f00";
   static skeletonColor: string = "#0000000d";
+  static lightTextSecondaryColor:string ="#606060";
 }
 export default Color;
