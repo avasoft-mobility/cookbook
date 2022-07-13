@@ -17,6 +17,7 @@ import ErrorResponse from "../../models/request_response_models/Error.Response.m
 import Step from "../../models/Step.Model";
 import StepValue from "../../models/StepValue.model";
 import ApiService from "../../services/ApiService";
+import FileUpload from "../../components/FileUpload.component";
 
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -230,23 +231,19 @@ const CreateCookbookPage = () => {
 
         <div>
           <div style={styles.fileUploadContainer}>
-            <Text variant="body2" color={Theme.palette.text.secondary}>
-              Upload Technical Flow
-            </Text>
-            <input
-              type="file"
-              style={styles.fileUploadItem}
+            <FileUpload
               onChange={onTechnicalFlowUpload}
+              headerText={"Upload Technical Flow"}
+              textVariant={"body2"}
+              textColor={Theme.palette.text.secondary}
             />
           </div>
           <div style={styles.fileUploadContainer}>
-            <Text variant="body2" color={Theme.palette.text.secondary}>
-              Upload Sample Code (in compressed format)
-            </Text>
-            <input
-              type="file"
-              style={styles.fileUploadItem}
+            <FileUpload
               onChange={onSampleProjectUpload}
+              headerText={"Upload Technical Flow"}
+              textVariant={"body2"}
+              textColor={Theme.palette.text.secondary}
             />
           </div>
 
