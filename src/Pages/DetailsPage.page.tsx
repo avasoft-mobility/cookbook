@@ -20,6 +20,7 @@ const DetailsPage: React.FC = () => {
   const [stacks, setStacks] = useState<Stack[]>([]);
   const [selectedItemName, setSelectedItemName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
+  const [isSideBarOpened, setSideBarMenuClicked] = useState(false);
 
   const { isLoading, data } = useQuery(
     ["topic", routeParams.topicSlug],
@@ -68,6 +69,7 @@ const DetailsPage: React.FC = () => {
 
   const onSidebarItemSelected = (selectedItem: string) => {
     setSelectedItemName(selectedItem);
+    isSideBarOpened && toggleSideBar();
 
     if (selectedItem === "additional_links") {
       return;
@@ -79,14 +81,25 @@ const DetailsPage: React.FC = () => {
     setSelectedCookbook(cookbook!);
   };
 
+  const onSideBarMenuClick = () => {
+    toggleSideBar();
+  };
+
+  const toggleSideBar = () => {
+    setSideBarMenuClicked(!isSideBarOpened);
+  };
+
   return (
     <div>
       <DrawerLayout
+        isSideBarOpened={isSideBarOpened}
+        toggleSideBar={toggleSideBar}
         header={
           <Header
             headerText={data ? data.title : ""}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
+            onSideBarMenuClick={onSideBarMenuClick}
           />
         }
         leftNavigation={
