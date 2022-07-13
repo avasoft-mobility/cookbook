@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
@@ -146,17 +146,35 @@ const TopicPage = () => {
               Topic not to be empty
             </Text>
           ) : null}
-          <div style={{ width: "100%", marginTop: "40px" }}>
-            <Text variant="h6" color={Theme.palette.primary.main}>
-              Tags
-            </Text>
-            <MultipleSelectChip
-              inputLabel="Tags"
-              values={tagsCall.data ? tagsCall.data.map((x) => x.name) : []}
-              chipStyle={{ color: Theme.palette.primary.main }}
-              menuItemStyle={{ color: Theme.palette.secondary.main }}
-              onChange={(event) => onTagChange(event.target.value as string[])}
-            />
+          <div style={styles.flexDirectionColumn as React.CSSProperties}>
+            <div style={{ width: "100%", marginTop: "40px" }}>
+              <Text variant="h6" color={Theme.palette.primary.main}>
+                Tags
+              </Text>
+            </div>
+            <div style={{ ...styles.alignItemsCenter, ...styles.spaceBetween }}>
+              <div style={styles.multipleSelectContainer}>
+                <MultipleSelectChip
+                  inputLabel="Tags"
+                  values={tagsCall.data ? tagsCall.data.map((x) => x.name) : []}
+                  chipStyle={{ color: Theme.palette.primary.main }}
+                  menuItemStyle={{ color: Theme.palette.secondary.main }}
+                  onChange={(event) =>
+                    onTagChange(event.target.value as string[])
+                  }
+                />
+              </div>
+              <Clickable
+                ClickableText={"Add Tag"}
+                variant={"text"}
+                clickableSize={"large"}
+                onClick={(event) => {
+                  navigate("/create/tag");
+                }}
+                textColor={Color.primaryColor}
+                style={{ width: "150px", height: "50px" }}
+              />
+            </div>
           </div>
           <div style={{ width: "100%", marginTop: "40px" }}>
             <Text variant="h6" color={Theme.palette.primary.main}>
@@ -284,6 +302,23 @@ const styles = {
   },
   inputImage: {
     marginTop: "10px",
+  },
+  alignItemsCenter: {
+    display: "flex",
+    alignItems: "center",
+  },
+  spaceBetween: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  multipleSelectContainer: {
+    width: "100%",
+    marginRight: "20px",
+  },
+  flexDirectionColumn: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "column",
   },
 };
 
