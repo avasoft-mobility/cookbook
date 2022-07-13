@@ -14,21 +14,26 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const onSideBarMenuClick = () => {
-    props.onSideBarMenuClick();
-  };
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const onClickMenuIcon = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const onClickMenuItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(null);
     props.onClickMenuItem(event.currentTarget.innerText);
   };
+
+  const onSideBarMenuClick = () => {
+    props.onSideBarMenuClick();
+  };
+
   return (
     <Box
       sx={{
