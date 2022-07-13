@@ -6,6 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LinkIcon from "@mui/icons-material/Link";
+import SideBarMenuIcon from "@mui/icons-material/Menu";
 import { SvgIcon, SxProps, Theme } from "@mui/material";
 
 interface IconProps {
@@ -20,7 +21,9 @@ interface IconProps {
     | "xamarin"
     | "moreVertIcon"
     | "delete"
-    | "links";
+    | "links"
+    | "sideBarMenu";
+
   style?: SxProps<Theme>;
 }
 
