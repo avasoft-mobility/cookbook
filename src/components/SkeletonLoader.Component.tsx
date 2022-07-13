@@ -1,6 +1,6 @@
-import { Grid, Skeleton } from "@mui/material";
+import { Grid } from "@mui/material";
 
-import Color from "../configs/ColorConfig";
+import TopicItemSkeleton from "./TopicItemSkeleton.Component";
 
 const SkeletonLoader = () => {
   const getRandomTextWidth = () => {
@@ -13,80 +13,12 @@ const SkeletonLoader = () => {
       {[1, 2, 3, 4].map((value: number) => {
         return (
           <Grid key={value} item xs={12} sm={6} md={6}>
-            <div
-              style={{
-                ...styles.topicItem,
-                ...{ flexDirection: "column", justifyContent: "space-between" },
-              }}
-            >
-              <div>
-                <Skeleton
-                  variant="text"
-                  animation="wave"
-                  height={80}
-                  sx={{
-                    ...styles.textSkeleton,
-                    ...{ width: getRandomTextWidth() },
-                  }}
-                />
-                <div style={{ display: "flex" }}>
-                  {[90, 80].map((width: number, index: number) => {
-                    return (
-                      <Skeleton
-                        key={index}
-                        variant="rectangular"
-                        animation="wave"
-                        sx={{ ...styles.chipSkeleton, ...{ width: width } }}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-              <div style={{ display: "flex" }}>
-                {[1, 2, 3, 4, 5].map((value: number) => {
-                  return (
-                    <Skeleton
-                      key={value}
-                      variant="circular"
-                      animation="wave"
-                      sx={styles.logoSkeleton}
-                    />
-                  );
-                })}
-              </div>
-            </div>
+            <TopicItemSkeleton />
           </Grid>
         );
       })}
     </Grid>
   );
-};
-
-const styles = {
-  logoSkeleton: {
-    bgcolor: Color.skeletonColor,
-    width: 30,
-    height: 30,
-    marginRight: "10px",
-  },
-  topicItem: {
-    height: "250px",
-    display: "flex",
-    flex: 1,
-    boxShadow: "0px 0px 23px 1px rgba(0, 0, 0, 0.1)",
-    borderRadius: "16px",
-    padding: "25px",
-  },
-  textSkeleton: {
-    bgcolor: Color.skeletonColor,
-  },
-  chipSkeleton: {
-    bgcolor: Color.skeletonColor,
-    width: 100,
-    height: 30,
-    borderRadius: 20,
-    marginRight: "10px",
-  },
 };
 
 export default SkeletonLoader;
