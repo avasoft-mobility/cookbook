@@ -29,6 +29,7 @@ const DetailsPage: React.FC = () => {
       }
     },
     {
+      refetchOnWindowFocus: false,
       onSuccess: (response) => {
         onSuccessfulTopicFetch(response!);
       },
