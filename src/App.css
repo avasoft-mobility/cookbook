@@ -1,0 +1,71 @@
+body {
+    overflow: overlay;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    display: block;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #ffffff;
+    border-radius: 5px;
+    background-color: #00000000;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #00000000;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: #D3DFF8;
+    border-radius: 5px;
+}
+
+.innerContainer {
+    flex: 1;
+    padding: 30px 20%;
+}
+
+.topicItem {
+    display: flex;
+    flex: 1;
+    padding: 25px;
+    height: 250px;
+    border-radius: 16px;
+}
+
+.tagsContainer {
+    margin-top: 12px;
+    max-height: 80px;
+    overflow: auto;
+}
+
+.tagsContainer::-webkit-scrollbar {
+    width: 6px
+}
+
+@media only screen and (max-width: 1350px) {
+    .innerContainer {
+        flex: 1;
+        padding: 30px 17%
+    }
+}
+
+@media only screen and (max-width: 1165px) {
+    .innerContainer {
+        flex: 1;
+        padding: 30px 10%
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .innerContainer {
+        flex: 1;
+        padding: 30px 5%
+    }
+}

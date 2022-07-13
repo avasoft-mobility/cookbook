@@ -1,8 +1,8 @@
 [
   {
     "id": "Archibaldo",
-    "title": "Lotlux",
-    "tags": ["Redhold"],
+    "title": "Push Notifications",
+    "tags": ["Notoification", "User Interface", "Api"],
     "cookbooks": [
       {
         "id": "Bordie",
@@ -97,8 +97,8 @@
   },
   {
     "id": "Seamus",
-    "title": "Span",
-    "tags": ["Subin"],
+    "title": "Api Configuration",
+    "tags": ["Api", "Backend", "Data access"],
     "cookbooks": [
       {
         "id": "Laurice",
@@ -145,8 +145,8 @@
   },
   {
     "id": "Roz",
-    "title": "Sub-Ex",
-    "tags": ["Bitwolf"],
+    "title": "Local Storage",
+    "tags": ["User Expeerience", "Accessebility"],
     "cookbooks": [
       {
         "id": "Erica",
@@ -329,8 +329,8 @@
   },
   {
     "id": "Woodie",
-    "title": "Home Ing",
-    "tags": ["Fixflex"],
+    "title": "Screen and Tab Navigations",
+    "tags": ["User Interface", "User Expeerience"],
     "cookbooks": [
       {
         "id": "Flori",
@@ -512,7 +512,7 @@
   },
   {
     "id": "Hetty",
-    "title": "Greenlam",
+    "title": "Screen and Tab Navigations",
     "tags": ["Sonsing"],
     "cookbooks": [
       {
@@ -750,8 +750,8 @@
   },
   {
     "id": "Margaretha",
-    "title": "Gembucket",
-    "tags": ["It"],
+    "title": "Screen and Tab Navigations",
+    "tags": ["It" , "kill bill" , "Accessebility", "Data access", "User Expeerience", "Accessebility"],
     "cookbooks": [
       {
         "id": "Penni",

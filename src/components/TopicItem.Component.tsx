@@ -1,15 +1,16 @@
-import React from "react";
 import { ButtonBase } from "@mui/material";
+import React from "react";
 
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Icon from "./wrapper_components/Icon.WrapperComponent";
 import Pill from "./wrapper_components/Pill.WrapperComponent";
 
+import "../App.css";
 import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
-import Topic from "../models/Topic.Model";
-import Tag from "../models/Tag.Model";
 import Stack from "../models/Stack.Model";
+import Tag from "../models/Tag.Model";
+import Topic from "../models/Topic.Model";
 
 interface TopicItemProps {
   topic: Topic;
@@ -41,7 +42,7 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
       style={{ textAlign: "left", width: "100%", borderRadius: "16px" }}
       onClick={() => onSelect(topic.slug)}
     >
-      <div style={{ ...styles.topicContainer, ...style }}>
+      <div style={{ ...styles.topicContainer, ...style }} className="topicItem">
         <div
           style={{ ...styles.innerContainer, ...{ flexDirection: "column" } }}
         >
@@ -49,7 +50,7 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
             <Text variant="h4" color={Theme.palette.secondary.main}>
               {topic.title}
             </Text>
-            <div style={styles.tagsContainer}>
+            <div className="tagsContainer">
               {topic.tags.map((item: Tag) => {
                 return (
                   <div key={item._id} style={styles.pills}>
@@ -72,11 +73,6 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
 
 const styles = {
   topicContainer: {
-    display: "flex",
-    flex: 1,
-    height: "250px",
-    padding: "25px",
-    borderRadius: "16px",
     backgroundColor: Theme.palette.text.primary,
     boxShadow: "0px 0px 23px 1px rgba(0, 0, 0, 0.1)",
   },
