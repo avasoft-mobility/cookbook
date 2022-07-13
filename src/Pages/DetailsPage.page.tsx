@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import { useParams } from "react-router-dom";
+import CookbookContent from "../components/CookbookContent.component";
+import DetailScreenMainContent from "../components/DetailScreenMainContent";
 
-import MainContent from "../components/MainContent.component";
 import SideBar from "../components/SideBar.Component";
 import DrawerLayout from "../components/wrapper_components/DrawerLayout.WrapperComponent";
 import Header from "../components/wrapper_components/Header.Wrapper.component";
@@ -17,7 +18,7 @@ import ApiService from "../services/ApiService";
 const DetailsPage: React.FC = () => {
   const routeParams = useParams();
   const [stacks, setStacks] = useState<Stack[]>([]);
-  const [selectedStackName, setSelectedStackName] = useState<string>("");
+  const [selectedItemName, setSelectedItemName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
 
   const { isLoading, data } = useQuery(
@@ -35,8 +36,8 @@ const DetailsPage: React.FC = () => {
   );
 
   useEffect(() => {
-    onStackSelected(selectedStackName);
-  }, [selectedStackName]);
+    onSidebarItemSelected(selectedItemName);
+  }, [selectedItemName]);
 
   const onSuccessfulTopicFetch = (response: TopicDetail) => {
     const extractedStacks: Stack[] = [];
@@ -46,7 +47,7 @@ const DetailsPage: React.FC = () => {
     setStacks(extractedStacks);
 
     if (extractedStacks.length > 0) {
-      setSelectedStackName(extractedStacks[0].name);
+      setSelectedItemName(extractedStacks[0].name);
     }
   };
 
@@ -64,10 +65,15 @@ const DetailsPage: React.FC = () => {
     }
   };
 
-  const onStackSelected = (stackName: string) => {
-    setSelectedStackName(stackName);
+  const onSidebarItemSelected = (selectedItem: string) => {
+    setSelectedItemName(selectedItem);
+
+    if (selectedItem === "additional_links") {
+      return;
+    }
+
     const cookbook = data?.cookbooks.find(
-      (cookbook) => cookbook.stack.name === stackName
+      (cookbook) => cookbook.stack.name === selectedItem
     );
     setSelectedCookbook(cookbook!);
   };
@@ -84,13 +90,20 @@ const DetailsPage: React.FC = () => {
         }
         leftNavigation={
           <SideBar
-            selectedStack={selectedStackName}
+            selectedStack={selectedItemName}
             stacks={stacks}
-            onSelect={onStackSelected}
+            onSelect={onSidebarItemSelected}
           />
         }
         mainContent={
-          <MainContent steps={selectedCookbook ? selectedCookbook.steps : []} />
+          <DetailScreenMainContent
+            steps={selectedCookbook ? selectedCookbook.steps : []}
+            additionalLinks={
+              selectedItemName === "additional_links"
+                ? data?.referenceUrls
+                : undefined
+            }
+          />
         }
       />
     </div>
