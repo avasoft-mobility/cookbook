@@ -1,8 +1,8 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuid } from "uuid";
 import { AxiosError } from "axios";
+import { v4 as uuid } from "uuid";
 
 import ApiService from "../services/ApiService";
 
@@ -15,9 +15,15 @@ import Text from "../components/wrapper_components/Text.wrapperComponent";
 
 import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
-import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
-import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
+
+interface TopicErrors {
+  name: boolean;
+  tags: boolean;
+  fileUpload: boolean;
+}
 
 const TopicPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -28,8 +34,11 @@ const TopicPage = () => {
       url: "",
     },
   ]);
-  const [topicName, setTopicName] = useState<string>("");
-  const [error, setError] = useState<boolean>(false);
+  const [errors, setErrors] = useState<TopicErrors>({
+    name: false,
+    tags: false,
+    fileUpload: false,
+  });
   const [topic, setTopic] = useState<TopicCreateRequest>({
     name: "",
     flowchartUrl: "",
@@ -47,21 +56,92 @@ const TopicPage = () => {
     },
   });
 
-  const getTopic = (topic: string) => {
-    setTopicName(topic);
+  const getTopic = (topicInput: string) => {
+    const clonedTopic = { ...topic };
+    clonedTopic.name = topicInput;
+
+    setTopic(clonedTopic);
+    validateName();
+  };
+
+  const onblurTopic = (topicInput: string) => {
+    const clonedTopic = { ...topic };
+    clonedTopic.name = topicInput;
+
+    setTopic(clonedTopic);
+    validateName();
   };
 
   const addNewReference = () => {
     setReferences([...references, { id: uuid(), url: "" }]);
   };
 
-  const validate = () => {
-    if (topicName === "") {
-      setError(true);
-      return;
+  const validateName = () => {
+    const clonedErrors = { ...errors };
+
+    if (topic.name === "") {
+      clonedErrors.name = true;
+    }
+    if (topic.name !== "") {
+      clonedErrors.name = false;
+    }
+    setErrors(clonedErrors);
+  };
+
+  const validateFileUpload = (url: string) => {
+    const clonedErrors = { ...errors };
+
+    if (url === "") {
+      clonedErrors.fileUpload = true;
+    }
+    if (url !== "") {
+      clonedErrors.fileUpload = false;
+    }
+    setErrors(clonedErrors);
+  };
+
+  const validateTags = (tags: string[]) => {
+    const clonedErrors = { ...errors };
+
+    if (tags.length === 0) {
+      clonedErrors.tags = true;
+    }
+    if (tags.length !== 0) {
+      clonedErrors.tags = false;
     }
 
-    setError(false);
+    setErrors(clonedErrors);
+  };
+
+  const validate = () => {
+    const clonedErrors = { ...errors };
+
+    if (topic.name === "") {
+      clonedErrors.name = true;
+    }
+    if (topic.name !== "") {
+      clonedErrors.name = false;
+    }
+    if (topic.tags?.length === 0) {
+      clonedErrors.tags = true;
+    }
+    if (topic.tags?.length !== 0) {
+      clonedErrors.tags = false;
+    }
+    if (topic.flowchartUrl === "") {
+      clonedErrors.fileUpload = true;
+    }
+    if (topic.flowchartUrl !== "") {
+      clonedErrors.fileUpload = false;
+    }
+
+    setErrors(clonedErrors);
+
+    if (clonedErrors.name || clonedErrors.tags || clonedErrors.fileUpload) {
+      return true;
+    }
+
+    return false;
   };
 
   const onSave = () => {
@@ -69,16 +149,20 @@ const TopicPage = () => {
       return reference.url;
     });
     const clonedTopic = { ...topic };
-    clonedTopic.name = topicName;
     clonedTopic.referenceUrls = referenceurl;
-    topicCreateCall.mutate(clonedTopic);
+    if (!validate()) {
+      topicCreateCall.mutate(clonedTopic);
+    }
   };
 
-  const onCancel = () => {
-    navigate(`/home`);
+  const createNewCookBook = () => {
+    navigate(`/create/cookbook`);
   };
 
   const deleteReferance = (id: string) => {
+    if (references.length === 1) {
+      return;
+    }
     const filteredReference = references.filter((ref) => {
       return ref.id !== id;
     });
@@ -103,6 +187,7 @@ const TopicPage = () => {
     clonedTopic.tags = tagIds;
 
     setTopic(clonedTopic);
+    validateTags(tagIds);
   };
 
   const onTopicUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -110,13 +195,13 @@ const TopicPage = () => {
     if (files?.length === 0) {
       return;
     }
-
     const response = await ApiService.uploadFile(files!.item(0)!);
 
     const clonedTopic = { ...topic };
     clonedTopic.flowchartUrl = response.url;
 
     setTopic(clonedTopic);
+    validateFileUpload(response.url);
   };
 
   return (
@@ -132,33 +217,40 @@ const TopicPage = () => {
           ...{ flexDirection: "column", justifyContent: "space-between" },
         }}
       >
-        <div style={{ width: "100%" }}>
-          <Text variant="h6" color={Theme.palette.primary.main}>
-            Name
-          </Text>
-          <div style={styles.topicInputContainer}>
-            <Input
-              onChange={(event) => {
-                getTopic(event.target.value);
-              }}
-              inputTextStyle={{
-                width: "100%",
-                fontSize: "16px",
-                color: Theme.palette.text.secondary,
-              }}
-            />
-          </div>
-          {error ? (
-            <Text color={Color.errorMessage} variant="body2">
-              Topic not to be empty
+        <div>
+          <div>
+            <Text variant="body2" color={Theme.palette.text.secondary}>
+              Name
             </Text>
-          ) : null}
-          <div style={styles.flexDirectionColumn as React.CSSProperties}>
-            <div style={{ width: "100%", marginTop: "40px" }}>
-              <Text variant="h6" color={Theme.palette.primary.main}>
-                Tags
-              </Text>
+            <div style={styles.topicInputContainer}>
+              <Input
+                onChange={(event) => {
+                  getTopic(event.target.value);
+                }}
+                onBlur={(event) => {
+                  onblurTopic(event.target.value);
+                }}
+                inputTextStyle={{
+                  width: "100%",
+                  fontSize: "16px",
+                  padding: "12px 8px",
+                  color: Theme.palette.text.secondary,
+                }}
+              />
             </div>
+            <Text
+              color={
+                errors.name ? Color.errorMessage : Theme.palette.text.primary
+              }
+              variant="body2"
+            >
+              * Topic not to be empty
+            </Text>
+          </div>
+          <div style={styles.inputsContainer}>
+            <Text variant="body2" color={Theme.palette.text.secondary}>
+              Tags
+            </Text>
             <div style={{ ...styles.alignItemsCenter, ...styles.spaceBetween }}>
               <div style={styles.multipleSelectContainer}>
                 <MultipleSelectChip
@@ -182,9 +274,17 @@ const TopicPage = () => {
                 style={{ width: "150px", height: "50px" }}
               />
             </div>
+            <Text
+              color={
+                errors.tags ? Color.errorMessage : Theme.palette.text.primary
+              }
+              variant="body2"
+            >
+              * Topic must have tags
+            </Text>
           </div>
-          <div style={{ width: "100%", marginTop: "40px" }}>
-            <Text variant="h6" color={Theme.palette.primary.main}>
+          <div style={styles.inputsContainer}>
+            <Text variant="body2" color={Theme.palette.text.secondary}>
               Topic Flow Diagram
             </Text>
             <input
@@ -192,10 +292,20 @@ const TopicPage = () => {
               type={"file"}
               onChange={onTopicUpload}
             />
+            <Text
+              color={
+                errors.fileUpload
+                  ? Color.errorMessage
+                  : Theme.palette.text.primary
+              }
+              variant="body2"
+            >
+              * Topic need flow diagram
+            </Text>
           </div>
           <div style={{ display: "flex", flex: 1, width: "100%" }}>
-            <div style={{ width: "100%", marginTop: "20px" }}>
-              <Text variant="h6" color={Theme.palette.primary.main}>
+            <div style={styles.inputsContainer}>
+              <Text variant="body2" color={Theme.palette.text.secondary}>
                 Reference
               </Text>
               <div
@@ -214,7 +324,12 @@ const TopicPage = () => {
                         },
                       }}
                     >
-                      <div style={styles.topicInputContainer}>
+                      <div
+                        style={{
+                          ...styles.topicInputContainer,
+                          ...{ marginRight: "20px" },
+                        }}
+                      >
                         <Input
                           onChange={(event) => {
                             onLinkChange(value.id, event.target.value);
@@ -223,6 +338,7 @@ const TopicPage = () => {
                           inputTextStyle={{
                             width: "100%",
                             fontSize: "16px",
+                            padding: "12px 8px",
                             color: Theme.palette.text.secondary,
                           }}
                         />
@@ -251,20 +367,24 @@ const TopicPage = () => {
             </div>
           </div>
         </div>
-        <div style={styles.createButtonContainer}>
-          <Clickable
-            ClickableText="Cancel"
-            onClick={onCancel}
-            variant={"text"}
-            clickableSize={"small"}
-            textColor={Theme.palette.primary.main}
-          />
+        <div
+          style={{ ...styles.buttonsContainer, ...{ flexDirection: "column" } }}
+        >
           <Clickable
             ClickableText="Save"
             onClick={onSave}
             variant={"contained"}
-            clickableSize={"small"}
+            clickableSize={"large"}
             textColor={Theme.palette.text.primary}
+            style={{ width: "100%", marginBottom: "20px" }}
+          />
+          <Clickable
+            ClickableText="Add New CookBook"
+            onClick={createNewCookBook}
+            variant={"text"}
+            clickableSize={"large"}
+            textColor={Color.lightTextSecondaryColor}
+            style={{ width: "100%", fontWeight: "400" }}
           />
         </div>
       </div>
@@ -280,7 +400,11 @@ const styles = {
   innerContainer: {
     display: "flex",
     flex: 1,
-    padding: "30px 25%",
+    padding: "30px 20%",
+  },
+  inputsContainer: {
+    width: "100%",
+    marginTop: "10px",
   },
   topicInputContainer: {
     display: "flex",
@@ -288,18 +412,17 @@ const styles = {
     border: "1px solid ",
     borderColor: Theme.palette.primary.main,
     padding: "5px",
-    marginRight: "20px",
     marginTop: "8px",
+    borderRadius: "10px",
   },
   addButtonContainer: {
     marginTop: "20px",
     display: "flex",
     justifyContent: "center",
   },
-  createButtonContainer: {
+  buttonsContainer: {
     marginTop: "40px",
     display: "flex",
-    justifyContent: "flex-end",
   },
   refarenceContainer: {
     display: "flex",
