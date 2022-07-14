@@ -16,6 +16,7 @@ import Text from "../components/wrapper_components/Text.wrapperComponent";
 import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
 import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import useTabRouter from "../hooks/useTabRouter.hook";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
 
@@ -28,6 +29,7 @@ interface TopicErrors {
 const TopicPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
+  const tabRouter = useTabRouter();
   const [references, setReferences] = useState([
     {
       id: uuid(),
@@ -268,7 +270,7 @@ const TopicPage = () => {
                 variant={"text"}
                 clickableSize={"large"}
                 onClick={(event) => {
-                  navigate("/create/tag");
+                  tabRouter("/create/tag");
                 }}
                 textColor={Color.primaryColor}
                 style={{ width: "150px", height: "50px" }}
