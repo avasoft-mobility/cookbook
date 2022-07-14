@@ -12,13 +12,12 @@ import Theme from "../../configs/ThemeConfig";
 
 import ApiService from "../../services/ApiService";
 
-import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
-import Input from "../../components/wrapper_components/Input.WrapperComponent";
-import Text from "../../components/wrapper_components/Text.wrapperComponent";
-import Color from "../../configs/ColorConfig";
-import ErrorResponse from "../../models/request_response_models/Error.Response.model";
-import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
-import Title from "../../components/specified_components/text_components/Title.component";
+import Button from "../components/wrapper_components/Button.WrapperComponent";
+import Input from "../components/wrapper_components/Input.WrapperComponent";
+import Text from "../components/wrapper_components/Text.wrapperComponent";
+import Color from "../configs/ColorConfig";
+import ErrorResponse from "../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 
 interface StackPageData {
   stackName: string;
@@ -116,20 +115,20 @@ const Stackpage = () => {
           {!mutation.isLoading ? (
             <>
               <div>
-                <Clickable
-                  ClickableText={"Add Stack"}
+                <Button
+                  buttonText={"Add Stack"}
                   variant={"contained"}
-                  clickableSize={"large"}
+                  buttonSize={"large"}
                   onClick={onAddButtonClicked}
                   style={style.addButton}
                 />
               </div>
               <div>
-                <Clickable
-                  ClickableText={"ADD NEW COOKBOOK"}
+                <Button
+                  buttonText={"ADD NEW COOKBOOK"}
                   variant={"text"}
                   textColor={Color.lightTextSecondaryColor}
-                  clickableSize={"large"}
+                  buttonSize={"large"}
                   onClick={onAddNewCookbookClicked}
                   style={style.cookbookButton}
                 />
