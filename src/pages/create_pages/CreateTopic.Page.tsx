@@ -10,8 +10,8 @@ import Clickable from "../../components/wrapper_components/ButtonWrapperComponen
 import Icon from "../../components/wrapper_components/Icon.WrapperComponent";
 import IconButton from "../../components/wrapper_components/IconButton.WrapperComponent";
 import Input from "../../components/wrapper_components/Input.WrapperComponent";
-import MultipleSelectChip from "../../components/wrapper_components/MultipleSelectChip.WrapperComponent";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
+import ActionableMultiSelectChip from "../../components/specified_components/actionable_components/ActionableMultiSelectChip.Component";
 
 import Color from "../../configs/ColorConfig";
 import Theme from "../../configs/ThemeConfig";
@@ -20,6 +20,7 @@ import useTabRouter from "../../hooks/useTabRouter.hook";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";
 import TopicCreateRequest from "../../models/request_response_models/TopicCreate.request.model";
 import useExitPrompt from "../../hooks/useExitPrompt";
+import Tag from "../../models/Tag.Model";
 
 interface TopicErrors {
   name: boolean;
@@ -169,7 +170,7 @@ const TopicPage = () => {
     const clonedTopic = { ...topic };
     clonedTopic.referenceUrls = referenceurl;
     if (!validate()) {
-      topicCreateCall.mutate(clonedTopic);
+      topicCreateCall.mutate(clonedTopic);    
     }
   };
 
@@ -266,40 +267,15 @@ const TopicPage = () => {
             </Text>
           </div>
           <div style={styles.inputsContainer}>
-            <Text variant="body2" color={Theme.palette.text.secondary}>
-              Tags
-            </Text>
-            <div style={{ ...styles.alignItemsCenter, ...styles.spaceBetween }}>
-              <div style={styles.multipleSelectContainer}>
-                <MultipleSelectChip
-                  inputLabel="Tags"
-                  values={tagsCall.data ? tagsCall.data.map((x) => x.name) : []}
-                  chipStyle={{ color: Theme.palette.primary.main }}
-                  menuItemStyle={{ color: Theme.palette.secondary.main }}
-                  onChange={(event) =>
-                    onTagChange(event.target.value as string[])
-                  }
-                />
-              </div>
-              <Clickable
-                ClickableText={"Add Tag"}
-                variant={"text"}
-                clickableSize={"large"}
-                onClick={(event) => {
-                  tabRouter.navigate("/create/tag");
-                }}
-                textColor={Color.primaryColor}
-                style={{ width: "150px", height: "50px" }}
-              />
-            </div>
-            <Text
-              color={
-                errors.tags ? Color.errorMessage : Theme.palette.text.primary
+            <ActionableMultiSelectChip
+              tags={
+                tagsCall.data ? tagsCall.data.map((tag: Tag) => tag.name) : []
               }
-              variant="body2"
-            >
-              * Topic must have tags
-            </Text>
+              createNewTag={() => navigate(`/create/tag`)}
+              onTagChange={onTagChange}
+              title="Tags"
+              errorMessage={errors.tags ? "* Topic atleast have one tag" : "" }
+            />
           </div>
           <div style={styles.inputsContainer}>
             <Text variant="body2" color={Theme.palette.text.secondary}>
