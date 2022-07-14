@@ -29,7 +29,7 @@ interface TopicErrors {
 const TopicPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
-  const { tabRouter } = useTabRouter();
+  const tabRouter = useTabRouter();
   const [references, setReferences] = useState([
     {
       id: uuid(),
@@ -270,7 +270,7 @@ const TopicPage = () => {
                 variant={"text"}
                 clickableSize={"large"}
                 onClick={(event) => {
-                  tabRouter("/create/tag");
+                  tabRouter.navigate("/create/tag");
                 }}
                 textColor={Color.primaryColor}
                 style={{ width: "150px", height: "50px" }}

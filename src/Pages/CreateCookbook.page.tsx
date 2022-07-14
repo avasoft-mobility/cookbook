@@ -20,7 +20,7 @@ import ApiService from "../services/ApiService";
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
-  const { tabRouter } = useTabRouter();
+  const tabRouter = useTabRouter();
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);
@@ -170,7 +170,7 @@ const CreateCookbookPage = () => {
               variant={"text"}
               clickableSize={"large"}
               onClick={(event) => {
-                tabRouter("/create/topic");
+                tabRouter.navigate("/create/topic");
               }}
               textColor={Color.primaryColor}
               style={{ width: "150px", height: "50px" }}
@@ -194,7 +194,7 @@ const CreateCookbookPage = () => {
               variant={"text"}
               clickableSize={"large"}
               onClick={(event) => {
-                tabRouter("/create/stack");
+                tabRouter.navigate("/create/stack");
               }}
               textColor={Color.primaryColor}
               style={{ width: "150px", height: "50px" }}
