@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
-import Text from "./wrapper_components/Text.wrapperComponent";
-import Theme from "../configs/ThemeConfig";
-import StepValue from "../models/StepValue.model";
-import ApiService from "../services/ApiService";
-import Color from "../configs/ColorConfig";
+import Text from "../../wrapper_components/Text.wrapperComponent";
+import Theme from "../../../configs/ThemeConfig";
+import StepValue from "../../../models/StepValue.model";
+import ApiService from "../../../services/ApiService";
+import Color from "../../../configs/ColorConfig";
 
 interface StepProps {
   values: StepValue;

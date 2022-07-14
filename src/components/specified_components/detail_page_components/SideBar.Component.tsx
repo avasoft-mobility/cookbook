@@ -7,12 +7,12 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import Icon from "./wrapper_components/Icon.WrapperComponent";
+import Icon from "../../wrapper_components/Icon.WrapperComponent";
 
-import Color from "../configs/ColorConfig";
-import Stack from "../models/Stack.Model";
+import Color from "../../../configs/ColorConfig";
+import Stack from "../../../models/Stack.Model";
 import React from "react";
-import AdditionalLinkMenuItem from "./AdditionalLinkMenuItem";
+import AdditionalLinkMenuItem from "../additional_link_components/AdditionalLinkMenuItem";
 
 interface SideBarProps {
   selectedStack: string;

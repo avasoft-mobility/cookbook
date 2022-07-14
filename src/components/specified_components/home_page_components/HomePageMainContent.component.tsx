@@ -1,9 +1,9 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import Topic from "../models/Topic.Model";
+import Topic from "../../../models/Topic.Model";
 import SkeletonLoader from "./SkeletonLoader.Component";
-import TopicItem from "./TopicItem.Component";
-import Text from "../components/wrapper_components/Text.wrapperComponent";
+import TopicItem from "../topic_item_components/TopicItem.Component";
+import Text from "../../wrapper_components/Text.wrapperComponent";
 
 interface HomePageMainContentProps {
   isLoading: boolean;

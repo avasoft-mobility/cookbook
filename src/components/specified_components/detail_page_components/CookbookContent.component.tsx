@@ -1,6 +1,6 @@
 import React from "react";
-import Step from "../models/Step.Model";
-import AccordionList from "./wrapper_components/AccordionList.WrapperComponent";
+import Step from "../../../models/Step.Model";
+import AccordionList from "../../wrapper_components/AccordionList.WrapperComponent";
 
 interface CookbookContentProps {
   steps: Step[];

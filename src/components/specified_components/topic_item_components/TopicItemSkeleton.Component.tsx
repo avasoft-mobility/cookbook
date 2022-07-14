@@ -1,5 +1,5 @@
-import Color from "../configs/ColorConfig";
-import SkeletonWrapper from "./wrapper_components/Skeleton.WrapperComponent";
+import Color from "../../../configs/ColorConfig";
+import SkeletonWrapper from "../../wrapper_components/Skeleton.WrapperComponent";
 
 const TopicItemSkeleton = () => {
   const getRandomTextWidth = () => {

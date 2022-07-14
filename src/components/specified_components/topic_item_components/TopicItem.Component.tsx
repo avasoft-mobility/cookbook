@@ -1,16 +1,16 @@
 import { ButtonBase } from "@mui/material";
 import React from "react";
 
-import Text from "../components/wrapper_components/Text.wrapperComponent";
-import Icon from "./wrapper_components/Icon.WrapperComponent";
-import Pill from "./wrapper_components/Pill.WrapperComponent";
+import Text from "../../wrapper_components/Text.wrapperComponent";
+import Icon from "../../wrapper_components/Icon.WrapperComponent";
+import Pill from "../../wrapper_components/Pill.WrapperComponent";
 
-import "../App.css";
-import Color from "../configs/ColorConfig";
-import Theme from "../configs/ThemeConfig";
-import Stack from "../models/Stack.Model";
-import Tag from "../models/Tag.Model";
-import Topic from "../models/Topic.Model";
+import "../../../App.css";
+import Color from "../../../configs/ColorConfig";
+import Theme from "../../../configs/ThemeConfig";
+import Stack from "../../../models/Stack.Model";
+import Tag from "../../../models/Tag.Model";
+import Topic from "../../../models/Topic.Model";
 
 interface TopicItemProps {
   topic: Topic;

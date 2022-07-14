@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Input from "./wrapper_components/Input.WrapperComponent";
+import Input from "../../wrapper_components/Input.WrapperComponent";
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
 interface SearchProps {

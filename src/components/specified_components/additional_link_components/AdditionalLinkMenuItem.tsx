@@ -5,7 +5,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import Color from "../configs/ColorConfig";
+import Color from "../../../configs/ColorConfig";
 
 interface AdditionalLinkMenuItemProps {
   onSelect: Function;

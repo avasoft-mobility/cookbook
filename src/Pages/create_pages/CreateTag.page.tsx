@@ -1,37 +1,38 @@
 import { useState } from "react";
+import { AxiosError } from "axios";
 
 import { useNavigate } from "react-router-dom";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useMutation } from "react-query";
-import { AxiosError, AxiosResponse } from "axios";
-import { useSnackbar } from "notistack";
 
-import Theme from "../configs/ThemeConfig";
+import Theme from "../../configs/ThemeConfig";
 
-import ApiService from "../services/ApiService";
+import ApiService from "../../services/ApiService";
 
-import Clickable from "../components/wrapper_components/ButtonWrapperComponent";
-import Input from "../components/wrapper_components/Input.WrapperComponent";
-import Text from "../components/wrapper_components/Text.wrapperComponent";
-import Color from "../configs/ColorConfig";
-import ErrorResponse from "../models/request_response_models/Error.Response.model";
-import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
+import Input from "../../components/wrapper_components/Input.WrapperComponent";
+import Text from "../../components/wrapper_components/Text.wrapperComponent";
+import Color from "../../configs/ColorConfig";
 
-interface StackPageData {
-  stackName: string;
+import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
+import ErrorResponse from "../../models/request_response_models/Error.Response.model";
+
+interface TagPageData {
+  tagName: string;
   errors: string;
 }
 
-const Stackpage = () => {
+const CreateTagPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
-  const [stackData, setStackData] = useState<StackPageData>();
+
+  const [tagData, setTagData] = useState<TagPageData>();
   const navigate = useNavigate();
 
-  const mutation = useMutation(ApiService.addStack, {
+  const mutation = useMutation(ApiService.addTag, {
     onSuccess: () => {
-      navigate("/create/cookbook");
+      navigate("/create/topic");
     },
     onError: (error: AxiosError) => {
       showErrorSnackBar((error.response?.data as ErrorResponse).message);
@@ -40,25 +41,25 @@ const Stackpage = () => {
 
   const validateStackName = (value?: string) => {
     if (value === undefined) {
-      setStackData({
-        stackName: "",
-        errors: "Stack name required",
+      setTagData({
+        tagName: "",
+        errors: "Tag name required",
       });
       return false;
     }
 
     if (value === "") {
-      setStackData({
-        stackName: "",
-        errors: "Stack name required",
+      setTagData({
+        tagName: "",
+        errors: "Tag name required",
       });
       return false;
     }
 
     if (value!.length < 2) {
-      setStackData({
-        stackName: stackData!.stackName,
-        errors: "Stack name length should be atleast 2 characters",
+      setTagData({
+        tagName: tagData!.tagName,
+        errors: "Tag name length should be atleast 2 characters",
       });
       return false;
     }
@@ -69,7 +70,7 @@ const Stackpage = () => {
   const onInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setStackData({ stackName: event.target.value, errors: "" });
+    setTagData({ tagName: event.target.value, errors: "" });
   };
 
   const onInputBlur = (
@@ -79,27 +80,27 @@ const Stackpage = () => {
   };
 
   const onAddButtonClicked = () => {
-    if (validateStackName(stackData?.stackName)) {
-      mutation.mutate(stackData!.stackName);
+    if (validateStackName(tagData?.tagName)) {
+      mutation.mutate(tagData!.tagName);
     }
   };
 
-  const onAddNewCookbookClicked = () => {
-    navigate("/create/cookbook");
+  const onAddNewTopicClicked = () => {
+    navigate("/create/topic");
   };
 
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
       <div style={style.headingContainer}>
         <Text variant={"h4"} color={Theme.palette.primary.main}>
-          Create Stack
+          Create Tag
         </Text>
       </div>
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
           <Text variant={"body2"} color={""}>
-            Stack Name
+            Enter tag name
           </Text>
           <div style={style.inputContainer}>
             <Input
@@ -117,7 +118,7 @@ const Stackpage = () => {
           </div>
 
           <Text variant={"inherit"} color={"#DB4437"}>
-            {stackData?.errors}
+            {tagData?.errors}
           </Text>
         </div>
 
@@ -126,7 +127,7 @@ const Stackpage = () => {
             <>
               <div>
                 <Clickable
-                  ClickableText={"Add Stack"}
+                  ClickableText={"Add Tag"}
                   variant={"contained"}
                   clickableSize={"large"}
                   onClick={onAddButtonClicked}
@@ -135,12 +136,12 @@ const Stackpage = () => {
               </div>
               <div>
                 <Clickable
-                  ClickableText={"ADD NEW COOKBOOK"}
+                  ClickableText={"ADD NEW TOPIC"}
                   variant={"text"}
                   textColor={Color.lightTextSecondaryColor}
                   clickableSize={"large"}
-                  onClick={onAddNewCookbookClicked}
-                  style={style.cookbookButton}
+                  onClick={onAddNewTopicClicked}
+                  style={style.newTopicButton}
                 />
               </div>
             </>
@@ -196,10 +197,10 @@ const style = {
     width: "100%",
     marginBottom: "20px",
   },
-  cookbookButton: {
+  newTopicButton: {
     width: "100%",
     fontWeight: "400",
   },
 };
 
-export default Stackpage;
+export default CreateTagPage;

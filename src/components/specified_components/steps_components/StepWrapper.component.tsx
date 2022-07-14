@@ -2,9 +2,9 @@ import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import Step from "./Step.Component";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Theme from "../configs/ThemeConfig";
-import Clickable from "./wrapper_components/ButtonWrapperComponent";
-import StepValue from "../models/StepValue.model";
+import Theme from "../../../configs/ThemeConfig";
+import Clickable from "../../wrapper_components/ButtonWrapperComponent";
+import StepValue from "../../../models/StepValue.model";
 import { v4 as uuidv4 } from "uuid";
 
 interface StepWrapperProps {

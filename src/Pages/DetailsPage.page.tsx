@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 import { useParams } from "react-router-dom";
-import DetailScreenMainContent from "../components/DetailScreenMainContent";
+import DetailScreenMainContent from "../components/specified_components/detail_page_components/DetailScreenMainContent";
 
-import SideBar from "../components/SideBar.Component";
+import SideBar from "../components/specified_components/detail_page_components/SideBar.Component";
 import DrawerLayout from "../components/wrapper_components/DrawerLayout.WrapperComponent";
 import Header from "../components/wrapper_components/Header.Wrapper.component";
 
