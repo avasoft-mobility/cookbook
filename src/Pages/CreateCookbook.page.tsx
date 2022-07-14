@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import StepWrapper from "../components/StepWrapper.component";
@@ -11,6 +11,7 @@ import Color from "../configs/ColorConfig";
 import Theme from "../configs/ThemeConfig";
 import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 import useTabRouter from "../hooks/useTabRouter.hook";
+import useExitPrompt from "../hooks/useExitPrompt";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import Step from "../models/Step.Model";
@@ -21,6 +22,7 @@ const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
   const tabRouter = useTabRouter();
+  const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);
@@ -33,13 +35,26 @@ const CreateCookbookPage = () => {
     },
   });
 
-  const [newCookbook, setNewCookbook] = useState<CookbookCreateRequest>({
+  const emptyCookbook: CookbookCreateRequest = {
     topicId: "",
     stackId: "",
     flowchartUrl: "",
     sampleProjectUrl: "",
     steps: [],
-  });
+  };
+  const [newCookbook, setNewCookbook] =
+    useState<CookbookCreateRequest>(emptyCookbook);
+
+  useEffect(() => {
+    const shouldShowExitPrompt = !isCookbookEmpty();
+    if (showExitPrompt !== shouldShowExitPrompt) {
+      setShowExitPrompt(shouldShowExitPrompt);
+    }
+  }, [newCookbook]);
+
+  const isCookbookEmpty = (): boolean => {
+    return JSON.stringify(newCookbook) === JSON.stringify(emptyCookbook);
+  };
 
   const onTopicChosed = (value: string) => {
     const clonedCookbook = { ...newCookbook };

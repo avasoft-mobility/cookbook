@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
@@ -19,6 +19,7 @@ import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
 import useTabRouter from "../hooks/useTabRouter.hook";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import TopicCreateRequest from "../models/request_response_models/TopicCreate.request.model";
+import useExitPrompt from "../hooks/useExitPrompt";
 
 interface TopicErrors {
   name: boolean;
@@ -30,6 +31,8 @@ const TopicPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
   const tabRouter = useTabRouter();
+  const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
+
   const [references, setReferences] = useState([
     {
       id: uuid(),
@@ -41,12 +44,14 @@ const TopicPage = () => {
     tags: false,
     fileUpload: false,
   });
-  const [topic, setTopic] = useState<TopicCreateRequest>({
+
+  const emptyTopic: TopicCreateRequest = {
     name: "",
     flowchartUrl: "",
     tags: [],
     referenceUrls: [],
-  });
+  };
+  const [topic, setTopic] = useState<TopicCreateRequest>(emptyTopic);
 
   const tagsCall = useQuery("tags", () => ApiService.fetchTags());
   const topicCreateCall = useMutation(ApiService.addTopic, {
@@ -57,6 +62,17 @@ const TopicPage = () => {
       showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
+
+  useEffect(() => {
+    const shouldShowExitPrompt = !isTopicEmpty();
+    if (showExitPrompt !== shouldShowExitPrompt) {
+      setShowExitPrompt(shouldShowExitPrompt);
+    }
+  }, [topic]);
+
+  const isTopicEmpty = (): boolean => {
+    return JSON.stringify(topic) === JSON.stringify(emptyTopic);
+  };
 
   const getTopic = (topicInput: string) => {
     const clonedTopic = { ...topic };
