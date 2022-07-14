@@ -10,6 +10,7 @@ import Color from "../configs/ColorConfig";
 
 import Theme from "../configs/ThemeConfig";
 import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import useTabRouter from "../hooks/useTabRouter.hook";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import Step from "../models/Step.Model";
@@ -19,6 +20,7 @@ import ApiService from "../services/ApiService";
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
+  const tabRouter = useTabRouter();
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);
@@ -168,7 +170,7 @@ const CreateCookbookPage = () => {
               variant={"text"}
               clickableSize={"large"}
               onClick={(event) => {
-                navigate("/create/topic");
+                tabRouter.navigate("/create/topic");
               }}
               textColor={Color.primaryColor}
               style={{ width: "150px", height: "50px" }}
@@ -192,7 +194,7 @@ const CreateCookbookPage = () => {
               variant={"text"}
               clickableSize={"large"}
               onClick={(event) => {
-                navigate("/create/stack");
+                tabRouter.navigate("/create/stack");
               }}
               textColor={Color.primaryColor}
               style={{ width: "150px", height: "50px" }}
