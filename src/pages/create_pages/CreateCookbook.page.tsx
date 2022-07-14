@@ -4,14 +4,13 @@ import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import StepWrapper from "../../components/specified_components/steps_components/StepWrapper.component";
 import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
-import ConfirmationDialog from "../../components/wrapper_components/ConfirmationDialog.WrapperComponent";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
-import Color from "../../configs/ColorConfig";
 
+import ActionableDropdown from "../../components/specified_components/actionable_components/ActionableDropdown.component";
 import Theme from "../../configs/ThemeConfig";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
-import useTabRouter from "../../hooks/useTabRouter.hook";
 import useExitPrompt from "../../hooks/useExitPrompt";
+import useTabRouter from "../../hooks/useTabRouter.hook";
 import CookbookCreateRequest from "../../models/request_response_models/CookbookCreate.request";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";
 import Step from "../../models/Step.Model";
@@ -169,54 +168,32 @@ const CreateCookbookPage = () => {
         </div>
       </div>
       <div style={styles.innerContainer}>
-        <div style={styles.spaceBetween}>
-          <ConfirmationDialog
-            title="Topic"
-            dialogHeader="Choose Topic"
-            dialogValues={
-              topicsCall.data ? topicsCall.data.map((topic) => topic.title) : []
-            }
-            value={"Choose the Topic"}
-            onConfirm={onTopicChosed}
-          />
-          <div style={styles.buttonConatiner}>
-            <Clickable
-              ClickableText={"Add Topic"}
-              variant={"text"}
-              clickableSize={"large"}
-              onClick={(event) => {
-                tabRouter.navigate("/create/topic");
-              }}
-              textColor={Color.primaryColor}
-              style={{ width: "150px", height: "50px" }}
-            />
-          </div>
-        </div>
-
-        <div style={styles.spaceBetween}>
-          <ConfirmationDialog
-            title="Stack"
-            dialogHeader="Choose Stack"
-            dialogValues={
-              stacksCall.data ? stacksCall.data.map((stack) => stack.name) : []
-            }
-            value={"Choose the Stack"}
-            onConfirm={onStackChosed}
-          />
-          <div style={styles.buttonConatiner}>
-            <Clickable
-              ClickableText={"Add Stack"}
-              variant={"text"}
-              clickableSize={"large"}
-              onClick={(event) => {
-                tabRouter.navigate("/create/stack");
-              }}
-              textColor={Color.primaryColor}
-              style={{ width: "150px", height: "50px" }}
-            />
-          </div>
-        </div>
-
+        <ActionableDropdown
+          dialogValues={
+            topicsCall.data ? topicsCall.data.map((topic) => topic.title) : []
+          }
+          onConfirm={onTopicChosed}
+          onClickableClick={(event) => {
+            tabRouter.navigate("/create/topic");
+          }}
+          dialogTitle={"Topic"}
+          dialogHeader={"Choose Topic"}
+          confirmationDialogvalue={"Choose the Topic"}
+          clickableText={"Add Topic"}
+        />
+        <ActionableDropdown
+          dialogValues={
+            stacksCall.data ? stacksCall.data.map((stack) => stack.name) : []
+          }
+          onConfirm={onStackChosed}
+          onClickableClick={(event) => {
+            tabRouter.navigate("/create/stack");
+          }}
+          dialogTitle={"Stack"}
+          dialogHeader={"Choose Stack"}
+          confirmationDialogvalue={"Choose the Stack"}
+          clickableText={"Add Stack"}
+        />
         <div style={styles.steps}>
           <Text variant="body1" color={Theme.palette.text.secondary}>
             Steps
@@ -282,16 +259,6 @@ const styles = {
   },
   steps: {
     marginTop: "10px",
-  },
-  buttonConatiner: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    paddingBottom: "8px",
-  },
-  spaceBetween: {
-    display: "flex",
-    justifyContent: "space-between",
   },
 };
 
