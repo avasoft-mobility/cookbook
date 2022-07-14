@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 
-import TopicItemSkeleton from "./TopicItemSkeleton.Component";
+import TopicItemSkeleton from "../topic_item_components/TopicItemSkeleton.Component";
 
 const SkeletonLoader = () => {
   const getRandomTextWidth = () => {

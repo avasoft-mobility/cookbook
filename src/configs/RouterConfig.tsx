@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import CreateCookbookPage from "../Pages/CreateCookbook.page";
-import CreateTag from "../Pages/CreateTag.page";
+import CreateCookbookPage from "../Pages/Create pages/CreateCookbook.page";
+import CreateTag from "../Pages/Create pages/CreateTag.page";
 import DetailsPage from "../Pages/DetailsPage.page";
 import HomePage from "../Pages/Home.page";
-import Stackpage from "../Pages/CreateStack.page";
-import TopicPage from "../Pages/CreateTopic.Page";
+import Stackpage from "../Pages/Create pages/CreateStack.page";
+import TopicPage from "../Pages/Create pages/CreateTopic.Page";
 
 const RouterConfig = () => {
   return (

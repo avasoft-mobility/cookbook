@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 import ApiService from "../services/ApiService";
 
-import Search from "../components/Search.component";
+import Search from "../components/specified_components/home_page_components/Search.component";
 import Text from "../components/wrapper_components/Text.wrapperComponent";
 
 import { useQuery } from "react-query";
 import { AxiosError } from "axios";
 import "../App.css";
-import HomePageMainContent from "../components/HomePageMainContent.component";
+import HomePageMainContent from "../components/specified_components/home_page_components/HomePageMainContent.component";
 import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
