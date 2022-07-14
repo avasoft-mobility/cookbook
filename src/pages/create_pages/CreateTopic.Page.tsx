@@ -241,7 +241,7 @@ const TopicPage = () => {
             <Text variant="body2" color={Theme.palette.text.secondary}>
               Name
             </Text>
-            <div style={styles.topicInputContainer}>
+            <div>
               <Input
                 onChange={(event) => {
                   getTopic(event.target.value);
@@ -249,22 +249,12 @@ const TopicPage = () => {
                 onBlur={(event) => {
                   onblurTopic(event.target.value);
                 }}
-                inputTextStyle={{
-                  width: "100%",
-                  fontSize: "16px",
-                  padding: "12px 8px",
-                  color: Theme.palette.text.secondary,
-                }}
+                type={"outlined"}
+                placeHolderText="Enter the name"
+                style={{ marginTop: "10px" }}
+                errorText={errors.name ? "* Topic not to be empty" : ""}
               />
             </div>
-            <Text
-              color={
-                errors.name ? Color.errorMessage : Theme.palette.text.primary
-              }
-              variant="body2"
-            >
-              * Topic not to be empty
-            </Text>
           </div>
           <div style={styles.inputsContainer}>
             <ActionableMultiSelectChip
@@ -320,8 +310,8 @@ const TopicPage = () => {
                     >
                       <div
                         style={{
-                          ...styles.topicInputContainer,
-                          ...{ marginRight: "20px" },
+                          marginRight: "20px",
+                          width: "100%",
                         }}
                       >
                         <Input
@@ -329,12 +319,10 @@ const TopicPage = () => {
                             onLinkChange(value.id, event.target.value);
                           }}
                           value={value.url}
-                          inputTextStyle={{
-                            width: "100%",
-                            fontSize: "16px",
-                            padding: "12px 8px",
-                            color: Theme.palette.text.secondary,
-                          }}
+                          type={"outlined"}
+                          placeHolderText="Enter the Reference"
+                          style={{ marginTop: "10px" }}
+                          errorText=""
                         />
                       </div>
                       <IconButton

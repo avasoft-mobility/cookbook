@@ -4,29 +4,24 @@ import {
   TextField,
   ThemeProvider,
 } from "@mui/material";
-import { FieldHookConfig, useField } from "formik";
 import React from "react";
 import Color from "../../configs/ColorConfig";
 import Theme from "../../configs/ThemeConfig";
-
 interface InputProps {
+  onChange:
+    | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
   placeholderStyle?: React.CSSProperties;
   placeHolderText?: string;
   numberOfLines?: number;
+  value?: string;
   inputTextStyle?: React.CSSProperties;
   onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   type?: "outlined" | "normal";
-  error?: boolean;
   errorText?: string;
+  style?: React.CSSProperties;
 }
-
-const Input: React.FC<FieldHookConfig<any> & InputProps> = (
-  props: FieldHookConfig<any> & InputProps
-) => {
-  const defaultProps: FieldHookConfig<any> = props as FieldHookConfig<any>;
-  console.log(defaultProps);
-
-  const [field, meta, helpers] = useField(defaultProps);
+const Input: React.FC<InputProps> = (props) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -38,40 +33,22 @@ const Input: React.FC<FieldHookConfig<any> & InputProps> = (
   return (
     <>
       {props.type === "outlined" ? (
-        <div>
-          <ThemeProvider theme={theme}>
-            <TextField
-              className="TextField-with-border-radius"
-              error={props.error ? true : false}
-              id="outlined-basic"
-              fullWidth
-              label={props.errorText === "" ? props.placeHolderText : "error"}
-              helperText={props.errorText !== "" ? props.errorText : null}
-              variant="outlined"
-              onChange={
-                props.onChange as
-                  | React.ChangeEventHandler<
-                      HTMLInputElement | HTMLTextAreaElement
-                    >
-                  | undefined
-              }
-              onBlur={props.onBlur}
-              value={props.value}
-              sx={{ marginTop: "10px", borderRadius: "50px" }}
-              inputProps={{
-                sx: {
-                  "&::placeholder": {
-                    color: "red",
-                    fontSize: "bold",
-                  },
-                },
-                "& fieldset": {
-                  borderRadius: "50px",
-                },
-              }}
-            />
-          </ThemeProvider>
-        </div>
+        <ThemeProvider theme={theme}>
+          <TextField
+            error={props.errorText !== "" ? true : false}
+            id="outlined-basic"
+            fullWidth
+            label={props.errorText === "" ? props.placeHolderText : "error"}
+            helperText={props.errorText !== "" ? props.errorText : null}
+            variant="outlined"
+            onChange={props.onChange}
+            onBlur={props.onBlur}
+            value={props.value}
+            multiline
+            sx={props.style}
+            rows={props.numberOfLines}
+          />
+        </ThemeProvider>
       ) : (
         <InputBase
           sx={
@@ -84,11 +61,7 @@ const Input: React.FC<FieldHookConfig<any> & InputProps> = (
                 }
           }
           placeholder={props.placeHolderText}
-          onChange={
-            props.onChange as
-              | React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
-              | undefined
-          }
+          onChange={props.onChange}
           rows={props.numberOfLines}
           inputProps={{
             sx: {
@@ -104,5 +77,5 @@ const Input: React.FC<FieldHookConfig<any> & InputProps> = (
     </>
   );
 };
-
 export default Input;
+export type { InputProps };
