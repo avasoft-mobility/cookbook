@@ -20,7 +20,7 @@ import ApiService from "../services/ApiService";
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
-  const tabRouter = useTabRouter();
+  const { tabRouter } = useTabRouter();
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);

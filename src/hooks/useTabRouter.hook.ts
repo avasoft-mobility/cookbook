@@ -5,7 +5,5 @@ export default function useTabRouter() {
     window.open(window.location.origin + `${url}`);
   };
 
-  return (url: string) => {
-    tabRouter(url);
-  };
+  return { tabRouter };
 }

@@ -29,7 +29,7 @@ interface TopicErrors {
 const TopicPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
-  const tabRouter = useTabRouter();
+  const { tabRouter } = useTabRouter();
   const [references, setReferences] = useState([
     {
       id: uuid(),
