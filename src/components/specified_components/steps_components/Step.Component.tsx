@@ -1,121 +1,134 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Formik } from "formik";
 import Text from "../../wrapper_components/Text.wrapperComponent";
 import Theme from "../../../configs/ThemeConfig";
 import StepValue from "../../../models/StepValue.model";
-import ApiService from "../../../services/ApiService";
-import Color from "../../../configs/ColorConfig";
-import FileUpload from "../../wrapper_components/FileUpload.component";
+import FormikInput from "../Formik_components/FormikInput.Component";
 
 interface StepProps {
   values: StepValue;
   onValueChange: Function;
   currentIndex: number;
+  handleFileUpload: Function;
 }
 
 const Step: React.FC<StepProps> = (props) => {
-  const changeHandler = async (event: any) => {
-    const result = await ApiService.uploadFile(event.target.files[0]);
-    formik.values.image = result.url;
-    props.onValueChange(formik.values, props.currentIndex);
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      title: props.values.title,
-      description: props.values.description,
-      code: props.values.code,
-      image: props.values.image,
-    },
-    validate: (values) => {
-      let errors: any = {};
-
-      if (!values.title) {
-        errors.title = "Required";
-      }
-
-      if (values.title.length < 10) {
-        errors.title = "Must be 10 characters or more";
-      }
-
-      if (!values.description) {
-        errors.description = "Required";
-      }
-
-      if (values.description.length < 20) {
-        errors.description = "Must be 20 characters or more";
-      }
-      return errors;
-    },
-    onSubmit: (_) => {},
-  });
-
-  const onVisualChange = (event: any) => {
-    formik.handleChange(event);
-    props.onValueChange(formik.values, props.currentIndex);
-  };
-
   return (
-    <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-      <form>
-        <div style={{ paddingTop: "10px" }}>
-          <Text variant={"body2"} color={Theme.palette.text.secondary}>
-            Title
-          </Text>
-          <input
-            style={styles.inputStyle}
-            name="title"
-            onChange={onVisualChange}
-            placeholder="Title"
-            value={formik.values.title}
-            onBlur={onVisualChange}
-          />
-          {formik.errors.title && formik.touched ? (
-            <Text variant={"body2"} color={Color.errorMessage}>
-              {formik.errors.title}
-            </Text>
-          ) : null}
-        </div>
-        <div style={{ paddingTop: "10px" }}>
-          <Text variant={"body2"} color={Theme.palette.text.secondary}>
-            Description
-          </Text>
-          <textarea
-            style={styles.inputStyle}
-            name="description"
-            onChange={onVisualChange}
-            placeholder="description"
-            value={formik.values.description}
-            onBlur={onVisualChange}
-          />
-          {formik.errors.description && formik.touched ? (
-            <Text variant={"body2"} color={Color.errorMessage}>
-              {formik.errors.description}
-            </Text>
-          ) : null}
-        </div>
-        <div style={{ paddingTop: "10px" }}>
-          <Text variant={"body2"} color={Theme.palette.text.secondary}>
-            Code
-          </Text>
-          <textarea
-            style={styles.inputStyle}
-            name="code"
-            onChange={onVisualChange}
-            placeholder="code"
-            rows={10}
-            value={formik.values.code}
-            onBlur={onVisualChange}
-          />
-        </div>
-        <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-          <FileUpload
-            onChange={changeHandler}
-            label={"Upload File"}
-            textColor={Theme.palette.text.secondary}
-          />
-        </div>
-      </form>
+    <div>
+      <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+        <Formik
+          initialValues={{
+            title: props.values.title,
+            description: props.values.description,
+            code: props.values.code,
+            image: props.values.image,
+          }}
+          validate={(values) => {
+            let errors: any = {};
+
+            if (!values.title) {
+              errors.title = "Required";
+            }
+
+            if (values.title.length < 10) {
+              errors.title = "Must be 10 characters or more";
+            }
+
+            if (!values.description) {
+              errors.description = "Required";
+            }
+
+            if (values.description.length < 20) {
+              errors.description = "Must be 20 characters or more";
+            }
+            return errors;
+          }}
+          onSubmit={(values) => {}}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <form>
+              <div style={{ paddingTop: "10px" }}>
+                <Text variant={"body2"} color={Theme.palette.text.secondary}>
+                  Title
+                </Text>
+                <FormikInput
+                  name={"title"}
+                  onChange={(event) => {
+                    handleChange("title");
+                    props.onValueChange(values, props.currentIndex);
+                  }}
+                  onBlur={handleBlur("title")}
+                  type="outlined"
+                  errorText={errors.title && touched.title ? errors.title : ""}
+                  placeHolderText="Enter the Title"
+                  style={{ marginTop: "10px" }}
+                />
+              </div>
+              <div style={{ paddingTop: "10px" }}>
+                <Text variant={"body2"} color={Theme.palette.text.secondary}>
+                  Description
+                </Text>
+                <FormikInput
+                  name={"description"}
+                  onChange={(event) => {
+                    handleChange("description");
+                    props.onValueChange(values, props.currentIndex);
+                  }}
+                  onBlur={handleBlur("description")}
+                  type="outlined"
+                  errorText={
+                    errors.description && touched.description
+                      ? errors.description
+                      : ""
+                  }
+                  placeHolderText="Enter the Description"
+                  style={{ marginTop: "10px" }}
+                  numberOfLines={5}
+                />
+              </div>
+              <div style={{ paddingTop: "10px" }}>
+                <Text variant={"body2"} color={Theme.palette.text.secondary}>
+                  Code
+                </Text>
+                <FormikInput
+                  name={"code"}
+                  onChange={(event) => {
+                    handleChange("code");
+                    props.onValueChange(values, props.currentIndex);
+                  }}
+                  onBlur={handleBlur("code")}
+                  type="outlined"
+                  placeHolderText="Enter the code"
+                  style={{ marginTop: "10px" }}
+                  errorText=""
+                  numberOfLines={5}
+                />
+              </div>
+              <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                <Text variant={"body2"} color={Theme.palette.text.secondary}>
+                  Upload File
+                </Text>
+                <input
+                  style={{ marginTop: "10px" }}
+                  type="file"
+                  name="file"
+                  onChange={(event) => {
+                    props.handleFileUpload(event, values, props.currentIndex);
+                  }}
+                />
+              </div>
+            </form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
