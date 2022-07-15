@@ -17,7 +17,7 @@ import ErrorResponse from "../../models/request_response_models/Error.Response.m
 import Step from "../../models/Step.Model";
 import StepValue from "../../models/StepValue.model";
 import ApiService from "../../services/ApiService";
-import FileUpload from "../../components/FileUpload.component";
+import FileUpload from "../../components/wrapper_components/FileUpload.component";
 
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -232,7 +232,6 @@ const CreateCookbookPage = () => {
             <FileUpload
               onChange={onTechnicalFlowUpload}
               label={"Upload Technical Flow"}
-              textVariant={"body2"}
               textColor={Theme.palette.text.secondary}
             />
           </div>
@@ -240,7 +239,6 @@ const CreateCookbookPage = () => {
             <FileUpload
               onChange={onSampleProjectUpload}
               label={"Upload Sample Code (in compressed format)"}
-              textVariant={"body2"}
               textColor={Theme.palette.text.secondary}
             />
           </div>

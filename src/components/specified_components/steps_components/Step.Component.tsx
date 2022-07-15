@@ -5,7 +5,7 @@ import Theme from "../../../configs/ThemeConfig";
 import StepValue from "../../../models/StepValue.model";
 import ApiService from "../../../services/ApiService";
 import Color from "../../../configs/ColorConfig";
-import FileUpload from "../../FileUpload.component";
+import FileUpload from "../../wrapper_components/FileUpload.component";
 
 interface StepProps {
   values: StepValue;
@@ -112,7 +112,6 @@ const Step: React.FC<StepProps> = (props) => {
           <FileUpload
             onChange={changeHandler}
             label={"Upload File"}
-            textVariant={"body2"}
             textColor={Theme.palette.text.secondary}
           />
         </div>

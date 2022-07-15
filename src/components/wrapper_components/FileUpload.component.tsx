@@ -1,23 +1,8 @@
 import React from "react";
-import Color from "../configs/ColorConfig";
-import Text from "./wrapper_components/Text.wrapperComponent";
+import Color from "../../configs/ColorConfig";
+import Text from "./Text.wrapperComponent";
 interface FileUploadProps {
   label: string;
-  textVariant:
-    | "body1"
-    | "body2"
-    | "button"
-    | "caption"
-    | "h1"
-    | "h2"
-    | "h3"
-    | "h4"
-    | "h5"
-    | "h6"
-    | "inherit"
-    | "overline"
-    | "subtitle1"
-    | "subtitle2";
   textColor: string;
   gutterBottom?: boolean;
   noWrap?: boolean;
@@ -31,7 +16,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
   return (
     <div>
       <Text
-        variant={props.textVariant}
+        variant={"body2"}
         color={props.textColor}
         gutterBottom={props.gutterBottom}
         noWrap={props.noWrap}
@@ -48,11 +33,13 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
         type="file"
         onChange={props.onChange}
       />
-      <div style={styles.errorTextContainer}>
-        <Text variant={"body2"} color={Color.errorMessage}>
-          {props.errorMessage}
-        </Text>
-      </div>
+      {props.errorMessage !== undefined || "" || null ? (
+        <div style={styles.errorTextContainer}>
+          <Text variant={"body2"} color={Color.errorMessage}>
+            {props.errorMessage}
+          </Text>
+        </div>
+      ) : null}
     </div>
   );
 };
