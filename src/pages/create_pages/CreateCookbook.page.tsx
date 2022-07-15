@@ -16,6 +16,7 @@ import ErrorResponse from "../../models/request_response_models/Error.Response.m
 import Step from "../../models/Step.Model";
 import StepValue from "../../models/StepValue.model";
 import ApiService from "../../services/ApiService";
+import FileUpload from "../../components/wrapper_components/FileUpload.component";
 
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -118,8 +119,6 @@ const CreateCookbookPage = () => {
 
   const isCookbookValid = () => {
     if (!newCookbook.topicId || newCookbook.topicId.trim() === "") {
-      console.log("asd");
-
       showErrorSnackBar("Choose any topic");
       return false;
     }
@@ -207,23 +206,17 @@ const CreateCookbookPage = () => {
 
         <div>
           <div style={styles.fileUploadContainer}>
-            <Text variant="body2" color={Theme.palette.text.secondary}>
-              Upload Technical Flow
-            </Text>
-            <input
-              type="file"
-              style={styles.fileUploadItem}
+            <FileUpload
               onChange={onTechnicalFlowUpload}
+              label={"Upload Technical Flow"}
+              textColor={Theme.palette.text.secondary}
             />
           </div>
           <div style={styles.fileUploadContainer}>
-            <Text variant="body2" color={Theme.palette.text.secondary}>
-              Upload Sample Code (in compressed format)
-            </Text>
-            <input
-              type="file"
-              style={styles.fileUploadItem}
+            <FileUpload
               onChange={onSampleProjectUpload}
+              label={"Upload Sample Code (in compressed format)"}
+              textColor={Theme.palette.text.secondary}
             />
           </div>
 

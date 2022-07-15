@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import Text from "../../wrapper_components/Text.wrapperComponent";
 import Theme from "../../../configs/ThemeConfig";
 import StepValue from "../../../models/StepValue.model";
 import ApiService from "../../../services/ApiService";
 import Color from "../../../configs/ColorConfig";
+import FileUpload from "../../wrapper_components/FileUpload.component";
 
 interface StepProps {
   values: StepValue;
@@ -55,72 +56,66 @@ const Step: React.FC<StepProps> = (props) => {
   };
 
   return (
-    <div>
-      <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-        <form>
-          <div style={{ paddingTop: "10px" }}>
-            <Text variant={"body2"} color={Theme.palette.text.secondary}>
-              Title
+    <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+      <form>
+        <div style={{ paddingTop: "10px" }}>
+          <Text variant={"body2"} color={Theme.palette.text.secondary}>
+            Title
+          </Text>
+          <input
+            style={styles.inputStyle}
+            name="title"
+            onChange={onVisualChange}
+            placeholder="Title"
+            value={formik.values.title}
+            onBlur={onVisualChange}
+          />
+          {formik.errors.title && formik.touched ? (
+            <Text variant={"body2"} color={Color.errorMessage}>
+              {formik.errors.title}
             </Text>
-            <input
-              style={styles.inputStyle}
-              name="title"
-              onChange={onVisualChange}
-              placeholder="Title"
-              value={formik.values.title}
-              onBlur={onVisualChange}
-            />
-            {formik.errors.title && formik.touched ? (
-              <Text variant={"body2"} color={Color.errorMessage}>
-                {formik.errors.title}
-              </Text>
-            ) : null}
-          </div>
-          <div style={{ paddingTop: "10px" }}>
-            <Text variant={"body2"} color={Theme.palette.text.secondary}>
-              Description
+          ) : null}
+        </div>
+        <div style={{ paddingTop: "10px" }}>
+          <Text variant={"body2"} color={Theme.palette.text.secondary}>
+            Description
+          </Text>
+          <textarea
+            style={styles.inputStyle}
+            name="description"
+            onChange={onVisualChange}
+            placeholder="description"
+            value={formik.values.description}
+            onBlur={onVisualChange}
+          />
+          {formik.errors.description && formik.touched ? (
+            <Text variant={"body2"} color={Color.errorMessage}>
+              {formik.errors.description}
             </Text>
-            <textarea
-              style={styles.inputStyle}
-              name="description"
-              onChange={onVisualChange}
-              placeholder="description"
-              value={formik.values.description}
-              onBlur={onVisualChange}
-            />
-            {formik.errors.description && formik.touched ? (
-              <Text variant={"body2"} color={Color.errorMessage}>
-                {formik.errors.description}
-              </Text>
-            ) : null}
-          </div>
-          <div style={{ paddingTop: "10px" }}>
-            <Text variant={"body2"} color={Theme.palette.text.secondary}>
-              Code
-            </Text>
-            <textarea
-              style={styles.inputStyle}
-              name="code"
-              onChange={onVisualChange}
-              placeholder="code"
-              rows={10}
-              value={formik.values.code}
-              onBlur={onVisualChange}
-            />
-          </div>
-          <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-            <Text variant={"body2"} color={Theme.palette.text.secondary}>
-              Upload File
-            </Text>
-            <input
-              style={{ marginTop: "10px" }}
-              type="file"
-              name="file"
-              onChange={changeHandler}
-            />
-          </div>
-        </form>
-      </div>
+          ) : null}
+        </div>
+        <div style={{ paddingTop: "10px" }}>
+          <Text variant={"body2"} color={Theme.palette.text.secondary}>
+            Code
+          </Text>
+          <textarea
+            style={styles.inputStyle}
+            name="code"
+            onChange={onVisualChange}
+            placeholder="code"
+            rows={10}
+            value={formik.values.code}
+            onBlur={onVisualChange}
+          />
+        </div>
+        <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+          <FileUpload
+            onChange={changeHandler}
+            label={"Upload File"}
+            textColor={Theme.palette.text.secondary}
+          />
+        </div>
+      </form>
     </div>
   );
 };
