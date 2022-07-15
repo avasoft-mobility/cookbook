@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MutableRefObject, useRef, useState } from "react";
 import { useFormik } from "formik";
 import Text from "../../wrapper_components/Text.wrapperComponent";
 import Theme from "../../../configs/ThemeConfig";
@@ -6,6 +6,8 @@ import StepValue from "../../../models/StepValue.model";
 import ApiService from "../../../services/ApiService";
 import Color from "../../../configs/ColorConfig";
 import FileUpload from "../../wrapper_components/FileUpload.component";
+import { Popover, Popper } from "@mui/material";
+import TopicsList from "./TopicsList.component";
 
 interface StepProps {
   values: StepValue;
@@ -14,6 +16,16 @@ interface StepProps {
 }
 
 const Step: React.FC<StepProps> = (props) => {
+  const [anchorEl, setAnchorEl] = useState<HTMLTextAreaElement | null>(null);
+  const descriptionRef = useRef() as MutableRefObject<HTMLTextAreaElement>;
+
+  const [initialValue, setInitialValue] = useState({
+    title: props.values.title,
+    description: props.values.description,
+    code: props.values.code,
+    image: props.values.image,
+  });
+
   const changeHandler = async (event: any) => {
     const result = await ApiService.uploadFile(event.target.files[0]);
     formik.values.image = result.url;
@@ -21,12 +33,8 @@ const Step: React.FC<StepProps> = (props) => {
   };
 
   const formik = useFormik({
-    initialValues: {
-      title: props.values.title,
-      description: props.values.description,
-      code: props.values.code,
-      image: props.values.image,
-    },
+    enableReinitialize: true,
+    initialValues: initialValue,
     validate: (values) => {
       let errors: any = {};
 
@@ -53,6 +61,78 @@ const Step: React.FC<StepProps> = (props) => {
   const onVisualChange = (event: any) => {
     formik.handleChange(event);
     props.onValueChange(formik.values, props.currentIndex);
+    processCookbookMentions();
+  };
+
+  const processCookbookMentions = (replaceText: string | null = null) => {
+    const value = descriptionRef.current.value;
+
+    if (!value.includes("(#")) {
+      setAnchorEl(null);
+      return;
+    }
+
+    let valueSplittedWithCookbook = [];
+    if (replaceText && value.trim() === "(#") {
+      valueSplittedWithCookbook = [value, ""];
+    } else {
+      valueSplittedWithCookbook = value.split("(#");
+    }
+
+    if (valueSplittedWithCookbook.length < 1) {
+      setAnchorEl(null);
+      return;
+    }
+    setAnchorEl(descriptionRef.current);
+
+    const cookbookSplit = valueSplittedWithCookbook[1].split(")");
+
+    if (replaceText) {
+      if (cookbookSplit.length <= 1) {
+        const cookbookName = valueSplittedWithCookbook[1];
+        console.log({ cookbookName });
+
+        if (cookbookName.trim() === "") {
+          setInitialValue({
+            ...initialValue,
+            ...{
+              description: value.replace(
+                `(#${cookbookName}`,
+                `[${cookbookName}](@${replaceText}) `
+              ),
+            },
+          });
+          return;
+        }
+        setInitialValue({
+          ...initialValue,
+          ...{
+            description: value.replace(
+              `(#${cookbookName}`,
+              `[${cookbookName}](@${replaceText}) `
+            ),
+          },
+        });
+        return;
+      }
+    }
+
+    if (cookbookSplit.length <= 1) {
+      return;
+    }
+
+    const cookbookName = cookbookSplit[0];
+    setAnchorEl(null);
+
+    setInitialValue({
+      ...initialValue,
+      ...{
+        description: value.replace(
+          `(#${cookbookName})`,
+          `[${cookbookName}](@${cookbookName}) `
+        ),
+      },
+    });
   };
 
   return (
@@ -81,6 +161,7 @@ const Step: React.FC<StepProps> = (props) => {
             Description
           </Text>
           <textarea
+            ref={descriptionRef}
             style={styles.inputStyle}
             name="description"
             onChange={onVisualChange}
@@ -115,6 +196,18 @@ const Step: React.FC<StepProps> = (props) => {
             textColor={Theme.palette.text.secondary}
           />
         </div>
+        <Popper
+          id={anchorEl ? "cookbook" : undefined}
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+        >
+          <TopicsList
+            searchText=""
+            onTopicSelected={(topicSlug: string) => {
+              processCookbookMentions(topicSlug);
+            }}
+          />
+        </Popper>
       </form>
     </div>
   );
