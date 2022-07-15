@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "./Text.wrapperComponent";
 import CodeBlock from "./CodeBlock.WrapperComponent";
+import Linkify from "react-linkify";
 
 interface AccordianContentProps {
   content: string;
@@ -12,7 +13,7 @@ interface AccordianContentProps {
 
 const AccordionContent: React.FC<AccordianContentProps> = (props) => {
   return (
-    <div>
+    <Linkify>
       <Text
         variant={"subtitle2"}
         color={
@@ -37,7 +38,7 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
           <CodeBlock code={props.code} language={"tsx"} />
         </div>
       )}
-    </div>
+    </Linkify>
   );
 };
 const styles = {
