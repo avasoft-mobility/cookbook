@@ -111,7 +111,7 @@ const Step: React.FC<StepProps> = (props) => {
         <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
           <FileUpload
             onChange={changeHandler}
-            headerText={"Upload File"}
+            label={"Upload File"}
             textVariant={"body2"}
             textColor={Theme.palette.text.secondary}
           />

@@ -120,8 +120,6 @@ const CreateCookbookPage = () => {
 
   const isCookbookValid = () => {
     if (!newCookbook.topicId || newCookbook.topicId.trim() === "") {
-      console.log("asd");
-
       showErrorSnackBar("Choose any topic");
       return false;
     }
@@ -233,7 +231,7 @@ const CreateCookbookPage = () => {
           <div style={styles.fileUploadContainer}>
             <FileUpload
               onChange={onTechnicalFlowUpload}
-              headerText={"Upload Technical Flow"}
+              label={"Upload Technical Flow"}
               textVariant={"body2"}
               textColor={Theme.palette.text.secondary}
             />
@@ -241,7 +239,7 @@ const CreateCookbookPage = () => {
           <div style={styles.fileUploadContainer}>
             <FileUpload
               onChange={onSampleProjectUpload}
-              headerText={"Upload Technical Flow"}
+              label={"Upload Sample Code (in compressed format)"}
               textVariant={"body2"}
               textColor={Theme.palette.text.secondary}
             />

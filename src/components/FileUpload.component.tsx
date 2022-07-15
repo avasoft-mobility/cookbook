@@ -1,7 +1,8 @@
 import React from "react";
+import Color from "../configs/ColorConfig";
 import Text from "./wrapper_components/Text.wrapperComponent";
 interface FileUploadProps {
-  headerText: string;
+  label: string;
   textVariant:
     | "body1"
     | "body2"
@@ -21,8 +22,9 @@ interface FileUploadProps {
   gutterBottom?: boolean;
   noWrap?: boolean;
   paragraph?: boolean;
-  onChange: Function;
-  fileUploadStyles?: React.CSSProperties;
+  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  fileInputStyle?: React.CSSProperties;
+  errorMessage?: string;
 }
 
 const FileUpload: React.FC<FileUploadProps> = (props) => {
@@ -35,19 +37,33 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
         noWrap={props.noWrap}
         paragraph={props.paragraph}
       >
-        {props.headerText}
+        {props.label}
       </Text>
       <input
         style={
-          props.fileUploadStyles !== undefined
-            ? props.fileUploadStyles
-            : { marginTop: "10px" }
+          props.fileInputStyle !== undefined
+            ? props.fileInputStyle
+            : styles.fileInput
         }
         type="file"
-        onChange={(event) => props.onChange(event)}
+        onChange={props.onChange}
       />
+      <div style={styles.errorTextContainer}>
+        <Text variant={"body2"} color={Color.errorMessage}>
+          {props.errorMessage}
+        </Text>
+      </div>
     </div>
   );
+};
+
+const styles = {
+  errorTextContainer: {
+    marginTop: "5px",
+  },
+  fileInput: {
+    marginTop: "10px",
+  },
 };
 
 export default FileUpload;
