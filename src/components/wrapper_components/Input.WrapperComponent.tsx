@@ -1,5 +1,12 @@
-import { InputBase } from "@mui/material";
 import React from "react";
+import {
+  createTheme,
+  InputBase,
+  TextField,
+  ThemeProvider,
+} from "@mui/material";
+
+import Color from "../../configs/ColorConfig";
 import Theme from "../../configs/ThemeConfig";
 
 interface InputProps {
@@ -12,9 +19,46 @@ interface InputProps {
   value?: string;
   inputTextStyle?: React.CSSProperties;
   onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  type?: "outlined" | "normal";
+  errorText?: string;
+  style?: React.CSSProperties;
 }
 
 const Input: React.FC<InputProps> = (props) => {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: Color.primaryColor,
+        light: Color.primaryTintColor,
+      },
+    },
+  });
+
+  const outlinedInputTextField = () => {
+    return (
+      <ThemeProvider theme={theme}>
+        <TextField
+          error={props.errorText !== "" ? true : false}
+          id="outlined-basic"
+          fullWidth
+          label={props.errorText === "" ? props.placeHolderText : "error"}
+          helperText={props.errorText !== "" ? props.errorText : null}
+          variant="outlined"
+          onChange={props.onChange}
+          onBlur={props.onBlur}
+          value={props.value}
+          multiline
+          sx={props.style}
+          rows={props.numberOfLines}
+        />
+      </ThemeProvider>
+    );
+  };
+
+  if (props.type === "outlined") {
+    return outlinedInputTextField();
+  }
+
   return (
     <InputBase
       sx={
@@ -43,3 +87,4 @@ const Input: React.FC<InputProps> = (props) => {
 };
 
 export default Input;
+export type { InputProps };

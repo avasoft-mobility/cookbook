@@ -101,24 +101,18 @@ const Stackpage = () => {
           <Text variant={"body2"} color={""}>
             Stack Name
           </Text>
-          <div style={style.inputContainer}>
+          <div>
             <Input
               onChange={(event) => {
                 onInputChange(event);
               }}
               onBlur={onInputBlur}
-              inputTextStyle={{
-                width: "100%",
-                fontSize: "16px",
-                padding: "12px 8px",
-                color: Theme.palette.text.secondary,
-              }}
+              type={"outlined"}
+              placeHolderText="Enter the Stack Name"
+              style={{ marginTop: "10px" }}
+              errorText={stackData?.errors ? stackData.errors : ""}
             />
           </div>
-
-          <Text variant={"inherit"} color={"#DB4437"}>
-            {stackData?.errors}
-          </Text>
         </div>
 
         <div style={style.buttonContainer}>
