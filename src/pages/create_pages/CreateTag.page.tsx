@@ -7,11 +7,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { useMutation } from "react-query";
 
-import Theme from "../../configs/ThemeConfig";
-
 import ApiService from "../../services/ApiService";
 
-import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
+import Button from "../../components/wrapper_components/Button.WrapperComponent";
 import Input from "../../components/wrapper_components/Input.WrapperComponent";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
 import Color from "../../configs/ColorConfig";
@@ -117,20 +115,20 @@ const CreateTagPage = () => {
           {!mutation.isLoading ? (
             <>
               <div>
-                <Clickable
-                  ClickableText={"Add Tag"}
+                <Button
+                  buttonText={"Add Tag"}
                   variant={"contained"}
-                  clickableSize={"large"}
+                  buttonSize={"large"}
                   onClick={onAddButtonClicked}
                   style={style.addButton}
                 />
               </div>
               <div>
-                <Clickable
-                  ClickableText={"ADD NEW TOPIC"}
+                <Button
+                  buttonText={"ADD NEW TOPIC"}
                   variant={"text"}
                   textColor={Color.lightTextSecondaryColor}
-                  clickableSize={"large"}
+                  buttonSize={"large"}
                   onClick={onAddNewTopicClicked}
                   style={style.newTopicButton}
                 />

@@ -3,17 +3,17 @@ import React, { useState } from "react";
 import Step from "./Step.Component";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Theme from "../../../configs/ThemeConfig";
-import Clickable from "../../wrapper_components/ButtonWrapperComponent";
+import Button from "../../wrapper_components/Button.WrapperComponent";
 import StepValue from "../../../models/StepValue.model";
 import { v4 as uuidv4 } from "uuid";
 
-interface StepWrapperProps {
+interface StepMultiplierProps {
   onValueChange: Function;
   onDelete: Function;
   onAddNew: Function;
 }
 
-const StepWrapper: React.FC<StepWrapperProps> = (props) => {
+const StepMultiplier: React.FC<StepMultiplierProps> = (props) => {
   const [stepValue, setStepValue] = useState<StepValue[]>([
     {
       id: uuidv4(),
@@ -99,10 +99,10 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
           marginTop: "20px",
         }}
       >
-        <Clickable
-          ClickableText={"Add new Step"}
+        <Button
+          buttonText={"Add new Step"}
           variant={"contained"}
-          clickableSize={"medium"}
+          buttonSize={"medium"}
           onClick={handleAddNew}
         />
       </div>
@@ -110,4 +110,4 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
   );
 };
 
-export default StepWrapper;
+export default StepMultiplier;

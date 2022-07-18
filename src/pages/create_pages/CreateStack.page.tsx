@@ -5,14 +5,11 @@ import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useMutation } from "react-query";
-import { AxiosError, AxiosResponse } from "axios";
-import { useSnackbar } from "notistack";
-
-import Theme from "../../configs/ThemeConfig";
+import { AxiosError} from "axios";
 
 import ApiService from "../../services/ApiService";
 
-import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
+import Button from "../../components/wrapper_components/Button.WrapperComponent";
 import Input from "../../components/wrapper_components/Input.WrapperComponent";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
 import Color from "../../configs/ColorConfig";
@@ -116,20 +113,20 @@ const Stackpage = () => {
           {!mutation.isLoading ? (
             <>
               <div>
-                <Clickable
-                  ClickableText={"Add Stack"}
+                <Button
+                  buttonText={"Add Stack"}
                   variant={"contained"}
-                  clickableSize={"large"}
+                  buttonSize={"large"}
                   onClick={onAddButtonClicked}
                   style={style.addButton}
                 />
               </div>
               <div>
-                <Clickable
-                  ClickableText={"ADD NEW COOKBOOK"}
+                <Button
+                  buttonText={"ADD NEW COOKBOOK"}
                   variant={"text"}
                   textColor={Color.lightTextSecondaryColor}
-                  clickableSize={"large"}
+                  buttonSize={"large"}
                   onClick={onAddNewCookbookClicked}
                   style={style.cookbookButton}
                 />

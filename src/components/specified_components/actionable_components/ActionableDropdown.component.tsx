@@ -2,7 +2,7 @@ import React from "react";
 
 import Color from "../../../configs/ColorConfig";
 
-import Clickable from "../../wrapper_components/ButtonWrapperComponent";
+import Button from "../../wrapper_components/Button.WrapperComponent";
 import ConfirmationDialog from "../../wrapper_components/ConfirmationDialog.WrapperComponent";
 
 interface ActionableDropdownProps {
@@ -35,10 +35,10 @@ const ActionableDropdown: React.FC<ActionableDropdownProps> = ({
           onConfirm={onConfirm}
         />
         <div style={styles.buttonConatiner}>
-          <Clickable
-            ClickableText={clickableText}
+          <Button
+            buttonText={clickableText}
             variant={"text"}
-            clickableSize={"large"}
+            buttonSize={"large"}
             onClick={onClickableClick}
             textColor={Color.primaryColor}
             style={styles.clickableStyles}

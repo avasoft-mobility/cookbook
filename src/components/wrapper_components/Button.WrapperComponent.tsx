@@ -1,13 +1,13 @@
 import React from "react";
-import Button from "@mui/material/Button";
+import MaterialUiButton from "@mui/material/Button";
 import Theme from "../../configs/ThemeConfig";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
-interface ClickableProps {
-  ClickableText: string;
+interface ButtonProps {
+  buttonText: string;
   variant: "text" | "contained" | "outlined";
-  clickableSize: "small" | "medium" | "large";
+  buttonSize: "small" | "medium" | "large";
   textColor?: string;
   startIcon?: string;
   endIcon?: string;
@@ -15,7 +15,7 @@ interface ClickableProps {
   style?: React.CSSProperties;
 }
 
-const Clickable: React.FC<ClickableProps> = (props) => {
+const Button: React.FC<ButtonProps> = (props) => {
   const Icon = (icon: string) => {
     if (icon === "delete") {
       return <DeleteIcon />;
@@ -26,9 +26,9 @@ const Clickable: React.FC<ClickableProps> = (props) => {
   };
 
   return (
-    <Button
+    <MaterialUiButton
       onClick={props.onClick}
-      size={props.clickableSize}
+      size={props.buttonSize}
       variant={props.variant}
       startIcon={props.startIcon !== undefined ? Icon(props.startIcon) : null}
       endIcon={props.endIcon !== undefined ? Icon(props.endIcon) : null}
@@ -40,9 +40,9 @@ const Clickable: React.FC<ClickableProps> = (props) => {
       }}
       style={props.style}
     >
-      {props.ClickableText}
-    </Button>
+      {props.buttonText}
+    </MaterialUiButton>
   );
 };
 
-export default Clickable;
+export default Button;

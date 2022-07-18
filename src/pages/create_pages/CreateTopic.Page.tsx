@@ -6,11 +6,12 @@ import { v4 as uuid } from "uuid";
 
 import ApiService from "../../services/ApiService";
 
-import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
+import Button from "../../components/wrapper_components/Button.WrapperComponent";
 import Icon from "../../components/wrapper_components/Icon.WrapperComponent";
 import IconButton from "../../components/wrapper_components/IconButton.WrapperComponent";
 import Input from "../../components/wrapper_components/Input.WrapperComponent";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
+import Title from "../../components/specified_components/text_components/Title.component";
 import ActionableMultiSelectChip from "../../components/specified_components/actionable_components/ActionableMultiSelectChip.Component";
 
 import Color from "../../configs/ColorConfig";
@@ -21,7 +22,6 @@ import ErrorResponse from "../../models/request_response_models/Error.Response.m
 import TopicCreateRequest from "../../models/request_response_models/TopicCreate.request.model";
 import useExitPrompt from "../../hooks/useExitPrompt";
 import Tag from "../../models/Tag.Model";
-import Title from "../../components/specified_components/text_components/Title.component";
 
 interface TopicErrors {
   name: boolean;
@@ -337,11 +337,11 @@ const TopicPage = () => {
                 })}
               </div>
               <div style={styles.addButtonContainer}>
-                <Clickable
-                  ClickableText="ADD"
+                <Button
+                  buttonText="ADD"
                   onClick={addNewReference}
                   variant={"contained"}
-                  clickableSize={"small"}
+                  buttonSize={"small"}
                   textColor={Theme.palette.text.primary}
                 />
               </div>
@@ -351,19 +351,19 @@ const TopicPage = () => {
         <div
           style={{ ...styles.buttonsContainer, ...{ flexDirection: "column" } }}
         >
-          <Clickable
-            ClickableText="Save"
+          <Button
+            buttonText="Save"
             onClick={onSave}
             variant={"contained"}
-            clickableSize={"large"}
+            buttonSize={"large"}
             textColor={Theme.palette.text.primary}
             style={{ width: "100%", marginBottom: "20px" }}
           />
-          <Clickable
-            ClickableText="Add New CookBook"
+          <Button
+            buttonText="Add New CookBook"
             onClick={createNewCookBook}
             variant={"text"}
-            clickableSize={"large"}
+            buttonSize={"large"}
             textColor={Color.lightTextSecondaryColor}
             style={{ width: "100%", fontWeight: "400" }}
           />
