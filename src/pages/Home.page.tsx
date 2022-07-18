@@ -16,6 +16,7 @@ import Theme from "../configs/ThemeConfig";
 import Topic from "../models/Topic.Model";
 import ErrorResponse from "../models/request_response_models/Error.Response.model";
 import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import Title from "../components/specified_components/text_components/Title.component";
 
 const HomePage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -51,9 +52,7 @@ const HomePage = () => {
     <div style={styles.container}>
       <div className="innerContainer">
         <div style={{ marginBottom: "30px" }}>
-          <Text variant="h3" color={Theme.palette.primary.main}>
-            CookBook
-          </Text>
+          <Title text="Cookbook" />
         </div>
         <Search input={onSearch} />
       </div>

@@ -21,6 +21,7 @@ import ErrorResponse from "../../models/request_response_models/Error.Response.m
 import TopicCreateRequest from "../../models/request_response_models/TopicCreate.request.model";
 import useExitPrompt from "../../hooks/useExitPrompt";
 import Tag from "../../models/Tag.Model";
+import Title from "../../components/specified_components/text_components/Title.component";
 
 interface TopicErrors {
   name: boolean;
@@ -170,7 +171,7 @@ const TopicPage = () => {
     const clonedTopic = { ...topic };
     clonedTopic.referenceUrls = referenceurl;
     if (!validate()) {
-      topicCreateCall.mutate(clonedTopic);    
+      topicCreateCall.mutate(clonedTopic);
     }
   };
 
@@ -226,9 +227,7 @@ const TopicPage = () => {
   return (
     <div style={styles.container}>
       <div style={{ ...styles.innerContainer }}>
-        <Text variant="h4" color={Theme.palette.primary.main}>
-          Create Topic
-        </Text>
+        <Title text="Create Topic" />
       </div>
       <div
         style={{
@@ -264,7 +263,7 @@ const TopicPage = () => {
               createNewTag={() => navigate(`/create/tag`)}
               onTagChange={onTagChange}
               title="Tags"
-              errorMessage={errors.tags ? "* Topic atleast have one tag" : "" }
+              errorMessage={errors.tags ? "* Topic atleast have one tag" : ""}
             />
           </div>
           <div style={styles.inputsContainer}>

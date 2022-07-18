@@ -18,6 +18,7 @@ import Text from "../../components/wrapper_components/Text.wrapperComponent";
 import Color from "../../configs/ColorConfig";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
+import Title from "../../components/specified_components/text_components/Title.component";
 
 interface StackPageData {
   stackName: string;
@@ -90,11 +91,7 @@ const Stackpage = () => {
 
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
-      <div style={style.headingContainer}>
-        <Text variant={"h4"} color={Theme.palette.primary.main}>
-          Create Stack
-        </Text>
-      </div>
+      <Title text="Create Stack" />
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>

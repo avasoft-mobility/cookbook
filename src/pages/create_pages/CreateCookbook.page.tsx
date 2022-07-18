@@ -17,6 +17,7 @@ import Step from "../../models/Step.Model";
 import StepValue from "../../models/StepValue.model";
 import ApiService from "../../services/ApiService";
 import FileUpload from "../../components/wrapper_components/FileUpload.component";
+import Title from "../../components/specified_components/text_components/Title.component";
 
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -160,11 +161,7 @@ const CreateCookbookPage = () => {
   return (
     <div style={styles.container}>
       <div style={styles.innerContainer}>
-        <div>
-          <Text variant="h4" color={Theme.palette.primary.main}>
-            Create CookBook
-          </Text>
-        </div>
+        <Title text="Create Cookbook" />
       </div>
       <div style={styles.innerContainer}>
         <ActionableDropdown

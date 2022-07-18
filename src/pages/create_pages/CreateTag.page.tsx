@@ -18,6 +18,7 @@ import Color from "../../configs/ColorConfig";
 
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";
+import Title from "../../components/specified_components/text_components/Title.component";
 
 interface TagPageData {
   tagName: string;
@@ -91,11 +92,7 @@ const CreateTagPage = () => {
 
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
-      <div style={style.headingContainer}>
-        <Text variant={"h4"} color={Theme.palette.primary.main}>
-          Create Tag
-        </Text>
-      </div>
+      <Title text="Create Tag" />
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
