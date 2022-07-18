@@ -18,6 +18,7 @@ import StepValue from "../../models/StepValue.model";
 import ApiService from "../../services/ApiService";
 import FileUpload from "../../components/wrapper_components/FileUpload.component";
 import Title from "../../components/specified_components/text_components/Title.component";
+import ActionableComboBox from "../../components/specified_components/actionable_components/ActionableComboBox.component";
 
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
@@ -27,6 +28,7 @@ const CreateCookbookPage = () => {
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);
+  const authorsCall = useQuery("authors", ApiService.fetchAuthors);
   const createCookbookCall = useMutation(ApiService.createCookbook, {
     onSuccess: () => {
       navigate("/topics");
@@ -42,6 +44,7 @@ const CreateCookbookPage = () => {
     flowchartUrl: "",
     sampleProjectUrl: "",
     steps: [],
+    authorName: "",
   };
   const [newCookbook, setNewCookbook] =
     useState<CookbookCreateRequest>(emptyCookbook);
@@ -118,6 +121,16 @@ const CreateCookbookPage = () => {
     setNewCookbook(clonedCookbook);
   };
 
+  const onAuthorChanged = async (value: string) => {
+    if (!value || value.trim() === "") {
+      return;
+    }
+
+    const clonedCookbook = { ...newCookbook };
+    clonedCookbook.authorName = value;
+    setNewCookbook(clonedCookbook);
+  };
+
   const isCookbookValid = () => {
     if (!newCookbook.topicId || newCookbook.topicId.trim() === "") {
       showErrorSnackBar("Choose any topic");
@@ -126,6 +139,11 @@ const CreateCookbookPage = () => {
 
     if (!newCookbook.stackId || newCookbook.stackId.trim() === "") {
       showErrorSnackBar("Choose any stack");
+      return false;
+    }
+
+    if (!newCookbook.authorName || newCookbook.authorName.trim() === "") {
+      showErrorSnackBar("Choose any author");
       return false;
     }
 
@@ -189,6 +207,20 @@ const CreateCookbookPage = () => {
           dialogHeader={"Choose Stack"}
           confirmationDialogvalue={"Choose the Stack"}
           clickableText={"Add Stack"}
+        />
+        <ActionableComboBox
+          title={"Authors"}
+          onClickableClick={(event) => {
+            tabRouter.navigate("/create/author");
+          }}
+          label={"Authors"}
+          clickableText={"Add Author"}
+          onChanged={onAuthorChanged}
+          options={
+            authorsCall.isSuccess
+              ? authorsCall.data.map((author) => author.name)
+              : [""]
+          }
         />
         <div style={styles.steps}>
           <Text variant="body1" color={Theme.palette.text.secondary}>

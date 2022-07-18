@@ -28,6 +28,11 @@ class ApiService {
     return topic.data;
   };
 
+  public static fetchAuthors = async (): Promise<Author[]> => {
+    let topic = await HttpClient.get<Author[]>(`${RouteConfig.authors}`);
+    return topic.data;
+  };
+
   public static uploadFile = async (
     file: File
   ): Promise<FileUploadResponse> => {

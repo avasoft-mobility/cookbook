@@ -3,6 +3,7 @@ import Step from "../Step.Model";
 interface CookbookCreateRequest {
   topicId: string;
   stackId: string;
+  authorName: string;
   sampleProjectUrl: string;
   flowchartUrl: string;
   steps: Step[];

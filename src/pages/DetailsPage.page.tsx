@@ -119,7 +119,7 @@ const DetailsPage: React.FC = () => {
         }
         mainContent={
           <DetailScreenMainContent
-            steps={selectedCookbook ? selectedCookbook.steps : []}
+            cookbook={selectedCookbook}
             additionalLinks={
               selectedItemName === "additional_links"
                 ? data?.referenceUrls

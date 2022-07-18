@@ -1,22 +1,22 @@
 import React from "react";
-import Step from "../../../models/Step.Model";
+import Cookbook from "../../../models/Cookbook.Model";
 import AdditionalLinkList from "../additional_link_components/AdditionalLinkList";
 import CookbookContent from "./CookbookContent.component";
 
 interface DetailScreenMainContentProps {
-  steps: Step[];
+  cookbook?: Cookbook;
   additionalLinks?: string[];
 }
 
 const DetailScreenMainContent: React.FC<DetailScreenMainContentProps> = ({
-  steps,
+  cookbook,
   additionalLinks,
 }) => {
   if (additionalLinks) {
     return <AdditionalLinkList links={additionalLinks} />;
   }
 
-  return <CookbookContent steps={steps} />;
+  return <CookbookContent cookbook={cookbook} />;
 };
 
 export default DetailScreenMainContent;

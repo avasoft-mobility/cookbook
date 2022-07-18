@@ -1,14 +1,18 @@
 import React from "react";
-import Step from "../../../models/Step.Model";
+import Cookbook from "../../../models/Cookbook.Model";
 import AccordionList from "../../wrapper_components/AccordionList.WrapperComponent";
+import AuthorItem from "./AuthorItem.Component";
 
 interface CookbookContentProps {
-  steps: Step[];
+  cookbook?: Cookbook;
 }
 const CookbookContent: React.FC<CookbookContentProps> = (props) => {
   return (
     <div>
-      <AccordionList steps={props.steps} />
+      <AccordionList steps={props.cookbook ? props.cookbook.steps : []} />
+      {props.cookbook && props.cookbook.author ? (
+        <AuthorItem name={props.cookbook ? props.cookbook?.author?.name : ""} />
+      ) : null}
     </div>
   );
 };
