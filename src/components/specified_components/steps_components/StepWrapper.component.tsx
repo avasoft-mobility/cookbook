@@ -24,7 +24,7 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
       image: "",
     },
   ]);
-  const onValueChange = (value: StepValue, index: number,imageUrl:string) => {
+  const onValueChange = (value: StepValue, index: number, imageUrl: string) => {
     let newStep = [...stepValue];
     let currentStepElement = newStep[index];
     currentStepElement.title = value.title;
@@ -35,9 +35,9 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
     setStepValue(newStep);
     props.onValueChange(stepValue);
   };
-  const handleFileUpload = async (event: any,values:any,index:number) => {
+  const handleFileUpload = async (event: any, values: any, index: number) => {
     const result = await ApiService.uploadFile(event.target.files[0]);
-    onValueChange(values,index,result.url)
+    onValueChange(values, index, result.url);
   };
   const handleAddNew = () => {
     const newStep: StepValue = {

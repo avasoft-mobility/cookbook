@@ -2,7 +2,9 @@ import React from "react";
 
 import { Field, FieldProps } from "formik";
 
-import Input, { InputProps } from "../../wrapper_components/Input.WrapperComponent";
+import Input, {
+  InputProps,
+} from "../../wrapper_components/Input.WrapperComponent";
 
 interface FormikInputProps extends InputProps {
   name: string;
