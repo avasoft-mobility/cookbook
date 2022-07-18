@@ -10,6 +10,8 @@ import TopicDetail from "../models/TopicDetail.Model";
 import { HttpClient } from "./Client";
 import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
 import Cookbook from "../models/Cookbook.Model";
+import Author from "../models/Author.Model";
+import AuthorCreateRequest from "../models/request_response_models/AuthorCreate.request";
 
 class ApiService {
   public static fetchTopics = async (searchText: string): Promise<Topic[]> => {
@@ -80,8 +82,8 @@ class ApiService {
       newCookbook
     );
     return cookbook;
-  }
-  
+  };
+
   public static fetchTags = async (): Promise<Tag[]> => {
     let tags = await HttpClient.get<Tag[]>(`${RouteConfig.tags}`);
     return tags.data;
@@ -95,6 +97,16 @@ class ApiService {
       topic
     );
     return createdtopic;
+  };
+
+  public static addAuthor = async (
+    author: AuthorCreateRequest
+  ): Promise<Author> => {
+    let createdAuthor = await HttpClient.post<AuthorCreateRequest, Author>(
+      `${RouteConfig.authors}`,
+      author
+    );
+    return createdAuthor;
   };
 }
 
