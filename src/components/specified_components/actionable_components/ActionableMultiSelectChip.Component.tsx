@@ -1,7 +1,7 @@
 import React from "react";
 
 import Text from "../..//wrapper_components/Text.wrapperComponent";
-import Clickable from "../..//wrapper_components/ButtonWrapperComponent";
+import Button from "../../wrapper_components/Button.WrapperComponent";
 import MultipleSelectChip from "../../wrapper_components/MultipleSelectChip.WrapperComponent";
 
 import Color from "../../../configs/ColorConfig";
@@ -35,10 +35,10 @@ const ActionableMultiSelectChip: React.FC<ActionableMultiSelectChipProps> = (
             }
           />
         </div>
-        <Clickable
-          ClickableText={"Add Tag"}
+        <Button
+          buttonText={"Add Tag"}
           variant={"text"}
-          clickableSize={"large"}
+          buttonSize={"large"}
           onClick={() => props.createNewTag()}
           textColor={Color.primaryColor}
           style={styles.addButton}

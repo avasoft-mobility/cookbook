@@ -2,15 +2,9 @@ import { IconButton } from "@mui/material";
 import React, { useState } from "react";
 import Step from "./Step.Component";
 import DeleteIcon from "@mui/icons-material/Delete";
-<<<<<<< HEAD:src/components/specified_components/steps_components/StepWrapper.component.tsx
 import Theme from "../../../configs/ThemeConfig";
-import Clickable from "../../wrapper_components/ButtonWrapperComponent";
+import Button from "../../wrapper_components/Button.WrapperComponent";
 import StepValue from "../../../models/StepValue.model";
-=======
-import Theme from "../configs/ThemeConfig";
-import Button from "./wrapper_components/Button.WrapperComponent";
-import StepValue from "../models/StepValue.model";
->>>>>>> 259a6ee (Change ComponentName):src/components/StepMultiplier.component.tsx
 import { v4 as uuidv4 } from "uuid";
 
 interface StepMultiplierProps {

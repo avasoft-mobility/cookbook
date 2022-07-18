@@ -5,19 +5,17 @@ import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useMutation } from "react-query";
-import { AxiosError, AxiosResponse } from "axios";
-import { useSnackbar } from "notistack";
-
-import Theme from "../../configs/ThemeConfig";
+import { AxiosError} from "axios";
 
 import ApiService from "../../services/ApiService";
 
-import Button from "../components/wrapper_components/Button.WrapperComponent";
-import Input from "../components/wrapper_components/Input.WrapperComponent";
-import Text from "../components/wrapper_components/Text.wrapperComponent";
-import Color from "../configs/ColorConfig";
-import ErrorResponse from "../models/request_response_models/Error.Response.model";
-import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
+import Button from "../../components/wrapper_components/Button.WrapperComponent";
+import Input from "../../components/wrapper_components/Input.WrapperComponent";
+import Text from "../../components/wrapper_components/Text.wrapperComponent";
+import Color from "../../configs/ColorConfig";
+import ErrorResponse from "../../models/request_response_models/Error.Response.model";
+import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
+import Title from "../../components/specified_components/text_components/Title.component";
 
 interface StackPageData {
   stackName: string;

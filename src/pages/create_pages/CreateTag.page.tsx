@@ -7,14 +7,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { useMutation } from "react-query";
 
-import Theme from "../../configs/ThemeConfig";
-
 import ApiService from "../../services/ApiService";
 
-import Button from "../components/wrapper_components/Button.WrapperComponent";
-import Input from "../components/wrapper_components/Input.WrapperComponent";
-import Text from "../components/wrapper_components/Text.wrapperComponent";
-import Color from "../configs/ColorConfig";
+import Button from "../../components/wrapper_components/Button.WrapperComponent";
+import Input from "../../components/wrapper_components/Input.WrapperComponent";
+import Text from "../../components/wrapper_components/Text.wrapperComponent";
+import Color from "../../configs/ColorConfig";
 
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";

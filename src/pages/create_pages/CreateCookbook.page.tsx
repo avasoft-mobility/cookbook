@@ -2,21 +2,22 @@ import { AxiosError } from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
-import StepMultiplier from "../components/StepMultiplier.component";
-import Button from "../components/wrapper_components/Button.WrapperComponent";
-import ConfirmationDialog from "../components/wrapper_components/ConfirmationDialog.WrapperComponent";
-import Text from "../components/wrapper_components/Text.wrapperComponent";
-import Color from "../configs/ColorConfig";
+import StepMultiplier from "../../components/specified_components/steps_components/StepMultiplier.component";
+import Button from "../../components/wrapper_components/Button.WrapperComponent";
+import ActionableDropdown from "../../components/specified_components/actionable_components/ActionableDropdown.component";
+import Text from "../../components/wrapper_components/Text.wrapperComponent";
+import FileUpload from "../../components/wrapper_components/FileUpload.component";
+import Title from "../../components/specified_components/text_components/Title.component";
 
-import Theme from "../configs/ThemeConfig";
-import useErrorSnackbar from "../hooks/useErrorSnackbar.hook";
-import useTabRouter from "../hooks/useTabRouter.hook";
-import useExitPrompt from "../hooks/useExitPrompt";
-import CookbookCreateRequest from "../models/request_response_models/CookbookCreate.request";
-import ErrorResponse from "../models/request_response_models/Error.Response.model";
-import Step from "../models/Step.Model";
-import StepValue from "../models/StepValue.model";
-import ApiService from "../services/ApiService";
+import Theme from "../../configs/ThemeConfig";
+import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
+import useTabRouter from "../../hooks/useTabRouter.hook";
+import useExitPrompt from "../../hooks/useExitPrompt";
+import CookbookCreateRequest from "../../models/request_response_models/CookbookCreate.request";
+import ErrorResponse from "../../models/request_response_models/Error.Response.model";
+import Step from "../../models/Step.Model";
+import StepValue from "../../models/StepValue.model";
+import ApiService from "../../services/ApiService";
 
 const CreateCookbookPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
