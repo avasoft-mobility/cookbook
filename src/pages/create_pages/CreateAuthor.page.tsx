@@ -1,8 +1,8 @@
 import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
 import React, { useState } from "react";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
 import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
 import Color from "../../configs/ColorConfig";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
@@ -12,13 +12,48 @@ import ApiService from "../../services/ApiService";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
 import Title from "../../components/specified_components/text_components/Title.component";
 import Input from "../../components/wrapper_components/Input.WrapperComponent";
+import Author from "../../models/Author.Model";
 
 const CreateAuthorPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const [author, setAuthor] = useState<AuthorCreateRequest>();
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const mutation = useMutation(ApiService.addAuthor, {
+  const { isLoading, data } = useQuery(
+    ["author", id],
+    () => {
+      if (id !== undefined) {
+        return ApiService.fetchAuthor(id);
+      }
+    },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: (response) => {
+        onSuccessfetchAuthor(response!);
+      },
+      onError: (error: AxiosError) => {
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
+      },
+    }
+  );
+  const onSuccessfetchAuthor = (response: Author) => {
+    const newtagData: AuthorCreateRequest = {
+      name: response.name,
+    };
+    setAuthor(newtagData);
+  };
+
+  const createMutation = useMutation(ApiService.addAuthor, {
+    onSuccess: () => {
+      navigate("/create/cookbook");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
+    },
+  });
+
+  const updateMutation = useMutation(ApiService.updateAuthor, {
     onSuccess: () => {
       navigate("/create/cookbook");
     },
@@ -57,7 +92,21 @@ const CreateAuthorPage = () => {
 
   const onAddButtonClicked = () => {
     if (validateAuthorName(author?.name)) {
-      mutation.mutate(author!);
+      createMutation.mutate(author!);
+    }
+  };
+
+  const onUpdateButtonClicked = () => {
+    console.log("UpdateProcess");
+    if (author !== undefined && id !== undefined) {
+      const newAuthor: Author = {
+        name: author.name,
+        cookbooks: [],
+        _id: id,
+      };
+      if (validateAuthorName(author?.name)) {
+        updateMutation.mutate(newAuthor);
+      }
     }
   };
 
@@ -82,19 +131,26 @@ const CreateAuthorPage = () => {
               placeHolderText="Enter the Author Name"
               style={{ marginTop: "10px" }}
               errorText={""}
+              value={author?.name !== undefined ? author?.name : undefined}
             />
           </div>
         </div>
 
         <div style={style.buttonContainer}>
-          {!mutation.isLoading ? (
+          {!createMutation.isLoading ? (
             <>
               <div>
                 <Clickable
-                  ClickableText={"Add Author"}
+                  ClickableText={
+                    id !== undefined ? "Update Author" : "Add Author"
+                  }
                   variant={"contained"}
                   clickableSize={"large"}
-                  onClick={onAddButtonClicked}
+                  onClick={
+                    id !== undefined
+                      ? onUpdateButtonClicked
+                      : onAddButtonClicked
+                  }
                   style={style.addButton}
                 />
               </div>
