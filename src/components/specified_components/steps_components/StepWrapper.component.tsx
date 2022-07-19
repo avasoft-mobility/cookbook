@@ -6,6 +6,7 @@ import Theme from "../../../configs/ThemeConfig";
 import Clickable from "../../wrapper_components/ButtonWrapperComponent";
 import StepValue from "../../../models/StepValue.model";
 import { v4 as uuidv4 } from "uuid";
+import ApiService from "../../../services/ApiService";
 
 interface StepWrapperProps {
   onValueChange: Function;
@@ -23,16 +24,20 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
       image: "",
     },
   ]);
-  const onValueChange = (value: StepValue, index: number) => {
+  const onValueChange = (value: StepValue, index: number, imageUrl: string) => {
     let newStep = [...stepValue];
     let currentStepElement = newStep[index];
     currentStepElement.title = value.title;
     currentStepElement.description = value.description;
     currentStepElement.code = value.code;
-    currentStepElement.image = value.image;
+    currentStepElement.image = imageUrl;
     newStep[index] = currentStepElement;
     setStepValue(newStep);
     props.onValueChange(stepValue);
+  };
+  const handleFileUpload = async (event: any, values: any, index: number) => {
+    const result = await ApiService.uploadFile(event.target.files[0]);
+    onValueChange(values, index, result.url);
   };
   const handleAddNew = () => {
     const newStep: StepValue = {
@@ -73,6 +78,7 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
               values={value}
               onValueChange={onValueChange}
               currentIndex={index}
+              handleFileUpload={handleFileUpload}
             />
           </div>
           <div
