@@ -2,13 +2,14 @@ import React from "react";
 import Text from "./Text.wrapperComponent";
 import CodeBlock from "./CodeBlock.WrapperComponent";
 import Linkify from "react-linkify";
+import { height, maxHeight } from "@mui/system";
 
 interface AccordianContentProps {
   content: string;
   code?: string;
   contentColor?: string;
   image?: string;
-  imageWidth?: string;
+  imageStyle?: React.CSSProperties;
 }
 
 const AccordionContent: React.FC<AccordianContentProps> = (props) => {
@@ -25,9 +26,11 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
       {props.image !== undefined && props.image!.trim() !== "" && (
         <div style={styles.imageContainer}>
           <img
-            style={{
-              width: props.imageWidth !== undefined ? props.imageWidth : "100%",
-            }}
+            style={
+              props.imageStyle !== undefined
+                ? props.imageStyle
+                : { height: "600px", width: "auto" }
+            }
             src={props.image}
             alt="could not found"
           />
@@ -47,6 +50,9 @@ const styles = {
   },
   imageContainer: {
     marginTop: "10px",
+    // display:'flex',
+    // justifyContent:'center',
+    // alignItems: 'center'
   },
 };
 
