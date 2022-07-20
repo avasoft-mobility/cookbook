@@ -34,7 +34,7 @@ const Stackpage = () => {
   const { id } = useParams();
 
   const { isLoading, data } = useQuery(
-    ["stack", id],
+    ["stacks", id],
     () => {
       if (id !== undefined) {
         return ApiService.getStack(id);
@@ -51,6 +51,7 @@ const Stackpage = () => {
     }
   );
   const onSuccessfetchStack = (response: Stack) => {
+    console.log(response);
     const newStackData: StackPageData = {
       stackName: response.name,
       errors: "",
@@ -124,7 +125,7 @@ const Stackpage = () => {
     if (stackData !== undefined && id !== undefined) {
       const newStack: Stack = {
         name: stackData.stackName,
-        slug:"",
+        slug: "",
         cookbooks: [],
         _id: id,
       };
@@ -154,7 +155,11 @@ const Stackpage = () => {
               }}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText="Enter the Stack Name"
+              placeHolderText={
+                stackData?.stackName !== undefined
+                  ? undefined
+                  : "Enter the Stack Name"
+              }
               style={{ marginTop: "10px" }}
               errorText={stackData?.errors ? stackData.errors : ""}
               value={

@@ -21,7 +21,7 @@ const CreateAuthorPage = () => {
   const { id } = useParams();
 
   const { isLoading, data } = useQuery(
-    ["author", id],
+    ["authors", id],
     () => {
       if (id !== undefined) {
         return ApiService.fetchAuthor(id);
@@ -37,12 +37,6 @@ const CreateAuthorPage = () => {
       },
     }
   );
-  const onSuccessfetchAuthor = (response: Author) => {
-    const newtagData: AuthorCreateRequest = {
-      name: response.name,
-    };
-    setAuthor(newtagData);
-  };
 
   const createMutation = useMutation(ApiService.addAuthor, {
     onSuccess: () => {
@@ -62,6 +56,13 @@ const CreateAuthorPage = () => {
     },
   });
 
+  const onSuccessfetchAuthor = (response: Author) => {
+    const newAuthor: AuthorCreateRequest = {
+      name: response.name,
+    };
+    setAuthor(newAuthor);
+  };
+
   const validateAuthorName = (value?: string) => {
     if (value === undefined) {
       showErrorSnackBar("Fill in the author name");
@@ -77,7 +78,6 @@ const CreateAuthorPage = () => {
       showErrorSnackBar("Author name length should be atleast 2 characters");
       return false;
     }
-
     return true;
   };
 
@@ -97,7 +97,6 @@ const CreateAuthorPage = () => {
   };
 
   const onUpdateButtonClicked = () => {
-    console.log("UpdateProcess");
     if (author !== undefined && id !== undefined) {
       const newAuthor: Author = {
         name: author.name,
@@ -128,7 +127,7 @@ const CreateAuthorPage = () => {
               onChange={(event) => {}}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText="Enter the Author Name"
+              placeHolderText={author?.name !== undefined ? undefined : "Enter the Author Name"}
               style={{ marginTop: "10px" }}
               errorText={""}
               value={author?.name !== undefined ? author?.name : undefined}

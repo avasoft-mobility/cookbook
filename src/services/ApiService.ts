@@ -63,11 +63,14 @@ class ApiService {
   };
 
   public static getStack = async (id?: string): Promise<Stack> => {
-    const stack = await HttpClient.get<Stack>(`${RouteConfig.topics}/${id}`);
+    console.log("api" + id)
+    const stack = await HttpClient.get<Stack>(`${RouteConfig.stacks}/${id}`);
     return stack.data;
   };
 
-  public static updateStack = async (stack: Stack): Promise<StackCreateRequest> => {
+  public static updateStack = async (
+    stack: Stack
+  ): Promise<StackCreateRequest> => {
     let updatedStack = await HttpClient.put<StackCreateRequest>(
       `${RouteConfig.stacks}/${stack._id}`,
       {
@@ -115,12 +118,18 @@ class ApiService {
     return cookbook;
   };
 
+  public static fetchCookBook = async (id: string): Promise<Cookbook> => {
+    let cookBook = await HttpClient.get<Cookbook>(`${RouteConfig.cookbooks}/${id}`);
+    return cookBook.data;
+  };
+
   public static fetchTags = async (): Promise<Tag[]> => {
     let tags = await HttpClient.get<Tag[]>(`${RouteConfig.tags}`);
     return tags.data;
   };
 
   public static fetchTag = async (id: string): Promise<Tag> => {
+    console.log("Api" + id)
     let tag = await HttpClient.get<Tag>(`${RouteConfig.tags}/${id}`);
     return tag.data;
   };
@@ -145,7 +154,7 @@ class ApiService {
   };
 
   public static fetchAuthor = async (id: string): Promise<Author> => {
-    let author = await HttpClient.get<Author>(`${RouteConfig.tags}/${id}`);
+    let author = await HttpClient.get<Author>(`${RouteConfig.authors}/${id}`);
     return author.data;
   };
 

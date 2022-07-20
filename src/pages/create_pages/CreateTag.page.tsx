@@ -34,7 +34,7 @@ const CreateTagPage = () => {
   const { id } = useParams();
 
   const { isLoading, data } = useQuery(
-    ["tag", id],
+    ["tags", id],
     () => {
       if (id !== undefined) {
         return ApiService.fetchTag(id);
@@ -52,6 +52,7 @@ const CreateTagPage = () => {
   );
 
   const onSuccessfetchTag = (response: Tag) => {
+    console.log(response)
     const newtagData: TagPageData = {
       tagName: response.name,
       errors: "",
@@ -125,7 +126,6 @@ const CreateTagPage = () => {
     if (tagData !== undefined && id !== undefined) {
       const newTag: Tag = {
         name: tagData.tagName,
-        topics: [],
         _id: id,
       };
       if (validateStackName(tagData.tagName)) {
@@ -154,7 +154,7 @@ const CreateTagPage = () => {
               }}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText="Enter the Tag Name"
+              placeHolderText= {tagData?.tagName !==undefined ? undefined: "Enter the Tag Name"}
               style={{ marginTop: "10px" }}
               errorText={tagData?.errors ? tagData.errors : ""}
               value={
