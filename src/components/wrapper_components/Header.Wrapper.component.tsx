@@ -11,6 +11,7 @@ interface HeaderProps {
   headerHeight?: string;
   onClickMenuItem: Function;
   onSideBarMenuClick: Function;
+  onHeaderEditIconClicked?: Function;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -31,6 +32,10 @@ const Header: React.FC<HeaderProps> = (props) => {
 
   const onSideBarMenuClick = () => {
     props.onSideBarMenuClick();
+  };
+
+  const onClickEditButton = () => {
+    props.onHeaderEditIconClicked && props.onHeaderEditIconClicked();
   };
   return (
     <Box
@@ -62,17 +67,30 @@ const Header: React.FC<HeaderProps> = (props) => {
           </Text>
         </div>
       </div>
-      <div>
-        <KebabMenu
-          iconButtonColor={"default"}
-          iconButtonStyle={{ color: Theme.palette.text.primary }}
-          onMenuItemClicked={onClickMenuItem}
-          onIconButtonClicked={onClickMenuIcon}
-          menuItems={["Download Code", "See Topic Flow", "See Technical Flow"]}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        />
+      <div
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <div>
+          <IconButton color={"inherit"} onClick={onClickEditButton}>
+            <Icon type={"edit"} />
+          </IconButton>
+        </div>
+        <div>
+          <KebabMenu
+            iconButtonColor={"default"}
+            iconButtonStyle={{ color: Theme.palette.text.primary }}
+            onMenuItemClicked={onClickMenuItem}
+            onIconButtonClicked={onClickMenuIcon}
+            menuItems={[
+              "Download Code",
+              "See Topic Flow",
+              "See Technical Flow",
+            ]}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+          />
+        </div>
       </div>
     </Box>
   );
