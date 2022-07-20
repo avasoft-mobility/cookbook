@@ -18,6 +18,7 @@ const RouterConfig = () => {
       <Route path="/create/tag" element={<CreateTag />} />
       <Route path="/create/topic" element={<CreateTopic />} />
       <Route path="/create/author" element={<CreateAuthorPage />} />
+      <Route path="/edit/cookbook/:id" element={<CreateCookbookPage />} />
       <Route path="/edit/stack/:id" element={<Stackpage />} />
       <Route path="/edit/tag/:id" element={<CreateTag />} />
       <Route path="/edit/author/:id" element={<CreateAuthorPage />} />
