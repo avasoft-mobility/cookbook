@@ -29,7 +29,6 @@ const Search: React.FC<SearchProps> = (props) => {
         multiline={false}
         placeholderStyle={{
           color: "#D3DFF8",
-          fontFamily: "lato",
           fontStyle: "normal",
           fontWeight: "600",
           fontSize: "25px",
