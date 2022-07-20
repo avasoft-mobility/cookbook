@@ -4,7 +4,7 @@ import CreateTag from "../pages/create_pages/CreateTag.page";
 import DetailsPage from "../pages/DetailsPage.page";
 import HomePage from "../pages/Home.page";
 import Stackpage from "../pages/create_pages/CreateStack.page";
-import TopicPage from "../pages/create_pages/CreateTopic.Page";
+import CreateTopic from "../pages/create_pages/CreateTopic.Page";
 import CreateAuthorPage from "../pages/create_pages/CreateAuthor.page";
 
 const RouterConfig = () => {
@@ -16,11 +16,12 @@ const RouterConfig = () => {
       <Route path="/create/stack" element={<Stackpage />} />
       <Route path="/create/cookbook" element={<CreateCookbookPage />} />
       <Route path="/create/tag" element={<CreateTag />} />
-      <Route path="/create/topic" element={<TopicPage />} />
+      <Route path="/create/topic" element={<CreateTopic />} />
       <Route path="/create/author" element={<CreateAuthorPage />} />
       <Route path="/edit/stack/:id" element={<Stackpage />} />
       <Route path="/edit/tag/:id" element={<CreateTag />} />
       <Route path="/edit/author/:id" element={<CreateAuthorPage />} />
+      <Route path="/edit/topic/:slug" element={<CreateTopic />} />
     </Routes>
   );
 };

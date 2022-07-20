@@ -1,5 +1,5 @@
 interface TopicCreateRequest {
-  name: string;
+  title: string;
   flowchartUrl: string;
   tags?: string[];
   referenceUrls?: string[];
