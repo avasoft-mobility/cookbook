@@ -26,6 +26,7 @@ const Search: React.FC<SearchProps> = (props) => {
         onChange={(event) => {
           onChange(event.target.value);
         }}
+        multiline ={false}
         placeholderStyle={{
           color: "#D3DFF8",
           fontFamily: "Roboto",

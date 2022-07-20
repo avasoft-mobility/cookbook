@@ -22,6 +22,7 @@ interface InputProps {
   type?: "outlined" | "normal";
   errorText?: string;
   style?: React.CSSProperties;
+  multiline?: boolean
 }
 
 const Input: React.FC<InputProps> = (props) => {
@@ -79,7 +80,7 @@ const Input: React.FC<InputProps> = (props) => {
             props.placeholderStyle !== undefined && props.placeholderStyle,
         },
       }}
-      multiline
+      multiline ={props.multiline && true}
       value={props.value}
       onBlur={props.onBlur}
     />
