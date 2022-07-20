@@ -13,6 +13,7 @@ interface ActionableMultiSelectChipProps {
   createNewTag: Function;
   title: string;
   errorMessage?: string;
+  defaultValues: string[];
 }
 
 const ActionableMultiSelectChip: React.FC<ActionableMultiSelectChipProps> = (
@@ -28,6 +29,7 @@ const ActionableMultiSelectChip: React.FC<ActionableMultiSelectChipProps> = (
           <MultipleSelectChip
             inputLabel="Tags"
             values={props.tags}
+            defaultValues={props.defaultValues}
             chipStyle={{ color: Theme.palette.primary.main }}
             menuItemStyle={{ color: Theme.palette.secondary.main }}
             onChange={(event) =>

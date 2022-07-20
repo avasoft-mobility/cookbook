@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AxiosError } from "axios";
 import { v4 as uuid } from "uuid";
 
@@ -29,13 +29,19 @@ interface TopicErrors {
   fileUpload: boolean;
 }
 
+interface ReferenceURI {
+  id: string;
+  url: string;
+}
+
 const TopicPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
   const tabRouter = useTabRouter();
   const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
+  const { slug } = useParams();
 
-  const [references, setReferences] = useState([
+  const [references, setReferences] = useState<ReferenceURI[]>([
     {
       id: uuid(),
       url: "",
@@ -48,7 +54,7 @@ const TopicPage = () => {
   });
 
   const emptyTopic: TopicCreateRequest = {
-    name: "",
+    title: "",
     flowchartUrl: "",
     tags: [],
     referenceUrls: [],
@@ -56,6 +62,42 @@ const TopicPage = () => {
   const [topic, setTopic] = useState<TopicCreateRequest>(emptyTopic);
 
   const tagsCall = useQuery("tags", () => ApiService.fetchTags());
+  const topicCall = useQuery(
+    ["topic", slug],
+    () => {
+      if (slug) {
+        return ApiService.fetchTopic(slug);
+      }
+    },
+    {
+      onSuccess: (data) => {
+        if (data) {
+          const clonedTopic = { ...topic };
+
+          clonedTopic.title = data.title;
+          clonedTopic.flowchartUrl = data.flowchartUrl;
+          clonedTopic.tags = data.tags.map((tags) => {
+            return tags.name;
+          });
+          clonedTopic.referenceUrls = data.referenceUrls;
+
+          const referenceUrlArray: ReferenceURI[] = data.referenceUrls.map(
+            (reference: string) => {
+              return {
+                id: uuid(),
+                url: reference,
+              };
+            }
+          );
+
+          setReferences(referenceUrlArray);
+
+          setTopic(clonedTopic);
+        }
+      },
+    }
+  );
+
   const topicCreateCall = useMutation(ApiService.addTopic, {
     onSuccess: () => {
       navigate("/create/cookbook");
@@ -64,6 +106,20 @@ const TopicPage = () => {
       showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
+
+  const topicUpdateCall = useMutation(
+    (data: { id: string; editedtopic: TopicCreateRequest }) => {
+      return ApiService.updateTopic(data.id, data.editedtopic);
+    },
+    {
+      onSuccess: () => {
+        navigate("/topics");
+      },
+      onError: (error: AxiosError) => {
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
+      },
+    }
+  );
 
   useEffect(() => {
     const shouldShowExitPrompt = !isTopicEmpty();
@@ -78,7 +134,7 @@ const TopicPage = () => {
 
   const getTopic = (topicInput: string) => {
     const clonedTopic = { ...topic };
-    clonedTopic.name = topicInput;
+    clonedTopic.title = topicInput;
 
     setTopic(clonedTopic);
     validateName();
@@ -86,7 +142,7 @@ const TopicPage = () => {
 
   const onblurTopic = (topicInput: string) => {
     const clonedTopic = { ...topic };
-    clonedTopic.name = topicInput;
+    clonedTopic.title = topicInput;
 
     setTopic(clonedTopic);
     validateName();
@@ -99,10 +155,10 @@ const TopicPage = () => {
   const validateName = () => {
     const clonedErrors = { ...errors };
 
-    if (topic.name === "") {
+    if (topic.title === "") {
       clonedErrors.name = true;
     }
-    if (topic.name !== "") {
+    if (topic.title !== "") {
       clonedErrors.name = false;
     }
     setErrors(clonedErrors);
@@ -136,10 +192,10 @@ const TopicPage = () => {
   const validate = () => {
     const clonedErrors = { ...errors };
 
-    if (topic.name === "") {
+    if (topic.title === "") {
       clonedErrors.name = true;
     }
-    if (topic.name !== "") {
+    if (topic.title !== "") {
       clonedErrors.name = false;
     }
     if (topic.tags?.length === 0) {
@@ -169,10 +225,31 @@ const TopicPage = () => {
       return reference.url;
     });
     const clonedTopic = { ...topic };
+    const tagIds = topic.tags?.map((tagName) => {
+      const tag = tagsCall.data?.find((x) => x.name === tagName);
+      return tag!._id;
+    });
+    clonedTopic.tags = tagIds;
     clonedTopic.referenceUrls = referenceurl;
+
     if (!validate()) {
-      topicCreateCall.mutate(clonedTopic);
+      if (slug) {
+        updateTopic(topicCall.data?._id!, clonedTopic);
+        return;
+      }
+      createTopic(clonedTopic);
     }
+  };
+
+  const updateTopic = (id: string, clonedTopic: TopicCreateRequest) => {
+    topicUpdateCall.mutate({
+      id: topicCall.data?._id!,
+      editedtopic: clonedTopic,
+    });
+  };
+
+  const createTopic = (clonedTopic: TopicCreateRequest) => {
+    topicCreateCall.mutate(clonedTopic);
   };
 
   const createNewCookBook = () => {
@@ -198,16 +275,11 @@ const TopicPage = () => {
   };
 
   const onTagChange = (values: string[]) => {
-    const tagIds = values.map((tagName) => {
-      const tag = tagsCall.data?.find((x) => x.name === tagName);
-      return tag!._id;
-    });
-
     const clonedTopic = { ...topic };
-    clonedTopic.tags = tagIds;
+    clonedTopic.tags = values;
 
     setTopic(clonedTopic);
-    validateTags(tagIds);
+    validateTags(values);
   };
 
   const onTopicUpload = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -227,7 +299,7 @@ const TopicPage = () => {
   return (
     <div style={styles.container}>
       <div style={{ ...styles.innerContainer }}>
-        <Title text="Create Topic" />
+        <Title text={slug ? "Update Topic" : "Create Topic"} />
       </div>
       <div
         style={{
@@ -242,6 +314,7 @@ const TopicPage = () => {
             </Text>
             <div>
               <Input
+                value={topic.title}
                 onChange={(event) => {
                   getTopic(event.target.value);
                 }}
@@ -260,6 +333,7 @@ const TopicPage = () => {
               tags={
                 tagsCall.data ? tagsCall.data.map((tag: Tag) => tag.name) : []
               }
+              defaultValues={topic.tags ? topic.tags : []}
               createNewTag={() => navigate(`/create/tag`)}
               onTagChange={onTagChange}
               title="Tags"
@@ -352,7 +426,7 @@ const TopicPage = () => {
           style={{ ...styles.buttonsContainer, ...{ flexDirection: "column" } }}
         >
           <Clickable
-            ClickableText="Save"
+            ClickableText={slug ? "Update Topic" : "Save Topic"}
             onClick={onSave}
             variant={"contained"}
             clickableSize={"large"}

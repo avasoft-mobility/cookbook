@@ -2,7 +2,7 @@ import TimestampedDB from "./TimestampedDB.Model";
 
 interface Tag extends TimestampedDB {
   name: string;
-  topics: any[];
+  topics?: any[];
 }
 
 export default Tag;

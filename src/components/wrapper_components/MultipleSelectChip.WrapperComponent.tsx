@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Theme, useTheme } from "@mui/material/styles";
+import { useEffect } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -59,6 +60,12 @@ const MultipleSelectChip: React.FC<MultipleSelectChipProps> = ({
   const [menuValues, setMenuValues] = React.useState<string[]>(
     defaultValues !== undefined ? defaultValues : []
   );
+
+  useEffect(() => {
+    if (defaultValues !== undefined) {
+      setMenuValues(defaultValues);
+    }
+  }, [defaultValues]);
 
   const handleChange = (
     event: SelectChangeEvent<typeof menuValues>,

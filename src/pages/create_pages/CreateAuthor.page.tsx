@@ -1,8 +1,8 @@
 import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
-import React, { useState } from "react";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
 import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
 import Color from "../../configs/ColorConfig";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
@@ -12,13 +12,33 @@ import ApiService from "../../services/ApiService";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
 import Title from "../../components/specified_components/text_components/Title.component";
 import Input from "../../components/wrapper_components/Input.WrapperComponent";
+import Author from "../../models/Author.Model";
 
 const CreateAuthorPage = () => {
   const showErrorSnackBar = useErrorSnackbar();
   const [author, setAuthor] = useState<AuthorCreateRequest>();
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const mutation = useMutation(ApiService.addAuthor, {
+  const { isLoading, data } = useQuery(
+    ["authors", id],
+    () => {
+      if (id !== undefined) {
+        return ApiService.fetchAuthor(id);
+      }
+    },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: (response) => {
+        onSuccessfetchAuthor(response!);
+      },
+      onError: (error: AxiosError) => {
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
+      },
+    }
+  );
+
+  const createMutation = useMutation(ApiService.addAuthor, {
     onSuccess: () => {
       navigate("/create/cookbook");
     },
@@ -26,6 +46,22 @@ const CreateAuthorPage = () => {
       showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
+
+  const updateMutation = useMutation(ApiService.updateAuthor, {
+    onSuccess: () => {
+      navigate("/create/cookbook");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
+    },
+  });
+
+  const onSuccessfetchAuthor = (response: Author) => {
+    const newAuthor: AuthorCreateRequest = {
+      name: response.name,
+    };
+    setAuthor(newAuthor);
+  };
 
   const validateAuthorName = (value?: string) => {
     if (value === undefined) {
@@ -42,7 +78,6 @@ const CreateAuthorPage = () => {
       showErrorSnackBar("Author name length should be atleast 2 characters");
       return false;
     }
-
     return true;
   };
 
@@ -57,7 +92,19 @@ const CreateAuthorPage = () => {
 
   const onAddButtonClicked = () => {
     if (validateAuthorName(author?.name)) {
-      mutation.mutate(author!);
+      createMutation.mutate(author!);
+    }
+  };
+
+  const onUpdateButtonClicked = () => {
+    if (author !== undefined && id !== undefined) {
+      const newAuthor: Author = {
+        name: author.name,
+        _id: id,
+      };
+      if (validateAuthorName(author?.name)) {
+        updateMutation.mutate(newAuthor);
+      }
     }
   };
 
@@ -65,9 +112,18 @@ const CreateAuthorPage = () => {
     navigate("/create/cookbook");
   };
 
+  const onInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const newAuthor: AuthorCreateRequest = {
+      name: event.target.value,
+    };
+    setAuthor(newAuthor);
+  };
+
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
-      <Title text="Create Author" />
+      <Title text={id ? "Update Author" : "Create Author"} />
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
@@ -76,25 +132,36 @@ const CreateAuthorPage = () => {
           </Text>
           <div>
             <Input
-              onChange={(event) => {}}
+              onChange={(event) => {
+                onInputChange(event);
+              }}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText="Enter the Author Name"
+              placeHolderText={
+                author?.name !== undefined ? undefined : "Enter the Author Name"
+              }
               style={{ marginTop: "10px" }}
               errorText={""}
+              value={author?.name !== undefined ? author?.name : undefined}
             />
           </div>
         </div>
 
         <div style={style.buttonContainer}>
-          {!mutation.isLoading ? (
+          {!createMutation.isLoading || !updateMutation.isLoading ? (
             <>
               <div>
                 <Clickable
-                  ClickableText={"Add Author"}
+                  ClickableText={
+                    id !== undefined ? "Update Author" : "Add Author"
+                  }
                   variant={"contained"}
                   clickableSize={"large"}
-                  onClick={onAddButtonClicked}
+                  onClick={
+                    id !== undefined
+                      ? onUpdateButtonClicked
+                      : onAddButtonClicked
+                  }
                   style={style.addButton}
                 />
               </div>
