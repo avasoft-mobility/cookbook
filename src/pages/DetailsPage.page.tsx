@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DetailScreenMainContent from "../components/specified_components/detail_page_components/DetailScreenMainContent";
 
 import SideBar from "../components/specified_components/detail_page_components/SideBar.Component";
@@ -26,6 +26,7 @@ const DetailsPage: React.FC = () => {
   const [selectedItemName, setSelectedItemName] = useState<string>("");
   const [selectedCookbook, setSelectedCookbook] = useState<Cookbook>();
   const [isSideBarOpened, setSideBarMenuClicked] = useState(false);
+  let navigate = useNavigate();
 
   const { isLoading, data } = useQuery(
     ["topic", routeParams.topicSlug],
@@ -97,6 +98,19 @@ const DetailsPage: React.FC = () => {
     setSideBarMenuClicked(!isSideBarOpened);
   };
 
+  const onHeaderEditIconClicked = () => {
+    if (data) {
+      navigate(`/edit/topic/${data?.slug}`);
+    }
+  };
+
+  const onSideBarEditIconClicked = (id: string) => {
+    const cookbook = data?.cookbooks.find((x) => x.stack._id === id);
+    if (cookbook) {
+      navigate(`/edit/cookbook/${cookbook?._id}`);
+    }
+  };
+
   return (
     <div>
       <DrawerLayout
@@ -104,6 +118,7 @@ const DetailsPage: React.FC = () => {
         toggleSideBar={toggleSideBar}
         header={
           <Header
+            onHeaderEditIconClicked={onHeaderEditIconClicked}
             headerText={data ? data.title : ""}
             onClickMenuItem={onClickMenuItem}
             headerHeight="55px"
@@ -112,6 +127,7 @@ const DetailsPage: React.FC = () => {
         }
         leftNavigation={
           <SideBar
+            onSideBarEditIconClicked={onSideBarEditIconClicked}
             selectedStack={selectedItemName}
             stacks={stacks}
             onSelect={onSidebarItemSelected}

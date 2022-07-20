@@ -13,18 +13,24 @@ import Color from "../../../configs/ColorConfig";
 import Stack from "../../../models/Stack.Model";
 import React from "react";
 import AdditionalLinkMenuItem from "../additional_link_components/AdditionalLinkMenuItem";
+import IconButton from "../../wrapper_components/IconButton.WrapperComponent";
 
 interface SideBarProps {
   selectedStack: string;
   stacks: Stack[];
   onSelect: Function;
+  onSideBarEditIconClicked?: Function;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
   stacks,
   onSelect,
   selectedStack,
+  onSideBarEditIconClicked,
 }) => {
+  const onClickEditButton = (id: string) => {
+    onSideBarEditIconClicked && onSideBarEditIconClicked(id);
+  };
   const getIcon = (stackName: string) => {
     if (stackName === "React Native") {
       return <Icon type="reactNative" style={styles.logo} />;
@@ -76,6 +82,14 @@ const SideBar: React.FC<SideBarProps> = ({
                 primary={stack.name}
                 style={{ color: Color.textSecondaryColor }}
               />
+              <IconButton
+                color={"default"}
+                onClick={() => {
+                  onClickEditButton(stack._id);
+                }}
+              >
+                <Icon type={"edit"} style={{ height: "20px", width: "20px" }} />
+              </IconButton>
             </ListItemButton>
           </ListItem>
         ))}

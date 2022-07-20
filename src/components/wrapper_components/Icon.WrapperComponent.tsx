@@ -8,6 +8,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import LinkIcon from "@mui/icons-material/Link";
 import { SvgIcon, SxProps, Theme } from "@mui/material";
 import SideBarMenuIcon from "@mui/icons-material/Menu";
+import EditIcon from "@mui/icons-material/Edit";
 
 interface IconProps {
   type:
@@ -22,7 +23,8 @@ interface IconProps {
     | "moreVertIcon"
     | "delete"
     | "links"
-    | "sideBarMenu";
+    | "sideBarMenu"
+    | "edit";
   style?: SxProps<Theme>;
 }
 
@@ -160,6 +162,9 @@ const Icon: React.FC<IconProps> = (props) => {
 
   if (props.type === "links") {
     return <LinkIcon sx={props.style} />;
+  }
+  if (props.type === "edit") {
+    return <EditIcon sx={props.style} />;
   }
 
   return null;
