@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import CircularProgress from "@mui/material/CircularProgress";
 
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 import Theme from "../../configs/ThemeConfig";
 
@@ -19,6 +19,7 @@ import Color from "../../configs/ColorConfig";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";
 import Title from "../../components/specified_components/text_components/Title.component";
+import Tag from "../../models/Tag.Model";
 
 interface TagPageData {
   tagName: string;
@@ -30,8 +31,44 @@ const CreateTagPage = () => {
 
   const [tagData, setTagData] = useState<TagPageData>();
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const mutation = useMutation(ApiService.addTag, {
+  const { isLoading, data } = useQuery(
+    ["tags", id],
+    () => {
+      if (id !== undefined) {
+        return ApiService.fetchTag(id);
+      }
+    },
+    {
+      refetchOnWindowFocus: false,
+      onSuccess: (response) => {
+        onSuccessfetchTag(response!);
+      },
+      onError: (error: AxiosError) => {
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
+      },
+    }
+  );
+
+  const onSuccessfetchTag = (response: Tag) => {
+    const newtagData: TagPageData = {
+      tagName: response.name,
+      errors: "",
+    };
+    setTagData(newtagData);
+  };
+
+  const createMutation = useMutation(ApiService.addTag, {
+    onSuccess: () => {
+      navigate("/create/topic");
+    },
+    onError: (error: AxiosError) => {
+      showErrorSnackBar((error.response?.data as ErrorResponse).message);
+    },
+  });
+
+  const updateMutation = useMutation(ApiService.updateTag, {
     onSuccess: () => {
       navigate("/create/topic");
     },
@@ -64,7 +101,6 @@ const CreateTagPage = () => {
       });
       return false;
     }
-
     return true;
   };
 
@@ -82,7 +118,18 @@ const CreateTagPage = () => {
 
   const onAddButtonClicked = () => {
     if (validateStackName(tagData?.tagName)) {
-      mutation.mutate(tagData!.tagName);
+      createMutation.mutate(tagData!.tagName);
+    }
+  };
+  const onUpdateButtonClicked = () => {
+    if (tagData !== undefined && id !== undefined) {
+      const newTag: Tag = {
+        name: tagData.tagName,
+        _id: id,
+      };
+      if (validateStackName(tagData.tagName)) {
+        updateMutation.mutate(newTag);
+      }
     }
   };
 
@@ -106,22 +153,29 @@ const CreateTagPage = () => {
               }}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText="Enter the Tag Name"
+              placeHolderText= {tagData?.tagName !==undefined ? undefined: "Enter the Tag Name"}
               style={{ marginTop: "10px" }}
               errorText={tagData?.errors ? tagData.errors : ""}
+              value={
+                tagData?.tagName !== undefined ? tagData?.tagName : undefined
+              }
             />
           </div>
         </div>
 
         <div style={style.buttonContainer}>
-          {!mutation.isLoading ? (
+          {!createMutation.isLoading || updateMutation.isLoading ? (
             <>
               <div>
                 <Clickable
-                  ClickableText={"Add Tag"}
+                  ClickableText={id !== undefined ? "Update Tag" : "Add Tag"}
                   variant={"contained"}
                   clickableSize={"large"}
-                  onClick={onAddButtonClicked}
+                  onClick={
+                    id !== undefined
+                      ? onUpdateButtonClicked
+                      : onAddButtonClicked
+                  }
                   style={style.addButton}
                 />
               </div>

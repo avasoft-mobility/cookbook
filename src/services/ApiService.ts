@@ -62,6 +62,23 @@ class ApiService {
     return stack.data;
   };
 
+  public static getStack = async (id?: string): Promise<Stack> => {
+    const stack = await HttpClient.get<Stack>(`${RouteConfig.stacks}/${id}`);
+    return stack.data;
+  };
+
+  public static updateStack = async (
+    stack: Stack
+  ): Promise<StackCreateRequest> => {
+    let updatedStack = await HttpClient.put<StackCreateRequest>(
+      `${RouteConfig.stacks}/${stack._id}`,
+      {
+        name: `${stack.name}`,
+      }
+    );
+    return updatedStack.data;
+  };
+
   public static getTopics = async (): Promise<Topic[]> => {
     const topics = await HttpClient.get<Topic[]>(RouteConfig.topics);
     return topics.data;
@@ -79,6 +96,16 @@ class ApiService {
     return tag.data;
   };
 
+  public static updateTag = async (tag: Tag): Promise<TagCreateRequest> => {
+    let updatedTag = await HttpClient.put<TagCreateRequest>(
+      `${RouteConfig.tags}/${tag._id}`,
+      {
+        name: tag.name,
+      }
+    );
+    return updatedTag.data;
+  };
+
   public static createCookbook = async (
     newCookbook: CookbookCreateRequest
   ): Promise<Cookbook> => {
@@ -89,11 +116,20 @@ class ApiService {
     return cookbook;
   };
 
+  public static fetchCookBook = async (id: string): Promise<Cookbook> => {
+    let cookBook = await HttpClient.get<Cookbook>(`${RouteConfig.cookbooks}/${id}`);
+    return cookBook.data;
+  };
+
   public static fetchTags = async (): Promise<Tag[]> => {
     let tags = await HttpClient.get<Tag[]>(`${RouteConfig.tags}`);
     return tags.data;
   };
 
+  public static fetchTag = async (id: string): Promise<Tag> => {
+    let tag = await HttpClient.get<Tag>(`${RouteConfig.tags}/${id}`);
+    return tag.data;
+  };
   public static addTopic = async (
     topic: TopicCreateRequest
   ): Promise<Topic> => {
@@ -112,6 +148,19 @@ class ApiService {
       author
     );
     return createdAuthor;
+  };
+
+  public static fetchAuthor = async (id: string): Promise<Author> => {
+    let author = await HttpClient.get<Author>(`${RouteConfig.authors}/${id}`);
+    return author.data;
+  };
+
+  public static updateAuthor = async (author: Author): Promise<Author> => {
+    let updatedAuthor = await HttpClient.put<AuthorCreateRequest, Author>(
+      `${RouteConfig.authors}/${author._id}`,
+      author
+    );
+    return updatedAuthor;
   };
 }
 
