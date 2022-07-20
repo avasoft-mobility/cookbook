@@ -52,7 +52,7 @@ const HomePage = () => {
     <div style={styles.container}>
       <div className="innerContainer">
         <div style={{ marginBottom: "30px" }}>
-          <Title text="Coookbook" />
+          <Title text="Cookbook" />
         </div>
         <Search input={onSearch} />
       </div>
