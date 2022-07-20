@@ -426,7 +426,7 @@ const TopicPage = () => {
           style={{ ...styles.buttonsContainer, ...{ flexDirection: "column" } }}
         >
           <Clickable
-            ClickableText={slug ? "Update" : "Save"}
+            ClickableText={slug ? "Update Topic" : "Save Topic"}
             onClick={onSave}
             variant={"contained"}
             clickableSize={"large"}

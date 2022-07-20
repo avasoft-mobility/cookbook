@@ -140,7 +140,7 @@ const Stackpage = () => {
 
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
-      <Title text="Create Stack" />
+      <Title text={id ? "Update Stack" : "Create Stack"} />
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
