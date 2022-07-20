@@ -1,8 +1,8 @@
-import React from "react";
 import { Formik } from "formik";
-import Text from "../../wrapper_components/Text.wrapperComponent";
+import React from "react";
 import Theme from "../../../configs/ThemeConfig";
 import StepValue from "../../../models/StepValue.model";
+import Text from "../../wrapper_components/Text.wrapperComponent";
 import FormikInput from "../Formik_components/FormikInput.Component";
 
 interface StepProps {
@@ -45,15 +45,7 @@ const Step: React.FC<StepProps> = (props) => {
           }}
           onSubmit={(values) => {}}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+          {({ values, errors, touched, handleChange, handleBlur }) => (
             <form>
               <div style={{ paddingTop: "10px" }}>
                 <Text variant={"body2"} color={Theme.palette.text.secondary}>
@@ -63,7 +55,9 @@ const Step: React.FC<StepProps> = (props) => {
                   name={"title"}
                   onChange={(event) => {
                     handleChange("title");
-                    props.onValueChange(values, props.currentIndex);
+                    const clonedValue = { ...values };
+                    clonedValue.title = event.target.value;
+                    props.onValueChange(clonedValue, props.currentIndex);
                   }}
                   onBlur={handleBlur("title")}
                   type="outlined"
@@ -80,7 +74,9 @@ const Step: React.FC<StepProps> = (props) => {
                   name={"description"}
                   onChange={(event) => {
                     handleChange("description");
-                    props.onValueChange(values, props.currentIndex);
+                    const clonedValue = { ...values };
+                    clonedValue.description = event.target.value;
+                    props.onValueChange(clonedValue, props.currentIndex);
                   }}
                   onBlur={handleBlur("description")}
                   type="outlined"
@@ -102,7 +98,9 @@ const Step: React.FC<StepProps> = (props) => {
                   name={"code"}
                   onChange={(event) => {
                     handleChange("code");
-                    props.onValueChange(values, props.currentIndex);
+                    const clonedValue = { ...values };
+                    clonedValue.code = event.target.value;
+                    props.onValueChange(clonedValue, props.currentIndex);
                   }}
                   onBlur={handleBlur("code")}
                   type="outlined"

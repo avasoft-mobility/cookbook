@@ -1,29 +1,35 @@
+import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
 import React, { useState } from "react";
-import Step from "./Step.Component";
-import DeleteIcon from "@mui/icons-material/Delete";
-import Theme from "../../../configs/ThemeConfig";
-import Clickable from "../../wrapper_components/ButtonWrapperComponent";
-import StepValue from "../../../models/StepValue.model";
 import { v4 as uuidv4 } from "uuid";
+import Theme from "../../../configs/ThemeConfig";
+import StepValue from "../../../models/StepValue.model";
 import ApiService from "../../../services/ApiService";
+import Clickable from "../../wrapper_components/ButtonWrapperComponent";
+import Step from "./Step.Component";
 
 interface StepWrapperProps {
   onValueChange: Function;
   onDelete: Function;
   onAddNew: Function;
+  initialValues?: StepValue[];
 }
 
 const StepWrapper: React.FC<StepWrapperProps> = (props) => {
-  const [stepValue, setStepValue] = useState<StepValue[]>([
-    {
-      id: uuidv4(),
-      title: "",
-      description: "",
-      code: "",
-      image: "",
-    },
-  ]);
+  const [stepValue, setStepValue] = useState<StepValue[]>(
+    props.initialValues !== undefined
+      ? props.initialValues
+      : [
+          {
+            id: uuidv4(),
+            title: "",
+            description: "",
+            code: "",
+            image: "",
+          },
+        ]
+  );
+
   const onValueChange = (value: StepValue, index: number, imageUrl: string) => {
     let newStep = [...stepValue];
     let currentStepElement = newStep[index];
@@ -32,8 +38,9 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
     currentStepElement.code = value.code;
     currentStepElement.image = imageUrl;
     newStep[index] = currentStepElement;
+
     setStepValue(newStep);
-    props.onValueChange(stepValue);
+    props.onValueChange(newStep);
   };
   const handleFileUpload = async (event: any, values: any, index: number) => {
     const result = await ApiService.uploadFile(event.target.files[0]);

@@ -89,6 +89,18 @@ class ApiService {
     return cookbook;
   };
 
+  public static updateCookbook = async (
+    id: string,
+    newCookbook: CookbookCreateRequest
+  ): Promise<Cookbook> => {
+    console.log(newCookbook);
+    const cookbook = await HttpClient.put<CookbookCreateRequest, Cookbook>(
+      `${RouteConfig.cookbooks}/${id}`,
+      newCookbook
+    );
+    return cookbook;
+  };
+
   public static fetchTags = async (): Promise<Tag[]> => {
     let tags = await HttpClient.get<Tag[]>(`${RouteConfig.tags}`);
     return tags.data;
@@ -112,6 +124,13 @@ class ApiService {
       author
     );
     return createdAuthor;
+  };
+
+  public static fetchCookbook = async (id?: string): Promise<Cookbook> => {
+    let cookbook = await HttpClient.get<Cookbook>(
+      `${RouteConfig.cookbooks}/${id}`
+    );
+    return cookbook.data;
   };
 }
 

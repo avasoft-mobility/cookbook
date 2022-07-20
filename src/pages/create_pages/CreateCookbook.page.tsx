@@ -1,34 +1,63 @@
 import { AxiosError } from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import StepWrapper from "../../components/specified_components/steps_components/StepWrapper.component";
 import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
 
+import { Box, CircularProgress } from "@mui/material";
+import ActionableComboBox from "../../components/specified_components/actionable_components/ActionableComboBox.component";
 import ActionableDropdown from "../../components/specified_components/actionable_components/ActionableDropdown.component";
+import Title from "../../components/specified_components/text_components/Title.component";
+import FileUpload from "../../components/wrapper_components/FileUpload.component";
 import Theme from "../../configs/ThemeConfig";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
 import useExitPrompt from "../../hooks/useExitPrompt";
 import useTabRouter from "../../hooks/useTabRouter.hook";
+import Cookbook from "../../models/Cookbook.Model";
 import CookbookCreateRequest from "../../models/request_response_models/CookbookCreate.request";
 import ErrorResponse from "../../models/request_response_models/Error.Response.model";
 import Step from "../../models/Step.Model";
 import StepValue from "../../models/StepValue.model";
 import ApiService from "../../services/ApiService";
-import FileUpload from "../../components/wrapper_components/FileUpload.component";
-import Title from "../../components/specified_components/text_components/Title.component";
-import ActionableComboBox from "../../components/specified_components/actionable_components/ActionableComboBox.component";
 
 const CreateCookbookPage = () => {
+  let [cookbook, setCookbook] = useState<Cookbook>();
   const showErrorSnackBar = useErrorSnackbar();
   const navigate = useNavigate();
   const tabRouter = useTabRouter();
   const [showExitPrompt, setShowExitPrompt] = useExitPrompt(false);
+  const routeParams = useParams();
 
   const stacksCall = useQuery("stacks", ApiService.getStacks);
   const topicsCall = useQuery("topics", ApiService.getTopics);
   const authorsCall = useQuery("authors", ApiService.fetchAuthors);
+  const cookbookCall = useQuery(
+    ["cookbook", routeParams.id],
+    () => {
+      if (routeParams.id !== undefined)
+        return ApiService.fetchCookbook(routeParams.id);
+    },
+    {
+      onSuccess: (data) => {
+        setCookbook(data);
+        setNewCookbook({
+          topicId: data!._id,
+          stackId: data!.stack._id,
+          authorName: data!.author.name,
+          author: data!.author._id,
+          sampleProjectUrl: data!.sampleProjectUrl,
+          flowchartUrl: data!.flowchartUrl,
+          steps: data!.steps,
+        });
+      },
+      onError: (error: AxiosError) => {
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
+      },
+    }
+  );
+
   const createCookbookCall = useMutation(ApiService.createCookbook, {
     onSuccess: () => {
       navigate("/topics");
@@ -37,6 +66,20 @@ const CreateCookbookPage = () => {
       showErrorSnackBar((error.response?.data as ErrorResponse).message);
     },
   });
+
+  const updateCookbookCall = useMutation(
+    (data: { id: string; cookbook: CookbookCreateRequest }) => {
+      return ApiService.updateCookbook(data.id, data.cookbook);
+    },
+    {
+      onSuccess: () => {
+        navigate("/topics");
+      },
+      onError: (error: AxiosError) => {
+        showErrorSnackBar((error.response?.data as ErrorResponse).message);
+      },
+    }
+  );
 
   const emptyCookbook: CookbookCreateRequest = {
     topicId: "",
@@ -173,13 +216,28 @@ const CreateCookbookPage = () => {
       return;
     }
 
-    createCookbookCall.mutate(newCookbook);
+    if (!routeParams.id) {
+      createCookbookCall.mutate(newCookbook);
+      return;
+    }
+
+    newCookbook.author = authorsCall.data?.find(
+      (x) => x.name === newCookbook.authorName
+    )?._id;
+    updateCookbookCall.mutate({
+      id: routeParams.id,
+      cookbook: newCookbook,
+    });
   };
 
-  return (
+  return cookbookCall.isLoading && routeParams.id ? (
+    <Box sx={styles.centerAlign}>
+      <CircularProgress />
+    </Box>
+  ) : (
     <div style={styles.container}>
       <div style={styles.innerContainer}>
-        <Title text="Create Cookbook" />
+        <Title text={!routeParams.id ? "Create Cookbook" : "Update Cookbook"} />
       </div>
       <div style={styles.innerContainer}>
         <ActionableDropdown
@@ -192,7 +250,9 @@ const CreateCookbookPage = () => {
           }}
           dialogTitle={"Topic"}
           dialogHeader={"Choose Topic"}
-          confirmationDialogvalue={"Choose the Topic"}
+          confirmationDialogvalue={
+            cookbook !== undefined ? cookbook!.topic.title : "Choose the Topic"
+          }
           clickableText={"Add Topic"}
         />
         <ActionableDropdown
@@ -205,7 +265,9 @@ const CreateCookbookPage = () => {
           }}
           dialogTitle={"Stack"}
           dialogHeader={"Choose Stack"}
-          confirmationDialogvalue={"Choose the Stack"}
+          confirmationDialogvalue={
+            cookbook !== undefined ? cookbook!.stack.name : "Choose the Stack"
+          }
           clickableText={"Add Stack"}
         />
         <ActionableComboBox
@@ -221,6 +283,7 @@ const CreateCookbookPage = () => {
               ? authorsCall.data.map((author) => author.name)
               : [""]
           }
+          defaultValue={cookbook !== undefined ? cookbook.author.name : ""}
         />
         <div style={styles.steps}>
           <Text variant="body1" color={Theme.palette.text.secondary}>
@@ -230,6 +293,7 @@ const CreateCookbookPage = () => {
             onValueChange={onStepsChanged}
             onAddNew={onStepsChanged}
             onDelete={onStepsChanged}
+            initialValues={cookbook !== undefined ? cookbook!.steps : undefined}
           />
         </div>
 
@@ -252,7 +316,9 @@ const CreateCookbookPage = () => {
           <div>
             <Clickable
               style={{ width: "100%" }}
-              ClickableText="Add Cookbook"
+              ClickableText={
+                !routeParams.id ? "Add Cookbook" : "Update Cookbook"
+              }
               clickableSize="large"
               variant="contained"
               onClick={onCookbookSave}
@@ -281,6 +347,12 @@ const styles = {
   },
   steps: {
     marginTop: "10px",
+  },
+  centerAlign: {
+    display: "flex",
+    height: "100vh",
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 

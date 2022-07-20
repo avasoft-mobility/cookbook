@@ -11,9 +11,15 @@ interface ComboBoxProps {
   label: string;
   options: string[];
   onChanged: Function;
+  defaultValue?: string;
 }
 
-const ComboBox: React.FC<ComboBoxProps> = ({ label, options, onChanged }) => {
+const ComboBox: React.FC<ComboBoxProps> = ({
+  label,
+  options,
+  onChanged,
+  defaultValue,
+}) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -26,6 +32,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({ label, options, onChanged }) => {
   return (
     <ThemeProvider theme={theme}>
       <Autocomplete
+        defaultValue={defaultValue}
         disablePortal
         options={options}
         style={{

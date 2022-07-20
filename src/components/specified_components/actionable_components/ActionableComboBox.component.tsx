@@ -14,6 +14,7 @@ interface ActionableComboBoxProps {
   clickableText: string;
   onChanged: Function;
   onClickableClick: React.MouseEventHandler<HTMLButtonElement>;
+  defaultValue?: string;
 }
 
 const ActionableComboBox: React.FC<ActionableComboBoxProps> = ({
@@ -23,6 +24,7 @@ const ActionableComboBox: React.FC<ActionableComboBoxProps> = ({
   onChanged,
   clickableText,
   onClickableClick,
+  defaultValue,
 }) => {
   return (
     <div>
@@ -32,7 +34,12 @@ const ActionableComboBox: React.FC<ActionableComboBoxProps> = ({
         </Text>
       </div>
       <div style={styles.spaceBetween}>
-        <ComboBox label={label} onChanged={onChanged} options={options} />
+        <ComboBox
+          label={label}
+          onChanged={onChanged}
+          options={options}
+          defaultValue={defaultValue}
+        />
         <div style={styles.buttonConatiner}>
           <Clickable
             ClickableText={clickableText}
