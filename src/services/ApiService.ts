@@ -117,7 +117,9 @@ class ApiService {
   };
 
   public static fetchCookBook = async (id: string): Promise<Cookbook> => {
-    let cookBook = await HttpClient.get<Cookbook>(`${RouteConfig.cookbooks}/${id}`);
+    let cookBook = await HttpClient.get<Cookbook>(
+      `${RouteConfig.cookbooks}/${id}`
+    );
     return cookBook.data;
   };
 
@@ -161,6 +163,17 @@ class ApiService {
       author
     );
     return updatedAuthor;
+  };
+  
+  public static updateTopic = async (
+    id: string,
+    topic: TopicCreateRequest
+  ): Promise<Topic> => {
+    let updatedtopic = await HttpClient.put<TopicCreateRequest, Topic>(
+      `${RouteConfig.topics}/${id}`,
+      topic
+    );
+    return updatedtopic;
   };
 }
 
