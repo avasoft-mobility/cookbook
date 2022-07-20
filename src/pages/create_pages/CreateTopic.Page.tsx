@@ -70,6 +70,7 @@ const TopicPage = () => {
       }
     },
     {
+      refetchOnWindowFocus: false,
       onSuccess: (data) => {
         if (data) {
           const clonedTopic = { ...topic };

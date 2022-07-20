@@ -40,6 +40,7 @@ const CreateCookbookPage = () => {
         return ApiService.fetchCookbook(routeParams.id);
     },
     {
+      refetchOnWindowFocus: false,
       onSuccess: (data) => {
         setCookbook(data);
         setNewCookbook({
