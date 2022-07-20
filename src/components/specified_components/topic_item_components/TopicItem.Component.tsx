@@ -47,9 +47,11 @@ const TopicItem: React.FC<TopicItemProps> = ({ topic, style, onSelect }) => {
           style={{ ...styles.innerContainer, ...{ flexDirection: "column" } }}
         >
           <div>
-            <Text variant="h4" color={Theme.palette.secondary.main}>
-              {topic.title}
-            </Text>
+            <div style={styles.titleContainer as React.CSSProperties}>
+              <Text variant="h4" color={Theme.palette.secondary.main}>
+                {topic.title}
+              </Text>
+            </div>
             <div className="tagsContainer">
               {topic.tags.map((item: Tag) => {
                 return (
@@ -94,6 +96,12 @@ const styles = {
     width: "24px",
     height: "24px",
     marginRight: "12px",
+  },
+  titleContainer: {
+    height: "auto",
+    maxHeight: "80px",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
 };
 
