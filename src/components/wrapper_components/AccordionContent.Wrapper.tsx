@@ -50,9 +50,6 @@ const styles = {
   },
   imageContainer: {
     marginTop: "10px",
-    // display:'flex',
-    // justifyContent:'center',
-    // alignItems: 'center'
   },
 };
 
