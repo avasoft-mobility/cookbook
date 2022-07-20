@@ -51,7 +51,6 @@ const Stackpage = () => {
     }
   );
   const onSuccessfetchStack = (response: Stack) => {
-    console.log(response);
     const newStackData: StackPageData = {
       stackName: response.name,
       errors: "",

@@ -63,7 +63,6 @@ class ApiService {
   };
 
   public static getStack = async (id?: string): Promise<Stack> => {
-    console.log("api" + id)
     const stack = await HttpClient.get<Stack>(`${RouteConfig.stacks}/${id}`);
     return stack.data;
   };
@@ -98,7 +97,6 @@ class ApiService {
   };
 
   public static updateTag = async (tag: Tag): Promise<TagCreateRequest> => {
-    console.log("updateStack in ApiService");
     let updatedTag = await HttpClient.put<TagCreateRequest>(
       `${RouteConfig.tags}/${tag._id}`,
       {
@@ -129,7 +127,6 @@ class ApiService {
   };
 
   public static fetchTag = async (id: string): Promise<Tag> => {
-    console.log("Api" + id)
     let tag = await HttpClient.get<Tag>(`${RouteConfig.tags}/${id}`);
     return tag.data;
   };
@@ -159,10 +156,9 @@ class ApiService {
   };
 
   public static updateAuthor = async (author: Author): Promise<Author> => {
-    console.log(author);
     let updatedAuthor = await HttpClient.put<AuthorCreateRequest, Author>(
       `${RouteConfig.authors}/${author._id}`,
-      author.name
+      author
     );
     return updatedAuthor;
   };

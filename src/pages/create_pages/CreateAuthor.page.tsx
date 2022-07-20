@@ -1,6 +1,6 @@
 import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import Clickable from "../../components/wrapper_components/ButtonWrapperComponent";
@@ -100,7 +100,6 @@ const CreateAuthorPage = () => {
     if (author !== undefined && id !== undefined) {
       const newAuthor: Author = {
         name: author.name,
-        cookbooks: [],
         _id: id,
       };
       if (validateAuthorName(author?.name)) {
@@ -111,6 +110,15 @@ const CreateAuthorPage = () => {
 
   const onAddNewCookbookClicked = () => {
     navigate("/create/cookbook");
+  };
+
+  const onInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const newAuthor: AuthorCreateRequest = {
+      name: event.target.value,
+    };
+    setAuthor(newAuthor);
   };
 
   return (
@@ -124,10 +132,14 @@ const CreateAuthorPage = () => {
           </Text>
           <div>
             <Input
-              onChange={(event) => {}}
+              onChange={(event) => {
+                onInputChange(event);
+              }}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText={author?.name !== undefined ? undefined : "Enter the Author Name"}
+              placeHolderText={
+                author?.name !== undefined ? undefined : "Enter the Author Name"
+              }
               style={{ marginTop: "10px" }}
               errorText={""}
               value={author?.name !== undefined ? author?.name : undefined}

@@ -52,7 +52,6 @@ const CreateTagPage = () => {
   );
 
   const onSuccessfetchTag = (response: Tag) => {
-    console.log(response)
     const newtagData: TagPageData = {
       tagName: response.name,
       errors: "",
