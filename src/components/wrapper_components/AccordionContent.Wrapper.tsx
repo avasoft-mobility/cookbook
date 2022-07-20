@@ -29,7 +29,7 @@ const AccordionContent: React.FC<AccordianContentProps> = (props) => {
             style={
               props.imageStyle !== undefined
                 ? props.imageStyle
-                : { height: "600px", width: "auto" }
+                : { maxHeight: "600px", width: "auto", maxWidth: "100%" }
             }
             src={props.image}
             alt="could not found"
