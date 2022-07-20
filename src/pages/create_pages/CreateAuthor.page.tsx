@@ -148,7 +148,7 @@ const CreateAuthorPage = () => {
         </div>
 
         <div style={style.buttonContainer}>
-          {!createMutation.isLoading ? (
+          {!createMutation.isLoading || !updateMutation.isLoading ? (
             <>
               <div>
                 <Clickable
