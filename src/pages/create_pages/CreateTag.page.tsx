@@ -139,7 +139,7 @@ const CreateTagPage = () => {
 
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
-      <Title text="Create Tag" />
+      <Title text={id ? "Update Tag" : "Create Tag"} />
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
@@ -153,7 +153,11 @@ const CreateTagPage = () => {
               }}
               onBlur={onInputBlur}
               type={"outlined"}
-              placeHolderText= {tagData?.tagName !==undefined ? undefined: "Enter the Tag Name"}
+              placeHolderText={
+                tagData?.tagName !== undefined
+                  ? undefined
+                  : "Enter the Tag Name"
+              }
               style={{ marginTop: "10px" }}
               errorText={tagData?.errors ? tagData.errors : ""}
               value={

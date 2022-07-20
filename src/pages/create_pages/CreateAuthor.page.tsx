@@ -123,7 +123,7 @@ const CreateAuthorPage = () => {
 
   return (
     <div style={{ ...style.mainContainer, ...{ flexDirection: "column" } }}>
-      <Title text="Create Author" />
+      <Title text={id ? "Update Author" : "Create Author"} />
 
       <div style={{ ...style.subContainer, ...{ flexDirection: "column" } }}>
         <div style={style.bodyContainer}>
