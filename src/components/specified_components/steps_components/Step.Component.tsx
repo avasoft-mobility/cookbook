@@ -57,7 +57,11 @@ const Step: React.FC<StepProps> = (props) => {
                     handleChange("title");
                     const clonedValue = { ...values };
                     clonedValue.title = event.target.value;
-                    props.onValueChange(clonedValue, props.currentIndex);
+                    props.onValueChange(
+                      clonedValue,
+                      props.currentIndex,
+                      clonedValue.image
+                    );
                   }}
                   onBlur={handleBlur("title")}
                   type="outlined"
@@ -76,7 +80,11 @@ const Step: React.FC<StepProps> = (props) => {
                     handleChange("description");
                     const clonedValue = { ...values };
                     clonedValue.description = event.target.value;
-                    props.onValueChange(clonedValue, props.currentIndex);
+                    props.onValueChange(
+                      clonedValue,
+                      props.currentIndex,
+                      clonedValue.image
+                    );
                   }}
                   onBlur={handleBlur("description")}
                   type="outlined"
@@ -100,7 +108,11 @@ const Step: React.FC<StepProps> = (props) => {
                     handleChange("code");
                     const clonedValue = { ...values };
                     clonedValue.code = event.target.value;
-                    props.onValueChange(clonedValue, props.currentIndex);
+                    props.onValueChange(
+                      clonedValue,
+                      props.currentIndex,
+                      clonedValue.image
+                    );
                   }}
                   onBlur={handleBlur("code")}
                   type="outlined"

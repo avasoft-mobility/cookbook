@@ -1,6 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import { IconButton } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Theme from "../../../configs/ThemeConfig";
 import StepValue from "../../../models/StepValue.model";
@@ -43,6 +43,10 @@ const StepWrapper: React.FC<StepWrapperProps> = (props) => {
     props.onValueChange(newStep);
   };
   const handleFileUpload = async (event: any, values: any, index: number) => {
+    if (event.target.files.length === 0) {
+      return;
+    }
+
     const result = await ApiService.uploadFile(event.target.files[0]);
     onValueChange(values, index, result.url);
   };
