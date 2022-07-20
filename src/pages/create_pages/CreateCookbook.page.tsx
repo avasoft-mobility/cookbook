@@ -230,7 +230,7 @@ const CreateCookbookPage = () => {
     });
   };
 
-  return cookbookCall.isLoading && routeParams.id ? (
+  return cookbookCall.isFetching && routeParams.id ? (
     <Box sx={styles.centerAlign}>
       <CircularProgress />
     </Box>
