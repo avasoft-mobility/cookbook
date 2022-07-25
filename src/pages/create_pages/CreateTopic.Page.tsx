@@ -203,7 +203,6 @@ const TopicPage = () => {
   };
 
   const onSave = () => {
-    console.log("onsave topic");
     const referenceurl: string[] = references.map((reference) => {
       return reference.url;
     });
@@ -214,11 +213,9 @@ const TopicPage = () => {
     });
     clonedTopic.tags = tagIds;
     clonedTopic.referenceUrls = referenceurl;
-    console.log(topic);
 
     if (!validate()) {
       if (slug) {
-        console.log("slug");
         updateTopic(topicCall.data?._id!, clonedTopic);
         return;
       }
@@ -234,7 +231,6 @@ const TopicPage = () => {
   };
 
   const createTopic = (clonedTopic: TopicCreateRequest) => {
-    console.log(clonedTopic);
     topicCreateCall.mutate(clonedTopic);
   };
 
