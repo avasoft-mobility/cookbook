@@ -26,7 +26,7 @@ import Title from "../../components/specified_components/text_components/Title.c
 interface TopicErrors {
   name: boolean;
   tags: boolean;
-  fileUpload: boolean;
+  fileUpload?: boolean;
 }
 
 interface ReferenceURI {
@@ -50,7 +50,6 @@ const TopicPage = () => {
   const [errors, setErrors] = useState<TopicErrors>({
     name: false,
     tags: false,
-    fileUpload: false,
   });
 
   const emptyTopic: TopicCreateRequest = {
@@ -165,18 +164,6 @@ const TopicPage = () => {
     setErrors(clonedErrors);
   };
 
-  const validateFileUpload = (url: string) => {
-    const clonedErrors = { ...errors };
-
-    if (url === "") {
-      clonedErrors.fileUpload = true;
-    }
-    if (url !== "") {
-      clonedErrors.fileUpload = false;
-    }
-    setErrors(clonedErrors);
-  };
-
   const validateTags = (tags: string[]) => {
     const clonedErrors = { ...errors };
 
@@ -205,12 +192,6 @@ const TopicPage = () => {
     if (topic.tags?.length !== 0) {
       clonedErrors.tags = false;
     }
-    if (topic.flowchartUrl === "") {
-      clonedErrors.fileUpload = true;
-    }
-    if (topic.flowchartUrl !== "") {
-      clonedErrors.fileUpload = false;
-    }
 
     setErrors(clonedErrors);
 
@@ -222,6 +203,7 @@ const TopicPage = () => {
   };
 
   const onSave = () => {
+    console.log("onsave topic");
     const referenceurl: string[] = references.map((reference) => {
       return reference.url;
     });
@@ -232,9 +214,11 @@ const TopicPage = () => {
     });
     clonedTopic.tags = tagIds;
     clonedTopic.referenceUrls = referenceurl;
+    console.log(topic);
 
     if (!validate()) {
       if (slug) {
+        console.log("slug");
         updateTopic(topicCall.data?._id!, clonedTopic);
         return;
       }
@@ -250,6 +234,7 @@ const TopicPage = () => {
   };
 
   const createTopic = (clonedTopic: TopicCreateRequest) => {
+    console.log(clonedTopic);
     topicCreateCall.mutate(clonedTopic);
   };
 
@@ -294,7 +279,6 @@ const TopicPage = () => {
     clonedTopic.flowchartUrl = response.url;
 
     setTopic(clonedTopic);
-    validateFileUpload(response.url);
   };
 
   return (
@@ -350,16 +334,6 @@ const TopicPage = () => {
               type={"file"}
               onChange={onTopicUpload}
             />
-            <Text
-              color={
-                errors.fileUpload
-                  ? Color.errorMessage
-                  : Theme.palette.text.primary
-              }
-              variant="body2"
-            >
-              * Topic need flow diagram
-            </Text>
           </div>
           <div style={{ display: "flex", flex: 1, width: "100%" }}>
             <div style={styles.inputsContainer}>
