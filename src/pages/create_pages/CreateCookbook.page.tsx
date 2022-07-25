@@ -191,11 +191,6 @@ const CreateCookbookPage = () => {
       return false;
     }
 
-    if (!newCookbook.flowchartUrl || newCookbook.flowchartUrl.trim() === "") {
-      showErrorSnackBar("You must upload one flowchart for cookbook");
-      return false;
-    }
-
     if (
       !newCookbook.sampleProjectUrl ||
       newCookbook.sampleProjectUrl.trim() === ""
