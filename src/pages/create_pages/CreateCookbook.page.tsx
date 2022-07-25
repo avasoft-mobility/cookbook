@@ -7,10 +7,9 @@ import Clickable from "../../components/wrapper_components/ButtonWrapperComponen
 import Text from "../../components/wrapper_components/Text.wrapperComponent";
 
 import { Box, CircularProgress } from "@mui/material";
-import ActionableComboBox from "../../components/specified_components/actionable_components/ActionableComboBox.component";
-import ActionableDropdown from "../../components/specified_components/actionable_components/ActionableDropdown.component";
-import Title from "../../components/specified_components/text_components/Title.component";
-import FileUpload from "../../components/wrapper_components/FileUpload.component";
+import CreateCookbookTitle from "../../components/specified_components/CreateCookbook_page_components/CookbookTitle.components";
+import CookbookActionables from "../../components/specified_components/CreateCookbook_page_components/CookbookActionables.components";
+import CookbookFileUploads from "../../components/specified_components/CreateCookbook_page_components/CookbookFileUploads.component";
 import Theme from "../../configs/ThemeConfig";
 import useErrorSnackbar from "../../hooks/useErrorSnackbar.hook";
 import useExitPrompt from "../../hooks/useExitPrompt";
@@ -231,60 +230,45 @@ const CreateCookbookPage = () => {
     });
   };
 
+  const onClickAddTopic = () => {
+    tabRouter.navigate("/create/topic");
+  };
+
+  const onClickAddStack = () => {
+    tabRouter.navigate("/create/stack");
+  };
+
+  const onClickAddAuthor = () => {
+    tabRouter.navigate("/create/author");
+  };
+
   return cookbookCall.isFetching && routeParams.id ? (
     <Box sx={styles.centerAlign}>
       <CircularProgress />
     </Box>
   ) : (
     <div style={styles.container}>
+      <CreateCookbookTitle
+        Title={!routeParams.id ? "Create Cookbook" : "Update Cookbook"}
+      />
       <div style={styles.innerContainer}>
-        <Title text={!routeParams.id ? "Create Cookbook" : "Update Cookbook"} />
-      </div>
-      <div style={styles.innerContainer}>
-        <ActionableDropdown
-          dialogValues={
-            topicsCall.data ? topicsCall.data.map((topic) => topic.title) : []
-          }
-          onConfirm={onTopicChosed}
-          onClickableClick={(event) => {
-            tabRouter.navigate("/create/topic");
-          }}
-          dialogTitle={"Topic"}
-          dialogHeader={"Choose Topic"}
-          confirmationDialogvalue={
+        <CookbookActionables
+          TopicDialogValues={topicsCall}
+          onTopicChosed={onTopicChosed}
+          onClickAddTopic={onClickAddTopic}
+          confirmationTopicDialogValues={
             cookbook !== undefined ? cookbook!.topic.title : "Choose the Topic"
           }
-          clickableText={"Add Topic"}
-        />
-        <ActionableDropdown
-          dialogValues={
-            stacksCall.data ? stacksCall.data.map((stack) => stack.name) : []
-          }
-          onConfirm={onStackChosed}
-          onClickableClick={(event) => {
-            tabRouter.navigate("/create/stack");
-          }}
-          dialogTitle={"Stack"}
-          dialogHeader={"Choose Stack"}
-          confirmationDialogvalue={
+          StackDialogValues={stacksCall}
+          onStackChosed={onStackChosed}
+          onClickAddStack={onClickAddStack}
+          confirmationStackDialogValues={
             cookbook !== undefined ? cookbook!.stack.name : "Choose the Stack"
           }
-          clickableText={"Add Stack"}
-        />
-        <ActionableComboBox
-          title={"Authors"}
-          onClickableClick={(event) => {
-            tabRouter.navigate("/create/author");
-          }}
-          label={"Authors"}
-          clickableText={"Add Author"}
-          onChanged={onAuthorChanged}
-          options={
-            authorsCall.isSuccess
-              ? authorsCall.data.map((author) => author.name)
-              : [""]
-          }
-          defaultValue={cookbook !== undefined ? cookbook.author.name : ""}
+          onClickAddAuthor={onClickAddAuthor}
+          onAuthorChanged={onAuthorChanged}
+          authorOptions={authorsCall}
+          authorValue={cookbook !== undefined ? cookbook.author.name : ""}
         />
         <div style={styles.steps}>
           <Text variant="body1" color={Theme.palette.text.secondary}>
@@ -297,23 +281,11 @@ const CreateCookbookPage = () => {
             initialValues={cookbook !== undefined ? cookbook!.steps : undefined}
           />
         </div>
-
         <div>
-          <div style={styles.fileUploadContainer}>
-            <FileUpload
-              onChange={onTechnicalFlowUpload}
-              label={"Upload Technical Flow"}
-              textColor={Theme.palette.text.secondary}
-            />
-          </div>
-          <div style={styles.fileUploadContainer}>
-            <FileUpload
-              onChange={onSampleProjectUpload}
-              label={"Upload Sample Code (in compressed format)"}
-              textColor={Theme.palette.text.secondary}
-            />
-          </div>
-
+          <CookbookFileUploads
+            onTechnicalFlowUpload={onTechnicalFlowUpload}
+            onSampleProjectUpload={onSampleProjectUpload}
+          />
           <div>
             <Clickable
               style={{ width: "100%" }}
@@ -339,12 +311,6 @@ const styles = {
   innerContainer: {
     flex: 1,
     padding: "30px 20%",
-  },
-  fileUploadContainer: {
-    margin: "30px 0px",
-  },
-  fileUploadItem: {
-    marginTop: "10px",
   },
   steps: {
     marginTop: "10px",
