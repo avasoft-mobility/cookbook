@@ -6,7 +6,7 @@ interface CookbookCreateRequest {
   authorName: string;
   author?: string;
   sampleProjectUrl: string;
-  flowchartUrl: string;
+  flowchartUrl?: string;
   steps: Step[];
 }
 
